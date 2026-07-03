@@ -19,9 +19,9 @@
       "url": "https://github.com/nonuser35/DelayEngineProject"
     },
     {
-      "label": "PayPal",
-      "title": "Apoiar via PayPal",
-      "info": "Escaneie o QR Code ou copie o link.",
+      "label": "",
+      "title": "",
+      "info": "",
       "key": "https://paypal.me/seuusuario",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
       "url": "https://paypal.me/seuusuario"
