@@ -1,0 +1,16 @@
+{
+  "visible": true,
+  "name": "Seu Nome",
+  "shortName": "Seu Nome",
+  "initials": "SN",
+  "photoUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/creator.png",
+  "githubLabel": "github.com/nonuser35",
+  "githubUrl": "https://github.com/nonuser35",
+  "socialLabel": "Discord: seuusuario",
+  "socialUrl": "https://discord.com",
+  "message": "Sua mensagem aparecerá aqui.",
+  "pixTitle": "Apoiar via Pix",
+  "pixInfo": "Escaneie o QR Code ou copie a chave.",
+  "pixKey": "sua-chave-pix-aqui",
+  "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png"
+}
