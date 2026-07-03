@@ -15,21 +15,24 @@
       "title": "Apoiar via Pix",
       "info": "Escaneie o QR Code ou copie a chave.",
       "key": "cole-sua-chave-pix-aqui",
-      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png"
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png",
+      "url": "https://github.com/nonuser35/DelayEngineProject"
     },
     {
       "label": "PayPal",
       "title": "Apoiar via PayPal",
       "info": "Escaneie o QR Code ou copie o link.",
       "key": "https://paypal.me/seuusuario",
-      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png"
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
+      "url": "https://paypal.me/seuusuario"
     },
     {
       "label": "Outro",
       "title": "Outro apoio",
       "info": "Escaneie o QR Code ou copie o texto.",
       "key": "cole-a-chave-ou-link-aqui",
-      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/outro-qrcode.png"
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/outro-qrcode.png",
+      "url": "https://seu-link-aqui.com"
     }
   ]
 }
