@@ -1,6 +1,6 @@
 {
   "visible": true,
-  "name": "user34",
+  "name": "Seu Nome",
   "shortName": "Seu Nome",
   "initials": "SN",
   "photoUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/creator.png",
@@ -8,9 +8,28 @@
   "githubUrl": "https://github.com/nonuser35",
   "socialLabel": "Discord: seuusuario",
   "socialUrl": "https://discord.com",
-  "message": "Sua mensagem aparecerá aqui.",
-  "pixTitle": "Apoiar via Pix",
-  "pixInfo": "Escaneie o QR Code ou copie a chave.",
-  "pixKey": "blablateste",
-  "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png"
+  "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
+  "payments": [
+    {
+      "label": "PIX",
+      "title": "Apoiar via Pix",
+      "info": "Escaneie o QR Code ou copie a chave.",
+      "key": "cole-sua-chave-pix-aqui",
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png"
+    },
+    {
+      "label": "PayPal",
+      "title": "Apoiar via PayPal",
+      "info": "Escaneie o QR Code ou copie o link.",
+      "key": "https://paypal.me/seuusuario",
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png"
+    },
+    {
+      "label": "Outro",
+      "title": "Outro apoio",
+      "info": "Escaneie o QR Code ou copie o texto.",
+      "key": "cole-a-chave-ou-link-aqui",
+      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/outro-qrcode.png"
+    }
+  ]
 }
