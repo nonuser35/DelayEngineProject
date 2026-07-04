@@ -1,3 +1,4 @@
+
 🇧🇷 [Português](README.pt-BR.md) | 🇬🇧 [English](README.en.md)
 
 💙 Este projeto é desenvolvido com dedicação e cuidado.
@@ -27,6 +28,8 @@ DelayEngine
 Twitch
 ```
 
+<img width="1901" height="1037" alt="Captura de tela 2026-07-04 172853" src="https://github.com/user-attachments/assets/31e24d5f-67fb-4f81-8d0e-b91825e91388" />
+ 
 ## Objetivo
 
 O objetivo do DelayEngine é dar ao host controle sobre o atraso da live durante a transmissão.
