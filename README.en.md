@@ -1,6 +1,19 @@
 🇬🇧 [English](README.en.md) | 🇧🇷 [Português](README.pt-BR.md)
 
 ---
+💙 Support the project
+
+💙 This project is developed with dedication and care.
+If you feel comfortable supporting it, any help is greatly appreciated — whether through code contributions, ideas, improvements, or financial support.
+Everything helps DelayEngine keep evolving and improving.
+
+🔗 Direct links
+
+- 🇧🇷 👉 [Pix (Brasil)](https://github.com/nonuser35/DelayEngineProject/blob/main/support/pix-qrcode.png)
+
+
+- 🌍 👉 [PayPal](https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png)
+
 
 # DelayEngine
 
