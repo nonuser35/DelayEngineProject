@@ -14,10 +14,9 @@ Você também pode apoiar via PayPal:
 
 🔗 Links diretos
 Pix QR Code:
-https://github.com/nonuser35/DelayEngineProject/blob/main/support/pix-qrcode.png
+- 🇧🇷 👉[Pix (Brasil)](https://github.com/nonuser35/DelayEngineProject/blob/main/support/pix-qrcode.png)
 PayPal QR Code:
-https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png
-
+- 🌍 👉 [PayPal](https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png)
 ---
 
 # DelayEngine
