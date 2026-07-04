@@ -394,7 +394,8 @@ Ele serve para deixar a pasta limpa antes de compartilhar com outra pessoa.
 9. Cole a chave local no campo Chave.
 10. Inicie a transmissão no OBS/Streamlabs.
 11. Confira no painel se a live chegou.
-12. Use Adicionar delay com loading ou Voltar ao vivo.
+12. Crie um video de loading pela opcao de conversao logo abaixo no site(tenha um video de loading, a preferencia do dono)
+13. Use Adicionar delay com loading ou Voltar ao vivo.
 
 ## Como adicionar delay
 
