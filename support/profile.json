@@ -28,7 +28,7 @@
     },
     {
       "label": "Outro",
-      "title": "Outro apoio",
+      "title": "",
       "info": "Escaneie o QR Code ou copie o texto.",
       "key": "cole-a-chave-ou-link-aqui",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/outro-qrcode.png",
