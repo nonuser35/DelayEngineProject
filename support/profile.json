@@ -1,14 +1,14 @@
 {
   "visible": true,
-  "name": "nonuser35",
-  "shortName": "nonuser35",
-  "initials": "NU34",
+  "name": "user34",
+  "shortName": "user34",
+  "initials": "U34",
   "photoUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/creator.png",
   "githubLabel": "github.com/nonuser35",
   "githubUrl": "https://github.com/nonuser35",
-  "socialLabel": "Discord: discord/usuarioetc",
+  "socialLabel": "Discord: user34#1337",
   "socialUrl": "https://discord.com",
-  "message": "''Não sou um herói, sou apenas um cavalheiro da sorte.'' Corto Maltese.",
+  "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
   "payments": [
     {
       "label": "PIX",
@@ -19,20 +19,12 @@
       "url": "https://github.com/nonuser35/DelayEngineProject"
     },
     {
-      "label": "",
-      "title": "",
-      "info": "",
+      "label": "PayPal",
+      "title": "Apoiar via PayPal",
+      "info": "Escaneie o QR Code ou copie o link.",
       "key": "https://paypal.me/seuusuario",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
       "url": "https://paypal.me/seuusuario"
-    },
-    {
-      "label": "Outro",
-      "title": "",
-      "info": "Escaneie o QR Code ou copie o texto.",
-      "key": "cole-a-chave-ou-link-aqui",
-      "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/outro-qrcode.png",
-      "url": "https://seu-link-aqui.com"
     }
   ]
 }
