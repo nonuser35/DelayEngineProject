@@ -1,16 +1,8 @@
 🇧🇷 [Português](README.pt-BR.md) | 🇬🇧 [English](README.en.md)
 
-💙 Apoie o projeto / Support the project
-
-Se você quiser apoiar o desenvolvimento do DelayEngine, você pode contribuir via Pix ou PayPal. Qualquer ajuda é muito bem-vinda, seja financeira ou contribuindo com código e melhorias.
-
-🇧🇷 Pix (Brasil)
-
-Escaneie o QR Code abaixo para apoiar via Pix:
-
-🌍 PayPal
-
-Você também pode apoiar via PayPal:
+💙 Este projeto é desenvolvido com dedicação e cuidado.
+Se você se sentir confortável em apoiar, qualquer ajuda é muito bem-vinda — seja contribuindo com código, ideias, melhorias ou apoio financeiro.
+Tudo isso ajuda o DelayEngine a continuar evoluindo e melhorando.
 
 🔗 Links diretos
 Pix QR Code:
@@ -18,10 +10,6 @@ Pix QR Code:
 PayPal QR Code:
 - 🌍 👉 [PayPal](https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png)
 ---
-
-# DelayEngine
-
-> Português / English
 
 ---
 
