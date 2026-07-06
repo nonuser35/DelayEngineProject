@@ -8,7 +8,7 @@ Tudo isso ajuda o DelayEngine a continuar evoluindo e melhorando.
 🔗 Links diretos
 Pix QR Code:
 - 🇧🇷 👉[Pix (Brasil)](https://github.com/nonuser35/DelayEngineProject/blob/main/support/pix-qrcode.png)
-PayPal QR Code:
+
 - 🌍 👉 [PayPal](https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png)
 ---
 #DelayEngine
