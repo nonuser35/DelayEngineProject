@@ -1,0 +1,47 @@
+{
+  "_comment": "FAQ local de fallback. Para editar pelo GitHub, altere support/faq.json no repositorio publico.",
+  "_imageHelp": "Use imageUrl com uma URL publica https. No GitHub, prefira raw: https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/imagens/faq-exemplo.png. Se imageUrl ficar vazio ou ausente, nenhuma imagem aparece.",
+  "remoteFaqUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/faq.json",
+  "items": [
+    {
+      "title": "O que o DelayEngine faz",
+      "text": "Ele fica entre o OBS/Streamlabs e a Twitch. Recebe sua live local, aplica delay quando voce pede e envia para a Twitch preservando audio, video, PTS/DTS, keyframes e sincronizacao.",
+      "tag": "Uso normal: deixe aberto durante a live."
+    },
+    {
+      "title": "Para onde o OBS envia",
+      "text": "O OBS envia para o servidor local do DelayEngine, nao direto para a Twitch. Copie o Servidor do DelayEngine para OBS e a Chave local do OBS nas configuracoes de transmissao customizada do OBS/Streamlabs.",
+      "tag": "Nao cole a chave da Twitch no OBS."
+    },
+    {
+      "title": "O que e o modo Twitch polido",
+      "text": "E o modo em que o DelayEngine publica localmente e um codificador FFmpeg interno envia a saida para a Twitch. Esse modo ajuda a voltar ao vivo com latencia menor apos remover delay manual.",
+      "tag": "Use perfil igual ao OBS para evitar peso extra."
+    },
+    {
+      "title": "Por que preencher resolucao, FPS e bitrate",
+      "text": "Esses dados dizem ao modo Twitch polido e ao conversor qual formato a live usa. O melhor resultado acontece quando o perfil do app bate com OBS/Streamlabs: exemplo 1920x1080, 60 FPS e bitrate parecido.",
+      "tag": "Perfil errado pode gerar microdelay em PC fraco."
+    },
+    {
+      "title": "O que e o video de loading",
+      "text": "E a tela temporaria exibida enquanto o delay entra ou sai. Se o video for menor que o tempo necessario, o app repete automaticamente. Se for maior e loading completo estiver desligado, o app volta assim que o buffer estiver pronto.",
+      "tag": "Converta no mesmo FPS/resolucao da live."
+    },
+    {
+      "title": "O que significa voltar ao vivo",
+      "text": "O app remove o delay manual e volta para o ponto mais recente possivel da live. O objetivo e voltar perto da latencia normal da Twitch sem interromper a transmissao.",
+      "tag": "Use quando quiser sair do delay."
+    },
+    {
+      "title": "Posso fechar o navegador",
+      "text": "Sim. O painel web e apenas controle. Se o icone do DelayEngine continuar perto do relogio do Windows, o app continua rodando e transmitindo.",
+      "tag": "Para parar tudo, saia pelo icone."
+    },
+    {
+      "title": "Como usar o controle remoto",
+      "text": "Abra http://127.0.0.1:8080/remote como dock no OBS/Streamlabs. Ele mostra se o delay esta ativo e tem botoes grandes para adicionar delay ou voltar ao vivo.",
+      "tag": "Ideal para controlar durante a live."
+    }
+  ]
+}
