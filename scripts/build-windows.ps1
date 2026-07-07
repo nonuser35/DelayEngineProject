@@ -20,6 +20,15 @@ Set-Location $ProjectRoot
 Write-Host ""
 Write-Host "DelayEngine - gerar EXE" -ForegroundColor Green
 
+foreach ($processName in @("DelayEngine", "DelayEngineTray", "mediamtx", "ffmpeg")) {
+    Get-Process -Name $processName -ErrorAction SilentlyContinue | ForEach-Object {
+        try {
+            Stop-Process -Id $_.Id -Force -ErrorAction Stop
+        } catch {
+        }
+    }
+}
+
 $go = Get-Command go -ErrorAction SilentlyContinue
 if ($null -eq $go) {
     throw "Go nao encontrado no PATH. Instale o Go ou use o ambiente onde go test ja funciona."
@@ -81,30 +90,7 @@ if (Test-Path -LiteralPath $AppDir) {
         Remove-Item -LiteralPath $AppDir -Recurse -Force
     }
     catch {
-        $AppDir = Join-Path $ProjectRoot "dist\DelayEngineApp-novo"
-        if (Test-Path -LiteralPath $AppDir) {
-            try {
-                Remove-Item -LiteralPath $AppDir -Recurse -Force
-            }
-            catch {
-                $suffix = 2
-                do {
-                    $AppDir = Join-Path $ProjectRoot "dist\DelayEngineApp-novo-$suffix"
-                    $suffix++
-                } while (Test-Path -LiteralPath $AppDir)
-            }
-        }
-        Write-Host "A pasta DelayEngineApp esta em uso. Vou criar DelayEngineApp-novo." -ForegroundColor Yellow
-        foreach ($file in $StateFiles) {
-            $source = Join-Path $ProjectRoot "dist\DelayEngineApp\$file"
-            if (Test-Path -LiteralPath $source) {
-                Copy-Item -LiteralPath $source -Destination (Join-Path $StateBackupDir $file) -Force
-            }
-        }
-        $videosSource = Join-Path $ProjectRoot "dist\DelayEngineApp\videos"
-        if ((-not (Test-Path -LiteralPath $VideosBackupDir)) -and (Test-Path -LiteralPath $videosSource)) {
-            Copy-Item -LiteralPath $videosSource -Destination $VideosBackupDir -Recurse -Force
-        }
+        Write-Host "A pasta DelayEngineApp esta em uso. Vou reparar e copiar os arquivos por cima." -ForegroundColor Yellow
     }
 }
 New-Item -ItemType Directory -Force -Path $AppDir | Out-Null
@@ -119,7 +105,7 @@ foreach ($file in @("LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "README.md", 
     }
 }
 
-foreach ($dir in @("web", "tools")) {
+foreach ($dir in @("web", "tools", "assets")) {
     $source = Join-Path $ProjectRoot $dir
     if (Test-Path -LiteralPath $source) {
         Copy-Item -LiteralPath $source -Destination (Join-Path $AppDir $dir) -Recurse -Force
@@ -144,6 +130,23 @@ echo.
 pause
 "@
 Set-Content -LiteralPath (Join-Path $AppDir "limpeza-de-dados.cmd") -Value $cleanCmd -Encoding ASCII
+
+$ShortcutPath = Join-Path $AppDir "DelayEngine.lnk"
+$ShortcutIcon = Join-Path $AppDir "assets\branding\delayengine-app-icon.ico"
+if (Test-Path -LiteralPath $ShortcutIcon) {
+    try {
+        $wsh = New-Object -ComObject WScript.Shell
+        $shortcut = $wsh.CreateShortcut($ShortcutPath)
+        $shortcut.TargetPath = Join-Path $AppDir "DelayEngine.exe"
+        $shortcut.WorkingDirectory = $AppDir
+        $shortcut.IconLocation = $ShortcutIcon
+        $shortcut.Description = "Abrir DelayEngine"
+        $shortcut.Save()
+    }
+    catch {
+        Write-Host "Nao foi possivel criar o atalho com icone personalizado: $_" -ForegroundColor Yellow
+    }
+}
 
 if (Test-Path -LiteralPath $VideosBackupDir) {
     Copy-Item -LiteralPath $VideosBackupDir -Destination (Join-Path $AppDir "videos") -Recurse -Force

@@ -88,10 +88,7 @@ function Get-DefaultSourcePath {
             return $saved
         }
     }
-
-    $alphabet = "23456789abcdefghjkmnpqrstuvwxyz"
-    $token = -join (1..4 | ForEach-Object { $alphabet[(Get-Random -Minimum 0 -Maximum $alphabet.Length)] })
-    $name = "live/delayengine-$token"
+    $name = "live/delayengine"
     Set-Content -LiteralPath $sourceFile -Value $name -NoNewline
     return $name
 }

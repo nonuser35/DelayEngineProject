@@ -3,7 +3,9 @@ package main
 import (
 	"bytes"
 	"context"
-	"encoding/binary"
+	_ "embed"
+	"encoding/json"
+	"fmt"
 	"io"
 	"log/slog"
 	"net"
@@ -22,6 +24,14 @@ import (
 	"delayengine/internal/logging"
 
 	"github.com/getlantern/systray"
+)
+
+//go:embed assets/app-icon.ico
+var appIcon []byte
+
+const (
+	windowsRunKey  = `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
+	windowsRunName = "DelayEngine"
 )
 
 func main() {
@@ -71,6 +81,18 @@ type trayApp struct {
 	engineDone <-chan struct{}
 }
 
+type trayStatusResponse struct {
+	DelayEnabled bool    `json:"delayEnabled"`
+	Delay        string  `json:"delay"`
+	DelaySeconds float64 `json:"delaySeconds"`
+	Input        struct {
+		Connected bool `json:"connected"`
+	} `json:"input"`
+	Output struct {
+		Connected bool `json:"connected"`
+	} `json:"output"`
+}
+
 func (t *trayApp) onReady() {
 	if icon := trayIcon(); len(icon) > 0 {
 		systray.SetIcon(icon)
@@ -79,8 +101,13 @@ func (t *trayApp) onReady() {
 	systray.SetTooltip("DelayEngine rodando")
 
 	openPanel := systray.AddMenuItem("Abrir painel", "Abre a interface web")
+	delayStatus := systray.AddMenuItem("Delay: verificando...", "Status atual do delay manual")
+	delayStatus.Disable()
+	systray.AddSeparator()
+	armDelay := systray.AddMenuItem("Adicionar delay com loading", "Usa o delay e o video ativo configurados no painel")
 	syncLive := systray.AddMenuItem("Voltar ao vivo agora", "Descarta delay acumulado")
 	openLogs := systray.AddMenuItem("Abrir pasta de logs", "Abre a pasta logs")
+	startWithWindows := systray.AddMenuItemCheckbox("Iniciar com Windows", "Abre o DelayEngine automaticamente ao entrar no Windows", t.startupEnabled())
 	systray.AddSeparator()
 	quit := systray.AddMenuItem("Sair", "Fecha o DelayEngine")
 
@@ -89,10 +116,14 @@ func (t *trayApp) onReady() {
 			select {
 			case <-openPanel.ClickedCh:
 				t.openPanel()
+			case <-armDelay.ClickedCh:
+				t.armDelay()
 			case <-syncLive.ClickedCh:
 				t.forceRealtime()
 			case <-openLogs.ClickedCh:
 				t.openLogs()
+			case <-startWithWindows.ClickedCh:
+				t.toggleStartup(startWithWindows)
 			case <-quit.ClickedCh:
 				t.cancel()
 				select {
@@ -109,10 +140,79 @@ func (t *trayApp) onReady() {
 		time.Sleep(1200 * time.Millisecond)
 		t.openPanel()
 	}()
+
+	go t.watchDelayStatus(delayStatus)
 }
 
 func (t *trayApp) onExit() {
 	t.cancel()
+}
+
+func (t *trayApp) startupEnabled() bool {
+	if runtime.GOOS != "windows" {
+		return false
+	}
+
+	output, err := hiddenCommand("reg", "query", windowsRunKey, "/v", windowsRunName).CombinedOutput()
+	if err != nil {
+		return false
+	}
+
+	exe, err := os.Executable()
+	if err != nil {
+		return true
+	}
+
+	return strings.Contains(strings.ToLower(string(output)), strings.ToLower(exe))
+}
+
+func (t *trayApp) toggleStartup(item *systray.MenuItem) {
+	if runtime.GOOS != "windows" {
+		item.Uncheck()
+		t.logger.Warn("startup with Windows is only available on Windows", "status", "warning")
+		return
+	}
+
+	if t.startupEnabled() {
+		if err := t.disableStartup(); err != nil {
+			item.Check()
+			t.logger.Error("failed to disable startup with Windows", "error", err, "status", "error")
+			return
+		}
+		item.Uncheck()
+		t.logger.Info("startup with Windows disabled", "status", "ok")
+		return
+	}
+
+	if err := t.enableStartup(); err != nil {
+		item.Uncheck()
+		t.logger.Error("failed to enable startup with Windows", "error", err, "status", "error")
+		return
+	}
+	item.Check()
+	t.logger.Info("startup with Windows enabled", "status", "ok")
+}
+
+func (t *trayApp) enableStartup() error {
+	exe, err := os.Executable()
+	if err != nil {
+		return err
+	}
+
+	value := `"` + exe + `"`
+	output, err := hiddenCommand("reg", "add", windowsRunKey, "/v", windowsRunName, "/t", "REG_SZ", "/d", value, "/f").CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("register startup: %w: %s", err, strings.TrimSpace(string(output)))
+	}
+	return nil
+}
+
+func (t *trayApp) disableStartup() error {
+	output, err := hiddenCommand("reg", "delete", windowsRunKey, "/v", windowsRunName, "/f").CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("remove startup: %w: %s", err, strings.TrimSpace(string(output)))
+	}
+	return nil
 }
 
 func startMediaMTXSupervisor(ctx context.Context, logger *slog.Logger) {
@@ -192,7 +292,7 @@ func startMediaMTXProcess(path string, logger *slog.Logger) *mediaMTXProcess {
 		return nil
 	}
 
-	cmd := exec.Command(path)
+	cmd := hiddenCommand(path)
 	cmd.Dir = filepath.Dir(path)
 	cmd.Stdout = logFile
 	cmd.Stderr = logFile
@@ -263,12 +363,103 @@ func (t *trayApp) openPanel() {
 	}
 }
 
-func (t *trayApp) forceRealtime() {
-	url := "http://127.0.0.1" + t.cfg.HTTPAddr + "/live/sync"
-	if t.cfg.HTTPAddr == ":8080" {
-		url = "http://127.0.0.1:8080/live/sync"
+func (t *trayApp) watchDelayStatus(item *systray.MenuItem) {
+	client := &http.Client{Timeout: 2 * time.Second}
+	ticker := time.NewTicker(2 * time.Second)
+	defer ticker.Stop()
+	for {
+		t.updateDelayStatus(client, item)
+		select {
+		case <-t.engineDone:
+			return
+		case <-ticker.C:
+		}
 	}
-	request, err := http.NewRequest(http.MethodPost, url, nil)
+}
+
+func (t *trayApp) updateDelayStatus(client *http.Client, item *systray.MenuItem) {
+	var status trayStatusResponse
+	if err := t.getJSON(client, "/status", &status); err != nil {
+		item.SetTitle("Delay: aguardando app")
+		systray.SetTooltip("DelayEngine aguardando status")
+		return
+	}
+	liveState := "sem live"
+	if status.Input.Connected && status.Output.Connected {
+		liveState = "ao vivo"
+	} else if status.Input.Connected {
+		liveState = "preparando"
+	}
+	if status.DelayEnabled || status.DelaySeconds > 0 {
+		delay := strings.TrimSpace(status.Delay)
+		if delay == "" {
+			delay = "ativo"
+		}
+		item.SetTitle("Delay: ativo " + delay)
+		systray.SetTooltip("DelayEngine: delay ativo (" + delay + "), " + liveState)
+		return
+	}
+	item.SetTitle("Delay: OFF")
+	systray.SetTooltip("DelayEngine: delay OFF, " + liveState)
+}
+
+func (t *trayApp) armDelay() {
+	client := &http.Client{Timeout: 5 * time.Second}
+	settings := struct {
+		DefaultDelaySeconds  float64 `json:"defaultDelaySeconds"`
+		ViewerLatencySeconds float64 `json:"viewerLatencySeconds"`
+	}{}
+	if err := t.getJSON(client, "/settings", &settings); err != nil {
+		t.logger.Error("failed to read settings for tray delay", "error", err, "status", "error")
+		return
+	}
+
+	videos := struct {
+		Active       string `json:"active"`
+		ActiveExists bool   `json:"activeExists"`
+	}{}
+	if err := t.getJSON(client, "/videos", &videos); err != nil {
+		t.logger.Error("failed to read active loading video for tray delay", "error", err, "status", "error")
+		return
+	}
+	if !videos.ActiveExists || strings.TrimSpace(videos.Active) == "" {
+		t.logger.Warn("tray delay skipped; no active loading video", "status", "waiting")
+		return
+	}
+
+	seconds := settings.DefaultDelaySeconds + settings.ViewerLatencySeconds
+	if seconds <= 0 {
+		seconds = settings.DefaultDelaySeconds
+	}
+	if seconds <= 0 {
+		seconds = 30
+	}
+	if seconds > 60 {
+		seconds = 60
+	}
+	body, err := json.Marshal(map[string]any{
+		"seconds": seconds,
+		"slate":   videos.Active,
+	})
+	if err != nil {
+		t.logger.Error("failed to prepare tray delay request", "error", err, "status", "error")
+		return
+	}
+	response, err := client.Post(t.apiURL("/delay/arm"), "application/json", bytes.NewReader(body))
+	if err != nil {
+		t.logger.Error("failed to arm delay from tray", "error", err, "status", "error")
+		return
+	}
+	defer response.Body.Close()
+	if response.StatusCode >= 300 {
+		t.logger.Error("arm delay from tray failed", "status_code", response.StatusCode, "status", "error")
+		return
+	}
+	t.logger.Info("delay armed from tray", "delay_seconds", seconds, "slate", videos.Active, "status", "ok")
+}
+
+func (t *trayApp) forceRealtime() {
+	request, err := http.NewRequest(http.MethodPost, t.apiURL("/live/sync"), nil)
 	if err != nil {
 		t.logger.Error("failed to create realtime request", "error", err, "status", "error")
 		return
@@ -287,6 +478,26 @@ func (t *trayApp) forceRealtime() {
 	t.logger.Info("force realtime requested from tray", "status", "ok")
 }
 
+func (t *trayApp) getJSON(client *http.Client, path string, target any) error {
+	response, err := client.Get(t.apiURL(path))
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	if response.StatusCode >= 300 {
+		return fmt.Errorf("GET %s returned HTTP %d", path, response.StatusCode)
+	}
+	return json.NewDecoder(response.Body).Decode(target)
+}
+
+func (t *trayApp) apiURL(path string) string {
+	base := "http://127.0.0.1" + t.cfg.HTTPAddr
+	if t.cfg.HTTPAddr == ":8080" {
+		base = "http://127.0.0.1:8080"
+	}
+	return base + path
+}
+
 func (t *trayApp) openLogs() {
 	path := filepath.Join(config.RuntimeRoot(), "logs")
 	_ = os.MkdirAll(path, 0755)
@@ -298,7 +509,7 @@ func (t *trayApp) openLogs() {
 func openBrowser(url string) error {
 	switch runtime.GOOS {
 	case "windows":
-		return exec.Command("rundll32", "url.dll,FileProtocolHandler", url).Start()
+		return hiddenCommand("rundll32", "url.dll,FileProtocolHandler", url).Start()
 	case "darwin":
 		return exec.Command("open", url).Start()
 	default:
@@ -309,12 +520,20 @@ func openBrowser(url string) error {
 func openPath(path string) error {
 	switch runtime.GOOS {
 	case "windows":
-		return exec.Command("explorer", path).Start()
+		return hiddenCommand("explorer", path).Start()
 	case "darwin":
 		return exec.Command("open", path).Start()
 	default:
 		return exec.Command("xdg-open", path).Start()
 	}
+}
+
+func hiddenCommand(name string, args ...string) *exec.Cmd {
+	cmd := exec.Command(name, args...)
+	if runtime.GOOS == "windows" {
+		cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+	}
+	return cmd
 }
 
 func newLogger() (*slog.Logger, func()) {
@@ -338,48 +557,5 @@ func newLogger() (*slog.Logger, func()) {
 }
 
 func trayIcon() []byte {
-	const width = 16
-	const height = 16
-	headerSize := 6 + 16
-	bitmapSize := 40 + width*height*4 + width*height/8
-	buf := bytes.NewBuffer(make([]byte, 0, headerSize+bitmapSize))
-
-	_ = binary.Write(buf, binary.LittleEndian, uint16(0))
-	_ = binary.Write(buf, binary.LittleEndian, uint16(1))
-	_ = binary.Write(buf, binary.LittleEndian, uint16(1))
-	buf.WriteByte(width)
-	buf.WriteByte(height)
-	buf.WriteByte(0)
-	buf.WriteByte(0)
-	_ = binary.Write(buf, binary.LittleEndian, uint16(1))
-	_ = binary.Write(buf, binary.LittleEndian, uint16(32))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(bitmapSize))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(headerSize))
-
-	_ = binary.Write(buf, binary.LittleEndian, uint32(40))
-	_ = binary.Write(buf, binary.LittleEndian, int32(width))
-	_ = binary.Write(buf, binary.LittleEndian, int32(height*2))
-	_ = binary.Write(buf, binary.LittleEndian, uint16(1))
-	_ = binary.Write(buf, binary.LittleEndian, uint16(32))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(0))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(width*height*4))
-	_ = binary.Write(buf, binary.LittleEndian, int32(0))
-	_ = binary.Write(buf, binary.LittleEndian, int32(0))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(0))
-	_ = binary.Write(buf, binary.LittleEndian, uint32(0))
-
-	for y := height - 1; y >= 0; y-- {
-		for x := 0; x < width; x++ {
-			r, g, b, a := byte(45), byte(212), byte(191), byte(255)
-			if x < 2 || y < 2 || x > 13 || y > 13 {
-				r, g, b = 56, 189, 248
-			}
-			if x >= 5 && x <= 10 && y >= 5 && y <= 10 {
-				r, g, b = 15, 23, 32
-			}
-			buf.Write([]byte{b, g, r, a})
-		}
-	}
-	buf.Write(make([]byte, width*height/8))
-	return buf.Bytes()
+	return appIcon
 }

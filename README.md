@@ -1,183 +1,30 @@
+# DelayEngine
 
-🇧🇷 [Português](README.pt-BR.md) | 🇬🇧 [English](README.en.md)
+DelayEngine is an open source live-stream delay tool for Windows.
 
-💙 Este projeto é desenvolvido com dedicação e cuidado.
-Se você se sentir confortável em apoiar, qualquer ajuda é muito bem-vinda — seja contribuindo com código, ideias, melhorias ou apoio financeiro.
-Tudo isso ajuda o DelayEngine a continuar evoluindo e melhorando.
+It receives a stream published to local MediaMTX, keeps encoded RTMP packets in a buffer, and republishes the live with a configurable delay. The core delay path preserves the encoded packets: it does not decode, recode, or modify the live audio/video while delay is applied.
 
-🔗 Links diretos
-Pix QR Code:
-- 🇧🇷 👉[Pix (Brasil)](https://github.com/nonuser35/DelayEngineProject/blob/main/support/pix-qrcode.png)
+The desktop app also includes a web panel, tray mode, loading-video management, Twitch workflow helpers, and an optional polished Twitch relay. The optional converter/relay can use bundled FFmpeg/ffprobe, but the delay engine itself still keeps the live packets intact.
 
-- 🌍 👉 [PayPal](https://github.com/nonuser35/DelayEngineProject/blob/main/support/paypal-qrcode.png)
----
-#DelayEngine
----
+## Main Features
 
-DelayEngine é um aplicativo local para Windows que permite adicionar ou remover delay durante uma live, usando um vídeo de loading como transição, sem precisar reiniciar a transmissão.
+- Local OBS/Streamlabs input through MediaMTX.
+- RTMP packet buffering with delay control.
+- Add or remove delay during the live.
+- Loading video transition while delay is applied.
+- Web UI for Twitch key, OBS instructions, logs, converter, and stream health.
+- Automatic loading-video conversion profile based on the detected live format.
+- Portable Windows app folder with `DelayEngine.exe`.
+- Data-cleaning script for sharing a clean app folder.
 
-Ele foi criado para funcionar entre OBS/Streamlabs e Twitch:
+## Documentation / Documentação
 
-```text
-OBS / Streamlabs
-↓
-MediaMTX local
-↓
-DelayEngine
-↓
-Twitch
-```
+Bilingual documentation, Portuguese and English:
 
-<img width="1901" height="1037" alt="Captura de tela 2026-07-04 172853" src="https://github.com/user-attachments/assets/31e24d5f-67fb-4f81-8d0e-b91825e91388" />
- 
-## Objetivo
+- `DOCUMENTACAO_COMPLETA.md`: detailed explanation of the app, buffer, delay, Twitch polished mode, converter, privacy, and usage flow.
+- `GITHUB_DESCRICAO.md`: complete GitHub project page text.
 
-O objetivo do DelayEngine é dar ao host controle sobre o atraso da live durante a transmissão.
-
-Com ele, o streamer pode:
-
-- iniciar a live normalmente;
-- adicionar delay no meio da live;
-- mostrar um vídeo de loading enquanto o delay entra;
-- voltar ao vivo depois;
-- preparar vídeos de loading no formato correto;
-- gerenciar tudo por uma interface web local.
-
-## Principais recursos
-
-- Painel web local.
-- App com ícone no tray do Windows.
-- Integração com OBS/Streamlabs.
-- MediaMTX local incluso.
-- Modo Twitch polido para saída mais estável.
-- Delay com vídeo de loading.
-- Opção de tocar loading completo.
-- Conversor de vídeos para FLV H264/AAC.
-- Detecção automática de resolução/FPS/bitrate da live.
-- Preview local da live recebida.
-- Logs separados por área.
-- Buffer de segurança em disco de até 1 hora.
-- Script para limpar dados antes de compartilhar a pasta.
-
-## Rodando localmente
-
-O DelayEngine roda inteiramente no computador do usuário.
-
-Ele não precisa de servidor externo para transmitir, aplicar delay, converter vídeo ou guardar buffer.
-
-A única busca externa opcional feita pela interface é o card público de apoio/contribuição financeira do projeto, carregado do GitHub. Se a internet falhar, isso não afeta a live.
-
-## Como funciona o buffer
-
-O DelayEngine mantém uma janela de pacotes recentes em disco.
-
-Esse buffer:
-
-- guarda pacotes codificados;
-- preserva PTS/DTS;
-- preserva keyframes;
-- remove pacotes antigos automaticamente;
-- mantém aproximadamente a última 1 hora da live;
-- não cresce indefinidamente;
-- é limpo ao iniciar o app.
-
-Esse buffer de 1 hora é uma margem de segurança do pipeline, não uma gravação permanente.
-
-## Como funciona o delay
-
-Quando o usuário adiciona delay, o DelayEngine espera o buffer chegar ao tempo necessário e passa a publicar um ponto atrasado da live.
-
-Se um vídeo de loading for configurado, ele aparece enquanto o delay entra.
-
-Quando o usuário clica em Voltar ao vivo, o DelayEngine descarta o atraso acumulado e volta para o ponto recente da transmissão.
-
-## Modo Twitch polido
-
-O modo Twitch polido é o modo recomendado para transmissões reais.
-
-Nele, o DelayEngine publica em uma saída local, e um codificador local mantém uma live contínua para a Twitch.
-
-Isso ajuda a reduzir problemas de loading, queda ou acúmulo de latência quando o host entra e sai do delay manual.
-
-## Conversor de vídeos
-
-O app inclui um conversor para preparar vídeos de loading.
-
-Ele pode:
-
-- transformar MP4 em FLV compatível;
-- ajustar resolução;
-- ajustar FPS;
-- ajustar bitrate;
-- usar áudio AAC;
-- repetir vídeo curto;
-- cortar vídeo longo;
-- salvar o resultado em `videos/ready`.
-
-O objetivo é fazer o vídeo de loading combinar com a live, evitando troca visual estranha.
-
-## Como usar
-
-1. Baixe a pasta do app.
-2. Extraia o ZIP.
-3. Abra `DelayEngine.exe`.
-4. No painel, salve sua stream key da Twitch.
-5. Vá em Dados para OBS.
-6. Copie o servidor local e a chave local.
-7. No OBS/Streamlabs, use transmissão customizada/personalizada.
-8. Cole o servidor local no campo Servidor.
-9. Cole a chave local no campo Chave.
-10. Inicie a live no OBS/Streamlabs.
-11. Use o painel do DelayEngine para adicionar ou remover delay.
-
-## Importante
-
-No OBS/Streamlabs, não cole a chave da Twitch.
-
-O OBS deve enviar para o DelayEngine. A chave da Twitch fica salva no app, e o app cuida da saída para a Twitch.
-
-## Privacidade
-
-Dados do usuário ficam no próprio computador:
-
-- stream key;
-- configurações;
-- logs;
-- vídeos convertidos;
-- buffer temporário.
-
-O app não precisa enviar esses dados para nenhum servidor externo.
-
-## Limpeza antes de compartilhar
-
-A pasta inclui:
-
-```text
-limpeza-de-dados.cmd
-```
-
-Esse script remove dados pessoais e deixa a pasta pronta para ser enviada a outra pessoa.
-
-## Licença
-
-Projeto open source sob licença MIT.
-
-Veja:
-
-- `LICENSE`
-- `NOTICE`
-- `THIRD_PARTY_NOTICES.md`
-
----
-
-## Documentação técnica / Technical Documentation
-
-Para documentação técnica detalhada sobre arquitetura, buffer, delay, Twitch polished mode, converter, privacy e fluxo de uso:
-
-- `DOCUMENTACAO_COMPLETA.md` (Português)
-- Seções técnicas em inglês disponíveis em `README.en.md`
-
-Regras principais:
+## Core Rules
 
 - The delay pipeline must not alter video payloads.
 - The delay pipeline must not alter audio payloads.
@@ -185,25 +32,44 @@ Regras principais:
 - MediaMTX compatibility must be preserved.
 - Every change should keep `go test ./...` passing.
 
-## Configuração / Configuration
+## License
 
-Variáveis de ambiente / Environment variables:
+DelayEngine is released under the MIT License. See `LICENSE`.
 
-- `DELAYENGINE_INPUT_URL`: RTMP input URL. Default: `rtmp://127.0.0.1/live/source`
-- `DELAYENGINE_OUTPUT_URL`: RTMP output URL. Default: `rtmp://127.0.0.1:1935/live/delayed`
-- `DELAYENGINE_HTTP_ADDR`: HTTP API address. Default: `:8080`
-- `DELAYENGINE_READ_TIMEOUT`: RTMP read timeout. Default: `10s`
-- `DELAYENGINE_WRITE_TIMEOUT`: RTMP write timeout. Default: `10s`
-- `DELAYENGINE_FIXED_DELAY`: fixed output delay. Default: `5s`
-- `DELAYENGINE_DELAY_ENABLED`: start with delay enabled. Default: `false`
+Third-party tools and libraries keep their own licenses. See `THIRD_PARTY_NOTICES.md`.
 
-## Como executar / How to run
+## Library choice
+
+RTMP is implemented with github.com/bluenviron/gortmplib v0.4.0.
+
+Why this library:
+
+- It is maintained by the same author/ecosystem as MediaMTX.
+- MediaMTX itself currently depends on gortmplib for RTMP support, which keeps compatibility risk low.
+- It exposes encoded media callbacks for H264, H265, AAC/MPEG-4 Audio and other RTMP codecs without requiring audio/video decoding.
+- Its message model exposes RTMP timestamps, H264/H265 PTS/DTS, AAC PTS, and video keyframe information in the underlying message package.
+
+DelayEngine stores encoded audio/video data in a local disk safety buffer for up to about 1 hour. Buffering preserves encoded payload bytes, PTS/DTS, codec name, packet type, receive time, and detected H264/H265 keyframe flags.
+
+## Configuration
+
+Environment variables:
+
+- DELAYENGINE_INPUT_URL: RTMP input URL. Default: rtmp://127.0.0.1/live/source
+- DELAYENGINE_OUTPUT_URL: RTMP output URL. Default: rtmp://127.0.0.1:1935/live/delayed
+- DELAYENGINE_HTTP_ADDR: future HTTP API address. Default: :8080
+- DELAYENGINE_READ_TIMEOUT: RTMP read timeout, for example 10s. Default: 10s
+- DELAYENGINE_WRITE_TIMEOUT: RTMP write timeout, for example 10s. Default: 10s
+- DELAYENGINE_FIXED_DELAY: fixed output delay, for example 5s. Default: 5s
+- DELAYENGINE_DELAY_ENABLED: start with delay enabled. Default: false
+
+## Run
 
 ```sh
 go run ./cmd/delayengine
 ```
 
-Com uma stream MediaMTX publicada em `live/teste`:
+With a MediaMTX stream published to live/teste:
 
 ```powershell
 $env:DELAYENGINE_INPUT_URL="rtmp://127.0.0.1:1935/live/teste"
@@ -211,7 +77,7 @@ $env:DELAYENGINE_OUTPUT_URL="rtmp://127.0.0.1:1935/live/delayed"
 go run ./cmd/delayengine
 ```
 
-Status esperado / Expected status:
+Expected status includes audio/video confirmation and buffer metrics:
 
 ```text
 RTMP pipeline status status=ok input=ok buffer=ok output=ok delay_enabled=false delay=5s queued_for_delay=... buffer_duration=... published_audio=... published_video=...
@@ -219,7 +85,7 @@ RTMP pipeline status status=ok input=ok buffer=ok output=ok delay_enabled=false 
 
 ## HTTP API
 
-A API inicia em `DELAYENGINE_HTTP_ADDR`, padrão `:8080`.
+The API starts on DELAYENGINE_HTTP_ADDR, default :8080.
 
 ```powershell
 Invoke-RestMethod http://127.0.0.1:8080/status
@@ -231,18 +97,43 @@ Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/set -ContentType "app
 
 Endpoints:
 
-- `GET /status`
-- `POST /delay/on`
-- `POST /delay/off`
-- `POST /delay/set`
+- GET /status
+- POST /delay/on
+- POST /delay/off
+- POST /delay/set
 
-## Biblioteca / Library choice
+## Dynamic delay test
 
-RTMP é implementado com `github.com/bluenviron/gortmplib v0.4.0`.
+Run DelayEngine, then use another PowerShell:
 
-Por quê:
+```powershell
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/off
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/set -ContentType "application/json" -Body '{"delay":"30s"}'
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/on
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/set -ContentType "application/json" -Body '{"delay":"60s"}'
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/set -ContentType "application/json" -Body '{"delay":"15s"}'
+Invoke-RestMethod http://127.0.0.1:8080/status
+```
 
-- Mantida pelo mesmo autor/ecossistema do MediaMTX.
-- O próprio MediaMTX depende de gortmplib para suporte RTMP.
-- Expõe callbacks de mídia codificada para H264, H265, AAC/MPEG-4 Audio e outros codecs RTMP.
-- Expõe timestamps RTMP, H264/H265 PTS/DTS, AAC PTS e informações de keyframe de vídeo.
+The output keeps running while target_delay changes. effective_delay shows the actual delay currently being applied by the publisher. sync can be stable, increasing, or catching_up.
+
+## Twitch helper
+
+Para testar publicacao na Twitch com um assistente simples no PowerShell:
+
+```powershell
+cd C:\Users\Usuario\Documents\Codex\2026-06-30\projeto-nome-delayengine-objetivo-receber-um\DelayEngine
+.\scripts\start-twitch.ps1
+```
+
+O script pergunta a stream key sem mostrar na tela, configura a entrada RTMP local e publica em rtmp://live.twitch.tv:1935/app. Nao cole sua stream key em chats, prints ou logs.
+
+## Slate delay arm
+
+Experimental endpoint to arm delay using a pre-encoded FLV loading video:
+
+```powershell
+Invoke-RestMethod -Method Post http://127.0.0.1:8080/delay/arm -ContentType "application/json" -Body '{"delay":"30s","slate":"C:/caminho/loading.flv"}'
+```
+
+The slate file must be FLV with H264 video and AAC audio. DelayEngine reads encoded FLV tags and republishes them as RTMP messages without decoding the live stream. A 30-second slate is recommended for a 30-second delay.

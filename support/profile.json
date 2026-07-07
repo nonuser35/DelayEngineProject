@@ -1,20 +1,20 @@
 {
   "visible": true,
-  "name": "nonuser35",
-  "shortName": "nonuser35",
-  "initials": "n34",
+  "name": "user34",
+  "shortName": "user34",
+  "initials": "U34",
   "photoUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/creator.png",
   "githubLabel": "github.com/nonuser35",
   "githubUrl": "https://github.com/nonuser35",
-  "socialLabel": "Discord: rs4kamoto",
-  "socialUrl": "https://discord.com/users/",
-  "message": "O projeto é open source, mas toda ajuda e apoio é super bem vinda <3",
+  "socialLabel": "Discord: user34#1337",
+  "socialUrl": "https://discord.com",
+  "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
   "payments": [
     {
       "label": "PIX",
       "title": "Apoiar via Pix",
       "info": "Escaneie o QR Code ou copie a chave.",
-      "key": "521d8b1f-733e-4250-b353-dee726dc66b1",
+      "key": "cole-sua-chave-pix-aqui",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png",
       "url": "https://github.com/nonuser35/DelayEngineProject"
     },
@@ -22,7 +22,7 @@
       "label": "PayPal",
       "title": "Apoiar via PayPal",
       "info": "Escaneie o QR Code ou copie o link.",
-      "key": "https://www.paypal.com/sendmoney?recipient=paulocoesta@gmail.com",
+      "key": "https://paypal.me/seuusuario",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
       "url": "https://paypal.me/seuusuario"
     }

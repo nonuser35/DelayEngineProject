@@ -52,8 +52,10 @@ func (c *Controller) Status(ctx context.Context) (api.Status, error) {
 	delayValue := time.Duration(0)
 	delayEnabled := false
 	if c.delayState != nil {
-		delayValue = c.delayState.Delay()
 		delayEnabled = c.delayState.Enabled()
+		if delayEnabled {
+			delayValue = c.delayState.Delay()
+		}
 	}
 
 	return api.Status{
@@ -106,6 +108,7 @@ func (c *Controller) DisableDelayWithSlate(ctx context.Context, slatePath string
 	reader, ok := c.input.(*inputrtmp.Reader)
 	if !ok || reader == nil {
 		if c.delayState != nil {
+			c.delayState.SetDelay(0)
 			c.delayState.Disable()
 		}
 		return nil
@@ -129,6 +132,7 @@ func (c *Controller) ForceRealtime(ctx context.Context) error {
 	reader, ok := c.input.(*inputrtmp.Reader)
 	if !ok || reader == nil {
 		if c.delayState != nil {
+			c.delayState.SetDelay(0)
 			c.delayState.Disable()
 		}
 		return nil
@@ -144,6 +148,7 @@ func (c *Controller) ForceRealtimeResetPause(ctx context.Context, pause time.Dur
 	reader, ok := c.input.(*inputrtmp.Reader)
 	if !ok || reader == nil {
 		if c.delayState != nil {
+			c.delayState.SetDelay(0)
 			c.delayState.Disable()
 		}
 		return nil

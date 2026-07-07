@@ -1,0 +1,29 @@
+DelayEngine - Configuracao OBS / Streamlabs
+
+Neste fluxo o OBS/Streamlabs NAO envia direto para a Twitch.
+Ele envia para o MediaMTX local.
+Depois o DelayEngine pega essa live local e envia para a Twitch.
+
+Nao coloque sua chave da Twitch no OBS/Streamlabs.
+Sua chave da Twitch fica somente no DelayEngine.
+
+OBS / Streamlabs:
+Service/Servico: Custom / Personalizado
+Server/Servidor: rtmp://127.0.0.1:1935/live
+Stream Key/Chave de transmissao: de-vv4m46
+
+Importante:
+- No campo Servidor, cole somente: rtmp://127.0.0.1:1935/live
+- No campo Chave, cole somente: de-vv4m46
+- Nao cole servidor/chave juntos no campo Servidor.
+
+Recomendado para voltar ao vivo com menos atraso:
+- Resolucao igual ao video de loading ativo.
+- FPS igual ao video de loading ativo.
+- Controle de taxa: CBR.
+- Keyframe interval: 2s.
+- Audio: 48 kHz.
+- B-frames: 0, se existir essa opcao.
+
+Entrada DelayEngine:
+rtmp://127.0.0.1:1935/live/de-vv4m46

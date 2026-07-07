@@ -2,7 +2,6 @@ package config
 
 import (
 	"bytes"
-	crand "crypto/rand"
 	"encoding/json"
 	"fmt"
 	"net/url"
@@ -112,7 +111,7 @@ func twitchOutputURL(root string, server string) string {
 
 func localSourcePathFromSettings(root string, value string) string {
 	value = strings.Trim(strings.TrimSpace(value), "/")
-	if value != "" && value != "live/teste" {
+	if value != "" && value != "live/teste" && !isGeneratedLocalSourcePath(value) {
 		_ = os.WriteFile(filepath.Join(root, ".local-stream-name"), []byte(value), 0600)
 		return value
 	}
@@ -123,14 +122,23 @@ func defaultLocalSourcePath(root string) string {
 	path := filepath.Join(root, ".local-stream-name")
 	if data, err := os.ReadFile(path); err == nil {
 		value := strings.Trim(strings.TrimSpace(string(data)), "/")
-		if value != "" && value != "live/teste" {
+		if value != "" && value != "live/teste" && !isGeneratedLocalSourcePath(value) {
 			return value
 		}
 	}
 
-	name := "live/delayengine-" + randomToken(4)
+	name := "live/delayengine"
 	_ = os.WriteFile(path, []byte(name), 0600)
 	return name
+}
+
+func isGeneratedLocalSourcePath(value string) bool {
+	value = strings.Trim(strings.TrimSpace(value), "/")
+	if !strings.HasPrefix(value, "live/delayengine-") {
+		return false
+	}
+	suffix := strings.TrimPrefix(value, "live/delayengine-")
+	return len(suffix) >= 3 && len(suffix) <= 8
 }
 
 func isLocalRTMPInput(rawURL string) bool {
@@ -140,18 +148,6 @@ func isLocalRTMPInput(rawURL string) bool {
 	}
 	host := parsed.Hostname()
 	return parsed.Scheme == "rtmp" && (host == "127.0.0.1" || host == "localhost")
-}
-
-func randomToken(length int) string {
-	const alphabet = "23456789abcdefghjkmnpqrstuvwxyz"
-	bytes := make([]byte, length)
-	if _, err := crand.Read(bytes); err != nil {
-		return fmt.Sprintf("%06d", time.Now().UnixNano()%1000000)
-	}
-	for index := range bytes {
-		bytes[index] = alphabet[int(bytes[index])%len(alphabet)]
-	}
-	return string(bytes)
 }
 
 func RuntimeRoot() string {

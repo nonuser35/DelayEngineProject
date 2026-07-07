@@ -418,6 +418,7 @@ func (r *Reader) publishLoop(ctx context.Context) {
 			r.logger.Info("realtime transition slate finished", "duration", result.Duration, "status", "ok")
 		}
 		if r.delayState != nil {
+			r.delayState.SetDelay(0)
 			r.delayState.Disable()
 		}
 		effectiveDelay = 0
@@ -693,14 +694,14 @@ func (r *Reader) playSlateForDelayArm(
 		return err
 	}
 	slateDuration := result.Duration
-	for r.buffer != nil && r.buffer.Duration() < request.Delay {
+	for r.shouldContinueSlateForDelayArm(request, slateBudget, slateDuration) {
 		remainingSlate = slateBudget - slateDuration
 		if request.PlayFullSlate {
 			remainingSlate = 0
 		} else if remainingSlate <= 250*time.Millisecond {
 			break
 		}
-		r.logger.Info("slate replaying while buffer fills", "buffer_duration", r.buffer.Duration(), "target_delay", request.Delay, "status", "waiting")
+		r.logger.Info("slate replaying while delay gets ready", "buffer_duration", r.bufferDuration(), "target_delay", request.Delay, "slate_duration", slateDuration, "minimum_visual", slateBudget, "status", "waiting")
 		result, err = player.Play(ctx, result.LastDTS+time.Millisecond, remainingSlate)
 		if err != nil {
 			return err
@@ -741,6 +742,19 @@ func (r *Reader) playSlateForDelayArm(
 
 	r.logger.Info("delay armed with slate", "delay", request.Delay, "status", "ok")
 	return nil
+}
+
+func (r *Reader) shouldContinueSlateForDelayArm(request ArmDelayRequest, minimumVisual time.Duration, slateDuration time.Duration) bool {
+	bufferReady := request.Delay <= 0 || r.buffer == nil || r.buffer.Duration() >= request.Delay
+	visualReady := minimumVisual <= 0 || slateDuration >= minimumVisual
+	return !bufferReady || !visualReady
+}
+
+func (r *Reader) bufferDuration() time.Duration {
+	if r.buffer == nil {
+		return 0
+	}
+	return r.buffer.Duration()
 }
 
 func (r *Reader) enqueueDelayedSnapshot(ctx context.Context, targetDelay time.Duration) (int, time.Duration) {

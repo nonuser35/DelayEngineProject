@@ -3,7 +3,6 @@ package api
 import (
 	"bytes"
 	"context"
-	crand "crypto/rand"
 	"embed"
 	"encoding/json"
 	"errors"
@@ -52,6 +51,7 @@ type Status struct {
 	Output            StreamStatus `json:"output"`
 	Note              string       `json:"note,omitempty"`
 	TransitionStarted bool         `json:"transitionStarted,omitempty"`
+	LiveActionActive  bool         `json:"liveActionActive,omitempty"`
 	Message           string       `json:"message,omitempty"`
 }
 
@@ -99,6 +99,13 @@ type encodedRelayState struct {
 	StartedAt  string `json:"startedAt,omitempty"`
 	FinishedAt string `json:"finishedAt,omitempty"`
 	Error      string `json:"error,omitempty"`
+}
+
+type encodedAutoProfile struct {
+	Width        int
+	Height       int
+	FPS          int
+	VideoBitrate string
 }
 
 type delayOffRequest struct {
@@ -152,19 +159,23 @@ func NewServer(addr string, controller DelayController, logger *slog.Logger) *Se
 		panic(err)
 	}
 	mux.Handle("GET /", webFileServer(staticFS))
+	mux.HandleFunc("GET /remote", server.handleRemotePage)
 	mux.HandleFunc("GET /status", server.handleStatus)
 	mux.HandleFunc("GET /logs", server.handleLogs)
 	mux.HandleFunc("GET /settings", server.handleSettingsGet)
 	mux.HandleFunc("POST /settings", server.handleSettingsSave)
+	mux.HandleFunc("POST /settings/default-delay", server.handleDefaultDelaySave)
 	mux.HandleFunc("POST /tools/open-converter", server.handleOpenConverter)
 	mux.HandleFunc("POST /tools/open-videos", server.handleOpenVideos)
 	mux.HandleFunc("GET /tools/conversion-status", server.handleConversionStatus)
 	mux.HandleFunc("POST /tools/convert-video", server.handleConvertVideo)
 	mux.HandleFunc("GET /encoding/status", server.handleEncodingStatus)
 	mux.HandleFunc("POST /encoding/start", server.handleEncodingStart)
+	mux.HandleFunc("POST /encoding/restart", server.handleEncodingRestart)
 	mux.HandleFunc("POST /encoding/stop", server.handleEncodingStop)
 	mux.HandleFunc("GET /preview-hls/", server.handlePreviewHLS)
 	mux.HandleFunc("GET /videos", server.handleVideos)
+	mux.HandleFunc("GET /videos/preview", server.handleVideoPreview)
 	mux.HandleFunc("POST /videos/activate", server.handleVideoActivate)
 	mux.HandleFunc("POST /videos/delete", server.handleVideoDelete)
 	mux.HandleFunc("POST /delay/on", server.handleDelayOn)
@@ -175,6 +186,10 @@ func NewServer(addr string, controller DelayController, logger *slog.Logger) *Se
 	mux.HandleFunc("POST /delay/set", server.handleDelaySet)
 	mux.HandleFunc("POST /delay/arm", server.handleDelayArm)
 	mux.HandleFunc("POST /live/sync", server.handleLiveSync)
+	mux.HandleFunc("GET /control/status", server.handleControlStatus)
+	mux.HandleFunc("POST /control/delay/arm", server.handleControlDelayArm)
+	mux.HandleFunc("POST /control/delay/off", server.handleControlDelayOff)
+	mux.HandleFunc("POST /control/delay/toggle", server.handleControlDelayToggle)
 
 	server.httpServer = &http.Server{
 		Addr:              addr,
@@ -222,9 +237,15 @@ func withTransition(status Status, message string) Status {
 }
 
 func (s *Server) autoStartEncodedRelay() {
-	const retryInterval = 5 * time.Second
+	const (
+		retryInterval       = 5 * time.Second
+		requiredStableReads = 3
+	)
 	ticker := time.NewTicker(retryInterval)
 	defer ticker.Stop()
+
+	var lastProfile encodedAutoProfile
+	stableReads := 0
 
 	for {
 		settings, err := loadSettings()
@@ -234,12 +255,17 @@ func (s *Server) autoStartEncodedRelay() {
 			continue
 		}
 		if settings.OutputMode != "encoded" || s.encodingPaused.Load() {
+			lastProfile = encodedAutoProfile{}
+			stableReads = 0
 			<-ticker.C
 			continue
 		}
+		manualProfile := settings.EncodedProfileMode == "manual"
 
 		status, err := s.controller.Status(context.Background())
 		if err != nil || !status.Input.Connected || !status.Output.Connected || status.Output.Video == 0 {
+			lastProfile = encodedAutoProfile{}
+			stableReads = 0
 			s.logger.Debug("Twitch polished encoder waiting for local live output", "status", "waiting")
 			<-ticker.C
 			continue
@@ -253,7 +279,45 @@ func (s *Server) autoStartEncodedRelay() {
 			continue
 		}
 
-		if _, err := s.startEncodedRelay(settings); err != nil {
+		if manualProfile {
+			if _, err := s.startEncodedRelay(settings, false); err != nil {
+				s.logger.Warn("Twitch polished encoder manual profile auto-start waiting", "error", err, "retry_in", retryInterval, "status", "waiting")
+			}
+			<-ticker.C
+			continue
+		}
+
+		profile, ok := encodedProfileFromStatus(status)
+		if !ok {
+			lastProfile = encodedAutoProfile{}
+			stableReads = 0
+			s.logger.Debug("Twitch polished encoder waiting for detected live profile", "status", "waiting")
+			<-ticker.C
+			continue
+		}
+
+		if profile != lastProfile {
+			lastProfile = profile
+			stableReads = 1
+			s.logger.Info("Twitch polished encoder detected live profile; waiting stability", "status", "waiting")
+			<-ticker.C
+			continue
+		}
+		stableReads++
+		if stableReads < requiredStableReads {
+			s.logger.Info("Twitch polished encoder profile still stabilizing", "status", "waiting")
+			<-ticker.C
+			continue
+		}
+
+		settings.EncodedWidth = profile.Width
+		settings.EncodedHeight = profile.Height
+		settings.EncodedFPS = profile.FPS
+		settings.EncodedVideoBitrate = profile.VideoBitrate
+		if err := saveSettings(settings); err != nil {
+			s.logger.Warn("could not save stable encoded Twitch profile", "error", err, "status", "warning")
+		}
+		if _, err := s.startEncodedRelay(settings, false); err != nil {
 			s.logger.Warn("Twitch polished encoder auto-start waiting", "error", err, "retry_in", retryInterval, "status", "waiting")
 		}
 		<-ticker.C
@@ -266,6 +330,23 @@ func webFileServer(fallback fs.FS) http.Handler {
 		return http.FileServer(http.Dir(filepath.Join(root, "web")))
 	}
 	return http.FileServer(http.FS(fallback))
+}
+
+func (s *Server) handleRemotePage(w http.ResponseWriter, r *http.Request) {
+	root := runtimeRoot()
+	path := filepath.Join(root, "web", "remote.html")
+	if _, err := os.Stat(path); err == nil {
+		http.ServeFile(w, r, path)
+		return
+	}
+	data, err := staticFiles.ReadFile("static/remote.html")
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusOK)
+	_, _ = w.Write(data)
 }
 
 func runtimeRoot() string {
@@ -312,7 +393,108 @@ func (s *Server) handleStatus(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusInternalServerError, err)
 		return
 	}
+	status.LiveActionActive = s.liveActionActive.Load()
 	writeJSON(w, http.StatusOK, status)
+}
+
+func (s *Server) handleControlStatus(w http.ResponseWriter, r *http.Request) {
+	status, err := s.controller.Status(r.Context())
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	settings, err := loadSettings()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	videos, err := listVideos()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	delaySeconds := controlDelaySeconds(settings)
+	writeJSON(w, http.StatusOK, map[string]any{
+		"ok":                  true,
+		"status":              status,
+		"delaySeconds":        delaySeconds,
+		"configuredDelay":     fmt.Sprintf("%.0fs", settings.DefaultDelaySeconds),
+		"playFullLoading":     settings.PlayFullLoading,
+		"activeLoadingPath":   videos.Active,
+		"activeLoadingExists": videos.ActiveExists,
+		"busy":                s.liveActionActive.Load(),
+	})
+}
+
+func (s *Server) handleControlDelayArm(w http.ResponseWriter, r *http.Request) {
+	status, err := s.controller.Status(r.Context())
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	settings, err := loadSettings()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	videos, err := listVideos()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	if !videos.ActiveExists || strings.TrimSpace(videos.Active) == "" {
+		writeError(w, http.StatusBadRequest, errors.New("nenhum video de loading ativo foi encontrado"))
+		return
+	}
+	delay := time.Duration(controlDelaySeconds(settings) * float64(time.Second))
+	slatePath := resolveRuntimePath(videos.Active)
+	if err := ensureFLVHasAudio(slatePath); err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	if err := validateDelayArmPreflight(status, slatePath); err != nil {
+		writeError(w, http.StatusConflict, err)
+		return
+	}
+	if !s.startAsyncAction("delay armed from remote control", func(ctx context.Context) error {
+		return s.controller.ArmDelay(ctx, delay, slatePath, settings.PlayFullLoading)
+	}) {
+		writeError(w, http.StatusConflict, errors.New("uma transicao da live ja esta em andamento; aguarde terminar"))
+		return
+	}
+	writeJSON(w, http.StatusAccepted, map[string]any{
+		"ok":      true,
+		"message": "delay iniciado",
+		"delay":   delay.String(),
+		"slate":   slatePath,
+		"full":    settings.PlayFullLoading,
+	})
+}
+
+func (s *Server) handleControlDelayOff(w http.ResponseWriter, r *http.Request) {
+	if !s.startAsyncAction("delay disabled from remote control", func(ctx context.Context) error {
+		return s.controller.DisableDelay(ctx)
+	}) {
+		writeError(w, http.StatusConflict, errors.New("uma transicao da live ja esta em andamento; aguarde terminar"))
+		return
+	}
+	writeJSON(w, http.StatusAccepted, map[string]any{
+		"ok":      true,
+		"message": "retorno ao vivo iniciado",
+	})
+}
+
+func (s *Server) handleControlDelayToggle(w http.ResponseWriter, r *http.Request) {
+	status, err := s.controller.Status(r.Context())
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	if status.DelayEnabled || status.DelaySeconds > 0 {
+		s.handleControlDelayOff(w, r)
+		return
+	}
+	s.handleControlDelayArm(w, r)
 }
 
 func (s *Server) handleLogs(w http.ResponseWriter, r *http.Request) {
@@ -365,6 +547,32 @@ func (s *Server) handleSettingsSave(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusOK, settings)
 }
 
+func (s *Server) handleDefaultDelaySave(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	var request struct {
+		Seconds float64 `json:"seconds"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&request); err != nil {
+		writeError(w, http.StatusBadRequest, fmt.Errorf("invalid JSON body: %w", err))
+		return
+	}
+	settings, err := loadSettings()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	settings.DefaultDelaySeconds = request.Seconds
+	settings = normalizeSettings(settings)
+	if err := saveSettings(settings); err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	writeJSON(w, http.StatusOK, map[string]any{
+		"ok":                  true,
+		"defaultDelaySeconds": settings.DefaultDelaySeconds,
+	})
+}
+
 func (s *Server) handleVideos(w http.ResponseWriter, r *http.Request) {
 	videos, err := listVideos()
 	if err != nil {
@@ -372,6 +580,39 @@ func (s *Server) handleVideos(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, http.StatusOK, videos)
+}
+
+func (s *Server) handleVideoPreview(w http.ResponseWriter, r *http.Request) {
+	name := strings.TrimSpace(r.URL.Query().Get("name"))
+	if filepath.Base(name) != name || filepath.Ext(name) != ".flv" {
+		writeError(w, http.StatusBadRequest, errors.New("video de preview invalido"))
+		return
+	}
+
+	root := runtimeRoot()
+	source := filepath.Join(root, "videos", "ready", name)
+	if !fileExists(source) {
+		writeError(w, http.StatusNotFound, errors.New("video de loading nao encontrado"))
+		return
+	}
+
+	previewPath := previewPathForReadyVideo(source)
+	if !fileExists(previewPath) {
+		ffmpegPath, err := findLocalTool("ffmpeg.exe")
+		if err != nil {
+			writeError(w, http.StatusInternalServerError, fmt.Errorf("FFmpeg nao encontrado para gerar preview: %w", err))
+			return
+		}
+		ctx, cancel := context.WithTimeout(r.Context(), 2*time.Minute)
+		defer cancel()
+		if err := createVideoPreview(ctx, ffmpegPath, source, previewPath); err != nil {
+			writeError(w, http.StatusInternalServerError, err)
+			return
+		}
+	}
+
+	w.Header().Set("Content-Type", "video/mp4")
+	http.ServeFile(w, r, previewPath)
 }
 
 func (s *Server) handleVideoActivate(w http.ResponseWriter, r *http.Request) {
@@ -476,7 +717,7 @@ func (s *Server) handleEncodingStart(w http.ResponseWriter, r *http.Request) {
 		settings = normalizeSettings(settings)
 	}
 	s.encodingPaused.Store(false)
-	status, err := s.startEncodedRelay(settings)
+	status, err := s.startEncodedRelay(settings, false)
 	if err != nil {
 		writeError(w, http.StatusBadRequest, err)
 		return
@@ -484,7 +725,41 @@ func (s *Server) handleEncodingStart(w http.ResponseWriter, r *http.Request) {
 	writeJSON(w, http.StatusAccepted, status)
 }
 
-func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, error) {
+func (s *Server) handleEncodingRestart(w http.ResponseWriter, r *http.Request) {
+	settings, err := loadSettings()
+	if err != nil {
+		writeError(w, http.StatusInternalServerError, err)
+		return
+	}
+	if settings.OutputMode != "encoded" {
+		settings.OutputMode = "encoded"
+		if err := saveSettings(settings); err != nil {
+			writeError(w, http.StatusInternalServerError, err)
+			return
+		}
+		settings = normalizeSettings(settings)
+	}
+	s.encodingPaused.Store(false)
+	encodedRelayMu.Lock()
+	cmd := encodedRelayCmd
+	if cmd != nil && cmd.Process != nil {
+		encodedRelayCmd = nil
+	}
+	encodedRelayMu.Unlock()
+	if cmd != nil && cmd.Process != nil {
+		_ = cmd.Process.Kill()
+		time.Sleep(500 * time.Millisecond)
+	}
+	status, err := s.startEncodedRelay(settings, false)
+	if err != nil {
+		writeError(w, http.StatusBadRequest, err)
+		return
+	}
+	s.logger.Info("encoded Twitch relay restarted from API", "status", "ok")
+	writeJSON(w, http.StatusAccepted, status)
+}
+
+func (s *Server) startEncodedRelay(settings appSettings, detectProfile bool) (encodedRelayState, error) {
 	key, err := secret.Read(runtimeRoot())
 	if err != nil || strings.TrimSpace(key) == "" {
 		return encodedRelayState{}, errors.New("salve a stream key da Twitch antes de iniciar o codificador")
@@ -502,6 +777,7 @@ func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, err
 		return status, nil
 	}
 
+	settings, skipVideoFilter := s.settingsForEncodedRelay(settings, detectProfile)
 	root := runtimeRoot()
 	if err := os.MkdirAll(filepath.Join(root, "logs"), 0755); err != nil {
 		encodedRelayMu.Unlock()
@@ -515,7 +791,7 @@ func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, err
 	}
 
 	outputURL := strings.TrimRight(settings.TwitchServer, "/") + "/" + key
-	args := encodedRelayArgs(settings, outputURL, ffmpegPath)
+	args := encodedRelayArgs(settings, outputURL, ffmpegPath, skipVideoFilter)
 	cmd := exec.Command(ffmpegPath, args...)
 	applyHiddenWindow(cmd)
 	cmd.Stdout = logFile
@@ -538,7 +814,17 @@ func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, err
 		Health:    "warming-up",
 		StartedAt: startedAt,
 	}
-	s.logger.Info("encoded Twitch relay started", "input", settings.EncodedLocalOutputURL, "pid", cmd.Process.Pid, "status", "ok")
+	s.logger.Info(
+		"encoded Twitch relay started",
+		"input", settings.EncodedLocalOutputURL,
+		"pid", cmd.Process.Pid,
+		"width", settings.EncodedWidth,
+		"height", settings.EncodedHeight,
+		"fps", settings.EncodedFPS,
+		"bitrate", normalizeBitrate(settings.EncodedVideoBitrate),
+		"video_filter", !skipVideoFilter,
+		"status", "ok",
+	)
 
 	go s.monitorEncodedRelay(cmd, logPath, time.Now())
 
@@ -547,9 +833,10 @@ func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, err
 		_ = logFile.Close()
 		encodedRelayMu.Lock()
 		defer encodedRelayMu.Unlock()
-		if encodedRelayCmd == cmd {
-			encodedRelayCmd = nil
+		if encodedRelayCmd != cmd {
+			return
 		}
+		encodedRelayCmd = nil
 		currentRelay.Running = false
 		currentRelay.PID = 0
 		currentRelay.FinishedAt = time.Now().Format(time.RFC3339)
@@ -569,6 +856,61 @@ func (s *Server) startEncodedRelay(settings appSettings) (encodedRelayState, err
 	status := currentRelay
 	encodedRelayMu.Unlock()
 	return status, nil
+}
+
+func (s *Server) settingsForEncodedRelay(settings appSettings, detectProfile bool) (appSettings, bool) {
+	status, err := s.controller.Status(context.Background())
+	if err != nil {
+		return settings, false
+	}
+
+	original := settings
+	if detectProfile && status.Input.Connected {
+		if profile, ok := encodedProfileFromStatus(status); ok {
+			settings.EncodedWidth = profile.Width
+			settings.EncodedHeight = profile.Height
+			settings.EncodedFPS = profile.FPS
+			settings.EncodedVideoBitrate = profile.VideoBitrate
+		}
+	}
+
+	settings = normalizeSettings(settings)
+	if detectProfile && encodedProfileChanged(original, settings) {
+		if err := saveSettings(settings); err != nil {
+			s.logger.Warn("could not save detected encoded Twitch profile", "error", err, "status", "warning")
+		} else {
+			s.logger.Info(
+				"detected encoded Twitch profile saved",
+				"width", settings.EncodedWidth,
+				"height", settings.EncodedHeight,
+				"fps", settings.EncodedFPS,
+				"bitrate", normalizeBitrate(settings.EncodedVideoBitrate),
+				"status", "ok",
+			)
+		}
+	}
+
+	if !status.Input.Connected {
+		return settings, false
+	}
+
+	if detectProfile {
+		profile, ok := encodedProfileFromStatus(status)
+		if !ok {
+			return settings, false
+		}
+		settings.EncodedWidth = profile.Width
+		settings.EncodedHeight = profile.Height
+		settings.EncodedFPS = profile.FPS
+		settings.EncodedVideoBitrate = profile.VideoBitrate
+	}
+
+	sameSize := status.Input.Width > 0 &&
+		status.Input.Height > 0 &&
+		status.Input.Width == settings.EncodedWidth &&
+		status.Input.Height == settings.EncodedHeight
+	sameFPS := roundedStreamFPS(status.Input.FPS) == settings.EncodedFPS
+	return settings, sameSize && sameFPS
 }
 
 func (s *Server) monitorEncodedRelay(cmd *exec.Cmd, logPath string, started time.Time) {
@@ -700,12 +1042,24 @@ func (s *Server) shouldAutoCorrectLatency(estimatedDelaySeconds float64, lastCor
 		s.logger.Warn("could not load settings for automatic latency correction", "error", err, "status", "warning")
 		return false
 	}
-	if !settings.AutoLatencyCorrection {
-		return false
+	threshold := 0.0
+	if settings.AutoLatencyCorrection {
+		threshold = settings.AutoLatencySeconds
+		if threshold <= 0 {
+			threshold = 3
+		}
 	}
-	threshold := settings.AutoLatencySeconds
+	if settings.RealtimePriority {
+		realtimeThreshold := settings.RealtimePrioritySecs
+		if realtimeThreshold <= 0 {
+			realtimeThreshold = 8
+		}
+		if threshold <= 0 || realtimeThreshold < threshold {
+			threshold = realtimeThreshold
+		}
+	}
 	if threshold <= 0 {
-		threshold = 3
+		return false
 	}
 	if estimatedDelaySeconds < threshold {
 		return false
@@ -1094,12 +1448,10 @@ func (s *Server) handleDelayArm(w http.ResponseWriter, r *http.Request) {
 	}
 
 	parsedDelay := request.ParsedDelay()
-	slatePath := request.Slate
+	slatePath := resolveRuntimePath(request.Slate)
 	playFullSlate := request.PlayFullSlate || strings.EqualFold(request.SlateMode, "full")
-	if !s.startAsyncAction("delay armed from API", func(ctx context.Context) error {
-		return s.controller.ArmDelay(ctx, parsedDelay, slatePath, playFullSlate)
-	}) {
-		writeError(w, http.StatusConflict, errors.New("uma transicao da live ja esta em andamento; aguarde terminar"))
+	if err := ensureFLVHasAudio(slatePath); err != nil {
+		writeError(w, http.StatusInternalServerError, err)
 		return
 	}
 	status, err := s.controller.Status(r.Context())
@@ -1107,7 +1459,33 @@ func (s *Server) handleDelayArm(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusInternalServerError, err)
 		return
 	}
+	if err := validateDelayArmPreflight(status, slatePath); err != nil {
+		writeError(w, http.StatusConflict, err)
+		return
+	}
+	if !s.startAsyncAction("delay armed from API", func(ctx context.Context) error {
+		return s.controller.ArmDelay(ctx, parsedDelay, slatePath, playFullSlate)
+	}) {
+		writeError(w, http.StatusConflict, errors.New("uma transicao da live ja esta em andamento; aguarde terminar"))
+		return
+	}
 	writeJSON(w, http.StatusAccepted, withTransition(status, fmt.Sprintf("delay de %s com loading iniciado", parsedDelay)))
+}
+
+func validateDelayArmPreflight(status Status, slatePath string) error {
+	if status.DelayEnabled || status.DelaySeconds > 0 {
+		return errors.New("delay ja esta ativo; use voltar ao vivo antes de adicionar outro delay")
+	}
+	if !status.Input.Connected {
+		return errors.New("a live ainda nao esta chegando do OBS/Streamlabs")
+	}
+	if !status.Output.Connected {
+		return errors.New("a saida ainda nao esta pronta para enviar a live")
+	}
+	if strings.TrimSpace(slatePath) == "" || !fileExists(slatePath) {
+		return errors.New("nenhum video de loading ativo foi encontrado")
+	}
+	return nil
 }
 
 func (s *Server) handleLiveSync(w http.ResponseWriter, r *http.Request) {
@@ -1140,13 +1518,17 @@ type appSettings struct {
 	EncodedHeight         int      `json:"encodedHeight"`
 	EncodedFPS            int      `json:"encodedFps"`
 	EncodedEncoder        string   `json:"encodedEncoder"`
+	EncodedProfileMode    string   `json:"encodedProfileMode"`
 	EncodedVideoBitrate   string   `json:"encodedVideoBitrate"`
 	EncodedAudioBitrate   string   `json:"encodedAudioBitrate"`
 	AutoLatencyCorrection bool     `json:"autoLatencyCorrection"`
 	AutoLatencySeconds    float64  `json:"autoLatencySeconds"`
+	RealtimePriority      bool     `json:"realtimePriority"`
+	RealtimePrioritySecs  float64  `json:"realtimePrioritySeconds"`
 	MediaMTXPath          string   `json:"mediaMtxPath"`
 	ActiveLoadingPath     string   `json:"activeLoadingPath"`
 	DefaultDelaySeconds   float64  `json:"defaultDelaySeconds"`
+	PlayFullLoading       bool     `json:"playFullLoading"`
 	ReturnLoadingSeconds  float64  `json:"returnLoadingSeconds"`
 	ViewerLatencySeconds  float64  `json:"viewerLatencySeconds"`
 	OBS                   obsGuide `json:"obs"`
@@ -1164,14 +1546,22 @@ func loadSettings() (appSettings, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			return normalizeSettings(appSettings{}), nil
+			return normalizeSettings(appSettings{AutoLatencyCorrection: true, RealtimePriority: true}), nil
 		}
 		return appSettings{}, err
 	}
 	data = bytes.TrimPrefix(data, []byte{0xEF, 0xBB, 0xBF})
+	var raw map[string]json.RawMessage
+	_ = json.Unmarshal(data, &raw)
 	var settings appSettings
 	if err := json.Unmarshal(data, &settings); err != nil {
 		return appSettings{}, err
+	}
+	if _, ok := raw["autoLatencyCorrection"]; !ok {
+		settings.AutoLatencyCorrection = true
+	}
+	if _, ok := raw["realtimePriority"]; !ok {
+		settings.RealtimePriority = true
 	}
 	return normalizeSettings(settings), nil
 }
@@ -1212,7 +1602,7 @@ func normalizeSettings(settings appSettings) appSettings {
 	if settings.Mode == "" {
 		settings.Mode = "twitch"
 	}
-	if settings.LocalSourcePath == "" || settings.LocalSourcePath == "live/teste" {
+	if settings.LocalSourcePath == "" || settings.LocalSourcePath == "live/teste" || isGeneratedLocalSourcePath(settings.LocalSourcePath) {
 		settings.LocalSourcePath = defaultLocalSourcePath(root)
 	}
 	settings.LocalSourcePath = strings.Trim(settings.LocalSourcePath, "/")
@@ -1244,9 +1634,10 @@ func normalizeSettings(settings appSettings) appSettings {
 	if settings.EncodedFPS <= 0 {
 		settings.EncodedFPS = 30
 	}
+	settings.EncodedProfileMode = "manual"
 	switch strings.ToLower(strings.TrimSpace(settings.EncodedEncoder)) {
 	case "", "auto":
-		settings.EncodedEncoder = defaultEncodedEncoder()
+		settings.EncodedEncoder = "auto"
 	case "amd", "amf", "h264_amf":
 		settings.EncodedEncoder = "amd"
 	case "nvidia", "nvenc", "h264_nvenc":
@@ -1256,7 +1647,7 @@ func normalizeSettings(settings appSettings) appSettings {
 	case "cpu", "x264", "libx264":
 		settings.EncodedEncoder = "cpu"
 	default:
-		settings.EncodedEncoder = defaultEncodedEncoder()
+		settings.EncodedEncoder = "auto"
 	}
 	if settings.EncodedVideoBitrate == "" {
 		settings.EncodedVideoBitrate = "4500k"
@@ -1272,6 +1663,15 @@ func normalizeSettings(settings appSettings) appSettings {
 	}
 	if settings.AutoLatencySeconds > 30 {
 		settings.AutoLatencySeconds = 30
+	}
+	if settings.RealtimePrioritySecs <= 0 {
+		settings.RealtimePrioritySecs = 8
+	}
+	if settings.RealtimePrioritySecs < 2 {
+		settings.RealtimePrioritySecs = 2
+	}
+	if settings.RealtimePrioritySecs > 60 {
+		settings.RealtimePrioritySecs = 60
 	}
 	if settings.ActiveLoadingPath == "" || !fileExists(filepath.FromSlash(settings.ActiveLoadingPath)) {
 		settings.ActiveLoadingPath = filepath.ToSlash(filepath.Join(root, "videos", "live", "loading.flv"))
@@ -1297,6 +1697,67 @@ func normalizeSettings(settings appSettings) appSettings {
 	return settings
 }
 
+func controlDelaySeconds(settings appSettings) float64 {
+	seconds := settings.DefaultDelaySeconds + settings.ViewerLatencySeconds
+	if seconds <= 0 {
+		seconds = settings.DefaultDelaySeconds
+	}
+	if seconds <= 0 {
+		seconds = 30
+	}
+	if seconds > maxSettingsDelaySeconds {
+		seconds = maxSettingsDelaySeconds
+	}
+	return seconds
+}
+
+func encodedProfileChanged(a appSettings, b appSettings) bool {
+	return a.EncodedWidth != b.EncodedWidth ||
+		a.EncodedHeight != b.EncodedHeight ||
+		a.EncodedFPS != b.EncodedFPS ||
+		normalizeBitrate(a.EncodedVideoBitrate) != normalizeBitrate(b.EncodedVideoBitrate)
+}
+
+func encodedProfileFromStatus(status Status) (encodedAutoProfile, bool) {
+	profile := encodedAutoProfile{
+		Width:        status.Input.Width,
+		Height:       status.Input.Height,
+		FPS:          roundedStreamFPS(status.Input.FPS),
+		VideoBitrate: bitrateFromKbps(status.Input.BitrateKbps),
+	}
+	if profile.Width <= 0 || profile.Height <= 0 || profile.FPS <= 0 || profile.VideoBitrate == "" {
+		return encodedAutoProfile{}, false
+	}
+	return profile, true
+}
+
+func roundedStreamFPS(fps float64) int {
+	switch {
+	case fps >= 55:
+		return 60
+	case fps >= 45:
+		return 50
+	case fps >= 25:
+		return 30
+	case fps >= 20:
+		return 24
+	default:
+		return 0
+	}
+}
+
+func bitrateFromKbps(kbps float64) string {
+	if kbps < 1000 {
+		return ""
+	}
+	rounded := int((kbps + 250) / 500)
+	rounded *= 500
+	if rounded < 1000 {
+		rounded = 1000
+	}
+	return strconv.Itoa(rounded) + "k"
+}
+
 func buildOBSGuide(sourcePath string) obsGuide {
 	sourcePath = strings.Trim(sourcePath, "/")
 	if sourcePath == "" {
@@ -1320,26 +1781,23 @@ func defaultLocalSourcePath(root string) string {
 	path := filepath.Join(root, ".local-stream-name")
 	if data, err := os.ReadFile(path); err == nil {
 		value := strings.Trim(strings.TrimSpace(string(data)), "/")
-		if value != "" && value != "live/teste" {
+		if value != "" && value != "live/teste" && !isGeneratedLocalSourcePath(value) {
 			return value
 		}
 	}
 
-	name := "live/delayengine-" + randomToken(4)
+	name := "live/delayengine"
 	_ = os.WriteFile(path, []byte(name), 0600)
 	return name
 }
 
-func randomToken(length int) string {
-	const alphabet = "23456789abcdefghjkmnpqrstuvwxyz"
-	bytes := make([]byte, length)
-	if _, err := crand.Read(bytes); err != nil {
-		return fmt.Sprintf("%06d", time.Now().UnixNano()%1000000)
+func isGeneratedLocalSourcePath(value string) bool {
+	value = strings.Trim(strings.TrimSpace(value), "/")
+	if !strings.HasPrefix(value, "live/delayengine-") {
+		return false
 	}
-	for index := range bytes {
-		bytes[index] = alphabet[int(bytes[index])%len(alphabet)]
-	}
-	return string(bytes)
+	suffix := strings.TrimPrefix(value, "live/delayengine-")
+	return len(suffix) >= 3 && len(suffix) <= 8
 }
 
 func readLogSource(source string, lines int) (string, error) {
@@ -1447,12 +1905,14 @@ type videosResponse struct {
 }
 
 type videoInfo struct {
-	Name    string `json:"name"`
-	Path    string `json:"path"`
-	Size    int64  `json:"size"`
-	SizeMB  string `json:"sizeMB"`
-	Active  bool   `json:"active"`
-	ModTime string `json:"modTime"`
+	Name          string `json:"name"`
+	Path          string `json:"path"`
+	Preview       string `json:"preview"`
+	PreviewExists bool   `json:"previewExists"`
+	Size          int64  `json:"size"`
+	SizeMB        string `json:"sizeMB"`
+	Active        bool   `json:"active"`
+	ModTime       string `json:"modTime"`
 }
 
 type conversionRequest struct {
@@ -1486,13 +1946,16 @@ func listVideos() (videosResponse, error) {
 		if err != nil {
 			return videosResponse{}, err
 		}
+		previewPath := previewPathForReadyVideo(path)
 		videos = append(videos, videoInfo{
-			Name:    entry.Name(),
-			Path:    filepath.ToSlash(path),
-			Size:    info.Size(),
-			SizeMB:  fmt.Sprintf("%.2f MB", float64(info.Size())/1024/1024),
-			Active:  sameFileContent(path, activePath),
-			ModTime: info.ModTime().Format(time.RFC3339),
+			Name:          entry.Name(),
+			Path:          filepath.ToSlash(path),
+			Preview:       filepath.ToSlash(previewPath),
+			PreviewExists: fileExists(previewPath),
+			Size:          info.Size(),
+			SizeMB:        fmt.Sprintf("%.2f MB", float64(info.Size())/1024/1024),
+			Active:        sameFileContent(path, activePath),
+			ModTime:       info.ModTime().Format(time.RFC3339),
 		})
 	}
 
@@ -1513,6 +1976,9 @@ func activateVideo(name string) (string, error) {
 	source := filepath.Join(projectRoot, "videos", "ready", name)
 	destination := filepath.Join(projectRoot, "videos", "live", "loading.flv")
 
+	if err := ensureFLVHasAudio(source); err != nil {
+		return "", err
+	}
 	data, err := os.ReadFile(source)
 	if err != nil {
 		return "", fmt.Errorf("read ready video: %w", err)
@@ -1544,6 +2010,7 @@ func deleteReadyVideo(name string) error {
 	if err := os.Remove(source); err != nil {
 		return fmt.Errorf("apagar video: %w", err)
 	}
+	_ = os.Remove(previewPathForReadyVideo(source))
 	return nil
 }
 
@@ -1618,17 +2085,24 @@ func (s *Server) convertVideo(inputPath, outputPath string, request conversionRe
 	bufSize := bitrateBuffer(profile.VideoBitrate)
 	vf := fmt.Sprintf("scale=%d:%d:force_original_aspect_ratio=decrease,pad=%d:%d:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=%d,format=yuv420p", profile.Width, profile.Height, profile.Width, profile.Height, profile.FPS)
 	x264Params := fmt.Sprintf("keyint=%d:min-keyint=%d:scenecut=0:bframes=0:force-cfr=1:nal-hrd=cbr", gop, gop)
+	audioMap := "1:a:0"
+	if inputHasAudioStream(inputPath) {
+		audioMap = "0:a:0"
+	}
 
 	args := []string{
 		"-y",
 		"-stream_loop", "-1",
 		"-i", inputPath,
+		"-f", "lavfi",
+		"-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
 		"-t", strconv.Itoa(request.durationSeconds),
 		"-map", "0:v:0",
-		"-map", "0:a:0?",
+		"-map", audioMap,
 		"-vf", vf,
 		"-r", strconv.Itoa(profile.FPS),
 		"-vsync", "cfr",
+		"-shortest",
 		"-c:v", "libx264",
 		"-preset", "veryfast",
 		"-tune", "zerolatency",
@@ -1648,6 +2122,8 @@ func (s *Server) convertVideo(inputPath, outputPath string, request conversionRe
 		"-b:a", "160k",
 		"-ar", "48000",
 		"-ac", "2",
+		"-map_metadata", "-1",
+		"-disposition:a:0", "default",
 		"-f", "flv",
 		outputPath,
 	}
@@ -1667,6 +2143,9 @@ func (s *Server) convertVideo(inputPath, outputPath string, request conversionRe
 		})
 		s.logger.Error("video conversion failed", "error", err, "status", "error")
 		return
+	}
+	if err := createVideoPreview(context.Background(), ffmpegPath, outputPath, previewPathForReadyVideo(outputPath)); err != nil {
+		s.logger.Warn("video preview generation failed", "error", err, "status", "warn")
 	}
 
 	activePath := ""
@@ -1694,7 +2173,7 @@ func (s *Server) convertVideo(inputPath, outputPath string, request conversionRe
 	s.logger.Info("video conversion finished", "output", outputPath, "active", activePath, "status", "ok")
 }
 
-func encodedRelayArgs(settings appSettings, outputURL string, ffmpegPath string) []string {
+func encodedRelayArgs(settings appSettings, outputURL string, ffmpegPath string, skipVideoFilter bool) []string {
 	width := settings.EncodedWidth
 	height := settings.EncodedHeight
 	fps := settings.EncodedFPS
@@ -1723,20 +2202,29 @@ func encodedRelayArgs(settings appSettings, outputURL string, ffmpegPath string)
 	if gop < 1 {
 		gop = 1
 	}
-	scaleFilter := fmt.Sprintf("scale=%d:%d:flags=fast_bilinear:force_original_aspect_ratio=decrease,pad=%d:%d:(ow-iw)/2:(oh-ih)/2,format=yuv420p", width, height, width, height)
 	encoder := resolveEncodedVideoEncoder(settings.EncodedEncoder, ffmpegPath)
 	args := []string{
 		"-hide_banner",
 		"-loglevel", "info",
+		"-fflags", "nobuffer",
+		"-flags", "low_delay",
+		"-analyzeduration", "1000000",
+		"-probesize", "32768",
 		"-rtmp_live", "live",
-		"-thread_queue_size", "1024",
+		"-rtmp_buffer", "0",
+		"-thread_queue_size", "256",
 		"-i", inputURL,
 		"-map", "0:v:0",
 		"-map", "0:a:0?",
-		"-vf", scaleFilter,
+	}
+	if !skipVideoFilter {
+		scaleFilter := fmt.Sprintf("scale=%d:%d:flags=fast_bilinear:force_original_aspect_ratio=decrease,pad=%d:%d:(ow-iw)/2:(oh-ih)/2,format=yuv420p", width, height, width, height)
+		args = append(args, "-vf", scaleFilter)
+	}
+	args = append(args,
 		"-r", strconv.Itoa(fps),
 		"-fps_mode", "cfr",
-	}
+	)
 	args = append(args, encodedVideoEncoderArgs(encoder, gop, videoBitrate)...)
 	args = append(args,
 		"-c:a", "aac",
@@ -1961,9 +2449,10 @@ func nextReadyVideoPath(directory string, request conversionRequest) (string, er
 	if bitrate == "" {
 		bitrate = "4000"
 	}
-	base := fmt.Sprintf("loading_%dx%d_%dfps_%sk_%ds", profile.Width, profile.Height, profile.FPS, bitrate, request.durationSeconds)
+	stamp := time.Now().Format("20060102_150405")
+	base := fmt.Sprintf("loading_%dx%d_%dfps_%sk_%ds_%s", profile.Width, profile.Height, profile.FPS, bitrate, request.durationSeconds, stamp)
 	for index := 1; ; index++ {
-		candidate := filepath.Join(directory, fmt.Sprintf("%s_%02d.flv", base, index))
+		candidate := filepath.Join(directory, fmt.Sprintf("%s_%03d.flv", base, index))
 		if !fileExists(candidate) {
 			return candidate, nil
 		}
@@ -2004,6 +2493,112 @@ func copyConvertedVideoToLive(source string) (string, error) {
 		return "", fmt.Errorf("fechar video ativo: %w", err)
 	}
 	return destination, nil
+}
+
+func previewPathForReadyVideo(path string) string {
+	ext := filepath.Ext(path)
+	if ext == "" {
+		return path + ".mp4"
+	}
+	return strings.TrimSuffix(path, ext) + ".mp4"
+}
+
+func createVideoPreview(ctx context.Context, ffmpegPath, source, destination string) error {
+	if err := os.MkdirAll(filepath.Dir(destination), 0755); err != nil {
+		return err
+	}
+	args := []string{
+		"-y",
+		"-i", source,
+		"-map", "0:v:0",
+		"-map", "0:a:0?",
+		"-c", "copy",
+		"-movflags", "+faststart",
+		destination,
+	}
+	cmd := exec.CommandContext(ctx, ffmpegPath, args...)
+	cmd.Dir = runtimeRoot()
+	applyHiddenWindow(cmd)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		_ = os.Remove(destination)
+		return fmt.Errorf("gerar preview MP4: %w: %s", err, tailString(string(output), 1200))
+	}
+	return nil
+}
+
+func inputHasAudioStream(path string) bool {
+	ffprobePath, err := findLocalTool("ffprobe.exe")
+	if err != nil {
+		return false
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx,
+		ffprobePath,
+		"-v", "error",
+		"-select_streams", "a:0",
+		"-show_entries", "stream=index",
+		"-of", "csv=p=0",
+		path,
+	)
+	applyHiddenWindow(cmd)
+	output, err := cmd.Output()
+	if err != nil {
+		return false
+	}
+	return strings.TrimSpace(string(output)) != ""
+}
+
+func ensureFLVHasAudio(path string) error {
+	if strings.TrimSpace(path) == "" || !fileExists(path) || inputHasAudioStream(path) {
+		return nil
+	}
+	ffmpegPath, err := findLocalTool("ffmpeg.exe")
+	if err != nil {
+		return fmt.Errorf("FFmpeg nao encontrado para adicionar audio silencioso ao loading: %w", err)
+	}
+	tempPath := strings.TrimSuffix(path, filepath.Ext(path)) + ".with-audio.tmp.flv"
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
+	defer cancel()
+	args := []string{
+		"-y",
+		"-i", path,
+		"-f", "lavfi",
+		"-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
+		"-map", "0:v:0",
+		"-map", "1:a:0",
+		"-c:v", "copy",
+		"-c:a", "aac",
+		"-b:a", "160k",
+		"-ar", "48000",
+		"-ac", "2",
+		"-shortest",
+		"-map_metadata", "-1",
+		"-f", "flv",
+		tempPath,
+	}
+	cmd := exec.CommandContext(ctx, ffmpegPath, args...)
+	cmd.Dir = runtimeRoot()
+	applyHiddenWindow(cmd)
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		_ = os.Remove(tempPath)
+		return fmt.Errorf("adicionar audio silencioso ao loading: %w: %s", err, tailString(string(output), 1200))
+	}
+	backupPath := strings.TrimSuffix(path, filepath.Ext(path)) + ".no-audio.bak.flv"
+	_ = os.Remove(backupPath)
+	if err := os.Rename(path, backupPath); err != nil {
+		_ = os.Remove(tempPath)
+		return fmt.Errorf("preparar troca do loading com audio silencioso: %w", err)
+	}
+	if err := os.Rename(tempPath, path); err != nil {
+		_ = os.Rename(backupPath, path)
+		_ = os.Remove(tempPath)
+		return fmt.Errorf("substituir loading com audio silencioso: %w", err)
+	}
+	_ = os.Remove(backupPath)
+	return nil
 }
 
 func currentConversionSnapshot() conversionState {
@@ -2090,6 +2685,18 @@ func maxInt(a, b int) int {
 func fileExists(path string) bool {
 	_, err := os.Stat(path)
 	return err == nil
+}
+
+func resolveRuntimePath(path string) string {
+	path = strings.TrimSpace(path)
+	if path == "" {
+		return ""
+	}
+	path = filepath.FromSlash(path)
+	if filepath.IsAbs(path) {
+		return path
+	}
+	return filepath.Join(runtimeRoot(), path)
 }
 
 func tailString(text string, maxLength int) string {

@@ -244,32 +244,31 @@ func (b *Disk) rotateLocked() error {
 }
 
 func (b *Disk) trimLocked() {
-	for len(b.entries) > 1 && b.durationLocked() > b.maxDuration {
-		b.bytes -= b.entries[0].Size
-		b.entries = b.entries[1:]
-	}
-
-	keep := map[int64]struct{}{}
-	for _, entry := range b.entries {
-		keep[entry.Segment] = struct{}{}
-	}
-	keep[b.currentSegment] = struct{}{}
-
-	entries, err := os.ReadDir(b.dir)
-	if err != nil {
+	if len(b.entries) < 2 || b.durationLocked() <= b.maxDuration {
 		return
 	}
-	for _, entry := range entries {
-		if entry.IsDir() {
-			continue
-		}
-		var segment int64
-		if _, err := fmt.Sscanf(entry.Name(), "segment-%06d.deb", &segment); err != nil {
-			continue
-		}
-		if _, ok := keep[segment]; !ok {
-			_ = os.Remove(filepath.Join(b.dir, entry.Name()))
-		}
+
+	oldestSegment := b.entries[0].Segment
+	newest := b.entries[len(b.entries)-1].Timestamp
+	cutoff := 0
+	for cutoff < len(b.entries)-1 && newest-b.entries[cutoff].Timestamp > b.maxDuration {
+		b.bytes -= b.entries[cutoff].Size
+		cutoff++
+	}
+	if cutoff == 0 {
+		return
+	}
+
+	if cutoff > len(b.entries)/2 {
+		kept := append([]diskEntry(nil), b.entries[cutoff:]...)
+		b.entries = kept
+	} else {
+		b.entries = b.entries[cutoff:]
+	}
+
+	keptOldestSegment := b.entries[0].Segment
+	for segment := oldestSegment; segment < keptOldestSegment; segment++ {
+		_ = os.Remove(b.segmentPath(segment))
 	}
 }
 

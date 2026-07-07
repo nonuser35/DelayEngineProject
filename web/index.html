@@ -23,7 +23,7 @@
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0; color: var(--text); font-size: 15px;
+      margin: 0; color: var(--text); font-size: 16px;
       background: radial-gradient(circle at 20% -10%, #13202b 0, transparent 36%), var(--bg);
     }
     main { width: min(1360px, calc(100vw - 28px)); margin: 0 auto; padding: 18px 0 34px; }
@@ -33,43 +33,61 @@
       background: linear-gradient(180deg, #111b24, #0c131a); box-shadow: var(--shadow);
     }
     header.support-visible { grid-template-columns: 1fr auto minmax(560px, 640px); }
-    h1 { margin: 0; font-size: 32px; letter-spacing: 0; font-weight: 850; }
-    h2 { margin: 0 0 14px; font-size: 16px; letter-spacing: .02em; text-transform: uppercase; color: #dbe7f3; }
-    .muted, .label { color: var(--muted); font-size: 13px; line-height: 1.45; }
-    .brand-kicker { color: var(--good); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
-    .brand-subtitle { margin-top: 6px; color: #c8d6e3; font-size: 15px; line-height: 1.38; max-width: 680px; }
+    h1 { margin: 0; font-size: 34px; letter-spacing: 0; font-weight: 850; }
+    h2 { margin: 0 0 14px; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; color: #dbe7f3; }
+    .muted, .label { color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .brand-kicker { color: var(--good); font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+    .brand-subtitle { margin-top: 6px; color: #c8d6e3; font-size: 16px; line-height: 1.38; max-width: 680px; }
     .lang-toggle {
       position: fixed; top: 12px; left: 12px; z-index: 60; min-height: 34px; padding: 0 11px;
       border: 1px solid rgba(79,182,255,.36); border-radius: 999px;
       background: rgba(10,17,24,.78); color: #eaf6ff; font-size: 12px; font-weight: 850;
       box-shadow: 0 10px 28px rgba(0,0,0,.26); backdrop-filter: blur(10px);
     }
+    .alert-rail {
+      position: fixed; top: 58px; left: 12px; z-index: 55; width: 260px; max-height: calc(100vh - 78px);
+      display: grid; gap: 8px; padding: 10px; overflow: hidden;
+      border: 1px solid rgba(79,182,255,.22); border-radius: 10px;
+      background: rgba(9,15,22,.88); box-shadow: 0 18px 42px rgba(0,0,0,.32);
+      backdrop-filter: blur(12px) saturate(1.18);
+    }
+    .alert-rail-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .alert-rail-kicker {
+      color: var(--good); font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em;
+    }
+    .alert-rail-title { color: #f4f9ff; font-size: 15px; font-weight: 900; line-height: 1.1; }
+    .alert-rail-head button { min-height: 28px; padding: 0 10px; font-size: 12px; white-space: nowrap; }
+    .alert-rail-summary {
+      min-height: 38px; padding: 8px 9px; border: 1px solid rgba(79,182,255,.14); border-radius: 8px;
+      background: rgba(12,19,27,.72); color: var(--muted); font-size: 12px; line-height: 1.35;
+    }
+    .alert-rail-summary strong { color: #f4f9ff; }
     .header-actions { display: grid; grid-template-columns: repeat(2, 112px); gap: 10px; justify-content: end; }
     .header-actions button { min-height: 44px; }
     .header-actions .tutorial { background: #123047; border-color: #4fb6ff; }
     .support-card {
-      position: relative; overflow: hidden; min-height: 168px; border: 1px solid rgba(79,182,255,.24);
+      position: relative; overflow: hidden; min-height: 168px; height: 168px; border: 1px solid rgba(79,182,255,.24);
       border-radius: 8px; background: rgba(13, 24, 34, .52);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 18px 42px rgba(0,0,0,.2);
       backdrop-filter: blur(14px) saturate(1.25);
-      transition: min-height .46s cubic-bezier(.2,.8,.2,1);
+      transition: height .46s cubic-bezier(.2,.8,.2,1), width .46s cubic-bezier(.2,.8,.2,1);
     }
-    .support-card.payment { width: min(500px, 100%); justify-self: end; min-height: 324px; }
+    .support-card.payment { width: 100%; justify-self: stretch; height: 168px; }
     .support-track {
       --support-slide-count: 1;
       --support-slide-index: 0;
       display: flex; width: 100%; height: 168px;
-      transition: transform .46s cubic-bezier(.2,.8,.2,1), height .46s cubic-bezier(.2,.8,.2,1);
+      transition: transform .46s cubic-bezier(.2,.8,.2,1);
     }
-    .support-card.payment .support-track { height: 324px; }
+    .support-card.payment .support-track { height: 168px; }
     .support-slide {
-      width: 100%; flex: 0 0 100%; min-height: 168px; padding: 10px; display: grid; grid-template-columns: 136px 1fr;
+      width: 100%; flex: 0 0 100%; min-height: 168px; height: 168px; padding: 10px; display: grid; grid-template-columns: 136px 1fr;
       gap: 11px; align-items: center;
       transition: min-height .46s cubic-bezier(.2,.8,.2,1), padding .46s cubic-bezier(.2,.8,.2,1);
     }
     .support-slide.payment-slide {
-      min-height: 324px; padding: 12px 14px 14px;
-      grid-template-columns: 1fr; grid-template-rows: 220px auto; align-items: stretch; justify-items: stretch; gap: 8px;
+      min-height: 168px; height: 168px; padding: 10px; overflow: hidden;
+      grid-template-columns: 136px 1fr; align-items: center; justify-items: stretch; gap: 11px;
     }
     .support-card:not(.payment) .payment-slide {
       min-height: 168px; height: 168px; padding: 10px; overflow: hidden;
@@ -80,12 +98,10 @@
       overflow: hidden; padding: 10px;
     }
     .payment-slide .support-qr-box {
-      position: relative;
-      width: 100%; min-height: 220px; justify-self: stretch;
-      display: grid; grid-template-columns: 132px minmax(0, 1fr);
-      align-items: center; justify-items: center; gap: 12px; padding: 8px 10px;
-      background: radial-gradient(circle at 50% 45%, rgba(79,182,255,.12), rgba(8,16,24,.62) 58%, rgba(8,16,24,.82));
-      box-shadow: inset 0 0 0 1px rgba(79,182,255,.22), 0 0 26px rgba(149,93,255,.2);
+      width: 136px; min-height: 138px; height: auto; justify-self: auto;
+      display: grid; grid-template-columns: 1fr; place-items: center; align-content: center; gap: 7px; padding: 10px;
+      background: rgba(8,16,24,.58);
+      box-shadow: inset 0 0 0 1px rgba(79,182,255,.12), 0 0 22px rgba(45,212,191,.12);
     }
     .support-avatar-ring {
       position: relative; width: 108px; height: 108px; display: grid; place-items: center; border-radius: 50%;
@@ -113,45 +129,47 @@
     }
     .support-photo-box:hover .support-avatar-ring { transform: translateY(-3px) scale(1.08); filter: drop-shadow(0 12px 24px rgba(79,182,255,.22)); }
     .support-photo-box:hover .support-photo, .support-photo-box:hover .support-initials { transform: scale(1.025); }
-    .support-photo-name { color: #eef7ff; font-size: 13px; font-weight: 850; text-align: center; line-height: 1.15; max-width: 118px; }
+    .support-photo-name { color: #eef7ff; font-size: 13px; font-weight: 850; text-align: center; line-height: 1.15; max-width: 118px; max-height: 30px; overflow: hidden; overflow-wrap: anywhere; }
     .support-qr { width: 128px; height: 128px; object-fit: contain; background: #fff; border-radius: 6px; padding: 5px; }
-    .payment-slide .support-qr { width: 202px; height: 202px; padding: 4px; border-radius: 5px; box-shadow: 0 12px 34px rgba(0,0,0,.28); }
+    .payment-slide .support-qr { width: 108px; height: 108px; padding: 4px; border-radius: 5px; box-shadow: 0 10px 24px rgba(0,0,0,.26); }
     .support-qr-link { display: grid; place-items: center; width: 100%; height: 100%; text-decoration: none; }
     .support-payment-side {
-      width: 100%; height: 100%; display: grid; align-content: start; gap: 12px; justify-items: start;
-      padding: 8px 8px 8px 0; border-right: 1px solid rgba(79,182,255,.13);
+      width: 100%; min-width: 0; height: 100%; display: grid; align-content: center; gap: 7px; justify-items: start;
+      padding: 0; border-right: 0;
     }
     .support-qr-label {
       width: fit-content; max-width: 100%;
       padding: 5px 9px; border: 1px solid rgba(45,212,191,.32); border-radius: 999px;
       background: rgba(6,12,18,.76); color: #eaf6ff; font-size: 11px; font-weight: 850;
       text-transform: uppercase; letter-spacing: .04em; text-decoration: none;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
-    .support-payment-side .support-title { margin: 0; max-width: 118px; font-size: 16px; line-height: 1.18; text-decoration: none; }
+    .support-payment-side .support-title { margin: 0; max-width: 100%; max-height: 42px; overflow: auto; font-size: 17px; line-height: 1.14; text-decoration: none; white-space: pre-line; overflow-wrap: anywhere; }
     .support-payment-side a.support-title:hover, .support-qr-label:hover { color: #ffffff; border-color: rgba(45,212,191,.66); }
     .support-payment-copy {
-      width: 100%; display: grid; grid-template-columns: 1fr; gap: 5px; align-content: end;
-      padding: 8px 10px 9px; border: 1px solid rgba(149,93,255,.28); border-radius: 8px;
-      background: rgba(18,15,35,.55);
+      width: 100%; min-height: 0; display: grid; grid-template-columns: 1fr; gap: 5px; align-items: center; justify-self: stretch;
+      margin-top: 6px; padding: 8px 10px; border: 1px solid rgba(79,182,255,.16); border-radius: 8px;
+      background: rgba(8,13,18,.35);
     }
-    .support-title { font-size: 17px; font-weight: 850; color: #f4f9ff; margin-bottom: 6px; }
-    .support-info { color: var(--muted); font-size: 12px; line-height: 1.35; }
-    .support-links { display: grid; gap: 7px; margin: 9px 0; }
-    .support-link { color: #bfe5ff; font-size: 12px; text-decoration: none; overflow-wrap: anywhere; }
+    .support-payment-copy .support-info {
+      max-height: 34px; font-size: 12px; line-height: 1.35; white-space: pre-line; overflow: auto; text-overflow: clip; overflow-wrap: anywhere;
+    }
+    .support-title { max-height: 42px; overflow: auto; font-size: 17px; font-weight: 850; color: #f4f9ff; margin-bottom: 6px; white-space: pre-line; overflow-wrap: anywhere; }
+    .support-info { color: var(--muted); font-size: 12px; line-height: 1.35; white-space: pre-line; overflow-wrap: anywhere; }
+    .support-links { display: grid; gap: 7px; margin: 9px 0; max-height: 42px; overflow: auto; }
+    .support-link { color: #bfe5ff; font-size: 12px; text-decoration: none; overflow-wrap: anywhere; white-space: pre-line; }
     .support-link:hover { color: #ffffff; }
-    .support-message { margin-top: 10px; padding: 10px; border: 1px solid rgba(79,182,255,.16); border-radius: 8px; background: rgba(8,13,18,.35); color: #cdd9e5; font-size: 12px; line-height: 1.35; }
-    .support-copy { margin-top: 4px; display: grid; grid-template-columns: 1fr 54px; gap: 7px; align-items: center; }
-    .support-copy input { min-height: 30px; font-size: 11px; padding: 5px 8px; }
-    .support-copy button { min-height: 30px; font-size: 11px; padding: 0 6px; }
+    .support-message { margin-top: 10px; max-height: 48px; overflow: auto; padding: 10px; border: 1px solid rgba(79,182,255,.16); border-radius: 8px; background: rgba(8,13,18,.35); color: #cdd9e5; font-size: 12px; line-height: 1.35; white-space: pre-line; overflow-wrap: anywhere; }
+    .support-copy { margin-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) 54px; gap: 6px; align-items: center; justify-content: stretch; }
+    .support-copy input { width: 100%; min-height: 28px; font-size: 11px; padding: 5px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .support-copy button { min-height: 22px; font-size: 10px; padding: 0 6px; }
     .support-nav { position: absolute; right: 8px; bottom: 8px; display: flex; gap: 5px; }
-    .support-card.payment .support-nav {
-      top: 18px; right: 24px; bottom: auto; padding: 3px 5px; border-radius: 999px;
-      background: rgba(8,16,24,.72); border: 1px solid rgba(79,182,255,.16);
-    }
+    .support-card.payment .support-nav { right: 14px; top: 12px; bottom: auto; left: auto; padding: 3px 5px; border-radius: 999px; border: 1px solid rgba(79,182,255,.14); background: rgba(8,16,24,.68); z-index: 2; }
     .support-dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid #4a5f73; background: #172330; padding: 0; min-height: 8px; }
     .support-dot.active { background: var(--good); border-color: var(--good); }
     .grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 12px; }
     .operator-grid { display: grid; grid-template-columns: minmax(420px, .92fr) minmax(520px, 1.08fr); gap: 12px; align-items: start; margin-top: 8px; }
+    .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: start; }
     .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .four { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .panel { background: linear-gradient(180deg, var(--panel), #0f161e); border: 1px solid var(--line); border-radius: 8px; padding: 10px; box-shadow: var(--shadow); }
@@ -176,7 +194,7 @@
     .stack { display: grid; gap: 8px; }
     input, select {
       width: 100%; min-height: 40px; background: #15212c; color: var(--text);
-      border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font-size: 15px;
+      border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font-size: 16px;
     }
     input:not([readonly]):not(:disabled), select:not(:disabled) { background: #1a2835; border-color: #3a4d61; }
     input:not([readonly]):not(:disabled):focus, select:not(:disabled):focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px rgba(79,182,255,.12); }
@@ -184,12 +202,13 @@
     .slider-line { display: grid; grid-template-columns: 1fr 78px; gap: 10px; align-items: center; }
     button {
       min-height: 42px; border: 1px solid var(--line); background: var(--button); color: var(--text);
-      border-radius: 8px; font-size: 15px; font-weight: 750; cursor: pointer; transition: border-color .15s ease, transform .15s ease, background .15s ease;
+      border-radius: 8px; font-size: 16px; font-weight: 750; cursor: pointer; transition: border-color .15s ease, transform .15s ease, background .15s ease;
     }
     button:hover { border-color: var(--accent); transform: translateY(-1px); }
     button.primary { background: #0d6f68; border-color: #19c2b1; }
+    button.save-config-strong { min-height: 48px; background: linear-gradient(180deg, #118f83, #0a655f); box-shadow: 0 0 0 1px rgba(45, 212, 191, .18), 0 12px 28px rgba(0, 0, 0, .22); }
     button.danger { background: #881337; border-color: #fb7185; }
-    button.big { min-height: 56px; font-size: 15px; }
+    button.big { min-height: 56px; font-size: 16px; }
     button:disabled { opacity: .55; cursor: not-allowed; transform: none; }
     button:disabled:hover { border-color: var(--line); transform: none; }
     .control-panel { display: grid; gap: 8px; }
@@ -224,12 +243,12 @@
     .tabs button { min-height: 34px; padding: 0 12px; }
     .tabs button.active { border-color: var(--accent); background: #0b3b52; }
     .tools-panel { margin-top: 12px; }
-    .tool-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .tool-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .tool-tabs button { min-height: 46px; text-align: left; padding: 0 14px; }
     .tool-tabs button.active { border-color: var(--accent); background: #0b3b52; color: #ffffff; }
     .collapsible-section { margin-top: 12px; }
     .collapsible-section.closed { display: none; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
     th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; }
     th { color: var(--muted); font-weight: 650; }
     pre {
@@ -237,7 +256,49 @@
       border: 1px solid var(--line); border-radius: 8px; padding: 12px; color: #dbeafe;
       font-size: 12px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere;
     }
-    .notice { min-height: 42px; color: var(--muted); font-size: 13px; line-height: 1.4; white-space: pre-wrap; }
+    .notice { min-height: 42px; color: var(--muted); font-size: 14px; line-height: 1.4; white-space: pre-wrap; }
+    .alert-strip {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      min-height: 42px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px;
+      background: rgba(10, 16, 23, .62); color: var(--muted); font-size: 13px; line-height: 1.35;
+    }
+    .alert-strip strong { color: #f4f9ff; }
+    .alert-strip button { min-height: 30px; padding: 0 10px; font-size: 12px; white-space: nowrap; }
+    .alert-drawer {
+      display: none; max-height: 210px; overflow: auto; margin-top: 8px; padding: 8px;
+      border: 1px solid var(--line); border-radius: 8px; background: #090f15;
+    }
+    .alert-rail .alert-drawer { max-height: min(430px, calc(100vh - 210px)); margin-top: 0; }
+    .alert-drawer.open { display: grid; gap: 8px; }
+    .alert-item {
+      padding: 9px 10px; border: 1px solid rgba(79,182,255,.15); border-left-width: 3px;
+      border-radius: 8px; background: rgba(15, 23, 32, .72); color: #dbe7f3;
+    }
+    .alert-item.warn { border-left-color: var(--warn); }
+    .alert-item.bad { border-left-color: var(--bad); }
+    .alert-item.good { border-left-color: var(--good); }
+    .alert-item-title { display: flex; justify-content: space-between; gap: 8px; font-weight: 850; font-size: 13px; }
+    .alert-item-body { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.35; white-space: pre-line; overflow-wrap: anywhere; }
+    .toast-stack {
+      position: fixed; right: 18px; bottom: 18px; z-index: 80; display: grid; gap: 10px;
+      width: min(380px, calc(100vw - 28px)); pointer-events: none;
+    }
+    .toast {
+      pointer-events: auto; display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: start;
+      padding: 12px; border: 1px solid rgba(79,182,255,.28); border-left-width: 4px;
+      border-radius: 10px; background: rgba(8, 13, 18, .96);
+      box-shadow: 0 18px 46px rgba(0,0,0,.36); animation: toastIn .24s ease-out;
+    }
+    .toast.warn { border-left-color: var(--warn); }
+    .toast.bad { border-left-color: var(--bad); }
+    .toast.good { border-left-color: var(--good); }
+    .toast-title { font-weight: 900; color: #f7fbff; font-size: 14px; }
+    .toast-body { margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .toast button {
+      min-height: 24px; width: 26px; padding: 0; border-radius: 999px; font-size: 13px; line-height: 1;
+      background: rgba(255,255,255,.05);
+    }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     #delayLimitNotice { min-height: 18px !important; margin-top: 6px !important; font-size: 12px; }
     .message-box { min-height: 50px; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #0d141c; }
     .compact-logs { margin-top: 0; }
@@ -252,7 +313,7 @@
     .live-card .value { margin-top: 5px; font-size: 16px; }
     .live-card .preview-box { margin-top: 2px; }
     .live-card .preview-box .field-head { margin-bottom: 4px; }
-    .live-card .preview-box h2 { font-size: 14px; }
+    .live-card .preview-box h2 { font-size: 15px; }
     .guide { display: grid; gap: 8px; }
     .copyline { display: grid; grid-template-columns: 135px 1fr; gap: 8px; align-items: center; }
     .field-head { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
@@ -270,7 +331,10 @@
       background: linear-gradient(180deg, rgba(13,111,104,.11), rgba(13,20,28,.64));
       display: grid; gap: 8px;
     }
+    .compact-mode-card { gap: 6px; padding: 10px 12px; }
     .auto-profile-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .profile-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; min-width: 260px; }
+    #twitchPanel .grid { align-items: start; }
     .auto-profile-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .auto-profile-values .metric { min-height: 48px; padding: 8px; }
     .auto-profile-values .value { font-size: 14px; }
@@ -303,6 +367,10 @@
     input[readonly] { opacity: .86; cursor: copy; background: #0f1720; }
     .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
     .row-actions button { min-height: 34px; padding: 0 10px; }
+    .preview-mode { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 8px 0; }
+    .preview-toggle { display: inline-grid; grid-template-columns: repeat(2, minmax(92px, 1fr)); gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: #0d141c; }
+    .preview-toggle button { min-height: 30px; border-radius: 999px; padding: 0 12px; background: transparent; border-color: transparent; font-size: 12px; }
+    .preview-toggle button.active { background: linear-gradient(135deg, #0f8f82, #0f6ed4); border-color: rgba(45, 212, 191, .35); color: #fff; }
     .preview-box video { width: 100%; aspect-ratio: 16 / 9; background: #05080c; border: 1px solid var(--line); border-radius: 8px; display: block; object-fit: contain; }
     .preview-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
     .preview-controls button { min-height: 34px; }
@@ -310,26 +378,40 @@
     .preview-pill { display: inline-flex; width: fit-content; align-items: center; gap: 8px; border: 1px solid var(--line); background: #0d141c; border-radius: 999px; padding: 7px 10px; color: #dbe7f3; font-weight: 700; }
     .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .faq-card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: #0f1720; }
-    .faq-title { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
-    .faq-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .faq-title { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+    .faq-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .faq-card img { display: block; width: 100%; max-height: 180px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-top: 10px; background: #081018; }
+    .faq-link { display: inline-block; margin-top: 10px; color: var(--accent); font-size: 12px; font-weight: 800; text-decoration: none; }
     .faq-tag { display: inline-block; margin-top: 10px; color: var(--good); font-size: 12px; font-weight: 700; }
     .tutorial-card { border: 1px solid #365069; border-radius: 8px; padding: 16px; margin-bottom: 14px; background: linear-gradient(180deg, #12202b, #0d151d); }
     .tutorial-card.closed { display: none; }
     .tutorial-card h3 { margin: 0 0 8px; font-size: 18px; }
-    .tutorial-card p { margin: 0 0 12px; color: #c8d6e3; font-size: 14px; line-height: 1.5; }
+    .tutorial-card p { margin: 0 0 12px; color: #c8d6e3; font-size: 15px; line-height: 1.5; }
     .tutorial-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; counter-reset: step; }
     .tutorial-step { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #0f1720; position: relative; }
     .tutorial-step::before {
       counter-increment: step; content: counter(step); display: inline-grid; place-items: center;
       width: 24px; height: 24px; border-radius: 50%; background: #0d6f68; color: #fff; font-weight: 850; margin-bottom: 8px;
     }
-    .tutorial-step strong { display: block; margin-bottom: 6px; font-size: 13px; }
+    .tutorial-step strong { display: block; margin-bottom: 6px; font-size: 14px; }
     .tutorial-step strong.with-hint { display: flex; align-items: center; gap: 7px; }
     .tutorial-step > span { display: block; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .tutorial-step img { display: block; width: 100%; max-height: 170px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-top: 10px; background: #081018; }
+    .tutorial-link { display: inline-block; margin-top: 10px; color: var(--accent); font-size: 12px; font-weight: 800; text-decoration: none; }
     .settings-group { border: 1px solid rgba(79,182,255,.18); border-radius: 8px; padding: 12px; background: rgba(8,13,18,.35); display: grid; gap: 12px; }
     .settings-grid { align-items: start; }
     .settings-side-stack { align-content: start; }
     .settings-group-title { margin: 0; color: #dbe7f3; font-size: 13px; font-weight: 850; text-transform: uppercase; letter-spacing: .03em; }
+    .converter-grid { grid-template-columns: minmax(280px, .8fr) minmax(430px, 1.2fr); align-items: start; }
+    .converter-info { align-content: start; gap: 8px; }
+    .converter-note {
+      border: 1px solid rgba(79,182,255,.18); border-radius: 8px; padding: 12px;
+      background: rgba(8,13,18,.35);
+    }
+    .converter-note p { margin: 0; }
+    .converter-note p + p { margin-top: 8px; }
+    .converter-form { gap: 10px; }
+    .converter-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .settings-header {
       display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px;
       margin-bottom: 12px; padding: 10px 12px; border: 1px solid rgba(45,212,191,.22);
@@ -360,11 +442,48 @@
       display: inline-flex; align-items: center; min-height: 24px; padding: 3px 8px;
       border: 1px solid rgba(79,182,255,.2); border-radius: 999px; background: rgba(16,25,34,.72);
     }
-    @media (max-width: 1060px) { .operator-grid, .grid, .three, .four, .faq-grid, .tool-tabs, .tutorial-steps, .header-actions { grid-template-columns: 1fr; } header, header.support-visible { grid-template-columns: 1fr; align-items: stretch; } .support-card { max-width: 560px; } }
+    .confirm-modal {
+      position: fixed; inset: 0; z-index: 120; display: grid; place-items: center;
+      padding: 22px; background: rgba(2, 7, 12, .72); backdrop-filter: blur(8px);
+    }
+    .confirm-modal.hidden { display: none; }
+    .confirm-box {
+      width: min(560px, 94vw); border: 1px solid rgba(251,191,36,.42); border-radius: 10px;
+      background: linear-gradient(180deg, #141d28, #0c131b); box-shadow: 0 24px 80px rgba(0,0,0,.46);
+      padding: 20px; color: var(--text);
+    }
+    .confirm-title { font-size: 20px; font-weight: 850; color: #fff7d6; margin-bottom: 10px; }
+    .confirm-text { font-size: 16px; line-height: 1.55; color: #d8e4ef; margin-bottom: 18px; }
+    .confirm-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .confirm-actions button { min-height: 48px; }
+    .confirm-actions .confirm-primary { background: #7c2d12; border-color: #f59e0b; color: #fff7ed; }
+    @media (max-width: 1660px) { .alert-rail { display: none; } }
+    @media (max-width: 1060px) { .operator-grid, .grid, .two, .three, .four, .faq-grid, .tool-tabs, .tutorial-steps, .header-actions, .profile-actions { grid-template-columns: 1fr; } header, header.support-visible { grid-template-columns: 1fr; align-items: stretch; } .support-card { max-width: 560px; } .profile-actions { min-width: 0; } }
   </style>
 </head>
 <body>
 <button id="languageToggle" class="lang-toggle" type="button">PT / EN</button>
+<aside id="alertRail" class="alert-rail" aria-label="Centro de alertas">
+  <div class="alert-rail-head">
+    <div>
+      <div class="alert-rail-kicker">Centro</div>
+      <div class="alert-rail-title">Alertas</div>
+    </div>
+    <button id="toggleAlerts" type="button">Ver alertas</button>
+  </div>
+  <div id="alertSummary" class="alert-rail-summary"><strong>Alertas:</strong> aguardando status.</div>
+  <div id="alertDrawer" class="alert-drawer"></div>
+</aside>
+<div id="confirmModal" class="confirm-modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+  <div class="confirm-box">
+    <div id="confirmTitle" class="confirm-title">Confirmar ação</div>
+    <div id="confirmText" class="confirm-text"></div>
+    <div class="confirm-actions">
+      <button id="confirmCancel" type="button">Cancelar</button>
+      <button id="confirmOk" class="confirm-primary" type="button">Continuar sem loading</button>
+    </div>
+  </div>
+</div>
 <main>
   <header>
     <div class="brand-block">
@@ -429,8 +548,8 @@
               <span class="hint" tabindex="0" data-tip="Escolha quanto atraso você quer adicionar para o público. O DelayEngine aplica exatamente o tempo escolhido."></span>
             </div>
             <div class="field-title-row">
-              <span id="standardLatencyBadge" class="mini-badge">Delay padrão: 2-5s</span>
-              <span class="hint" tabindex="0" data-tip="Esse é o atraso normal do caminho OBS, DelayEngine, Twitch e player. Ele não é o delay manual; é a latência natural que qualquer live costuma ter."></span>
+              <span id="standardLatencyBadge" class="mini-badge">Ao vivo: sem delay manual</span>
+              <span class="hint" tabindex="0" data-tip="No modo ao vivo, o DelayEngine encaminha a live sem adicionar atraso manual. A latência natural vem da Twitch, do player e da rede."></span>
             </div>
           </div>
           <div class="slider-line">
@@ -449,12 +568,12 @@
           <label class="loading-mode-toggle">
             <input id="playFullLoading" type="checkbox">
             <strong>Loading completo</strong>
-            <span class="hint" tabindex="0" data-tip="Desligado: volta quando o delay estiver pronto. Ligado: toca o vídeo inteiro antes de voltar. Com delay em 0s, funciona como vinheta ou aviso e depois volta ao vivo no final."></span>
+            <span class="hint" tabindex="0" data-tip="Quando arma delay com loading, o app segura pacotes, toca o loading e só volta quando o buffer alcança o delay pedido. Se o loading for menor que o delay, ele repete. Desligado: volta assim que o delay fica pronto. Ligado: toca ciclos inteiros do vídeo antes de voltar."></span>
           </label>
         </div>
         <div class="sub-actions">
       <button id="activate">Ativar vídeo escolhido</button>
-          <button id="set">Aplicar delay sem loading</button>
+          <button id="set" title="Modo direto. Para uma transição visual mais profissional, use Adicionar delay com loading.">Aplicar delay sem loading</button>
         </div>
         <div id="message" class="notice message-box"></div>
 
@@ -480,14 +599,20 @@
           <div class="metric"><div class="label">Keyframe OBS</div><div id="keyframeInterval" class="value">...</div></div>
         </div>
         <div class="metric"><div class="label">Bytes enviados</div><div id="sentBytes" class="value">...</div></div>
-        <div id="alerts" class="notice"></div>
         <div class="preview-box">
           <div class="field-head">
             <h2 style="margin:0">Preview local</h2>
             <span class="hint" tabindex="0" data-tip="Mostra a live local que chegou no DelayEngine. Se não tocar, abra o link HLS ou confirme se o OBS está transmitindo para a chave local."></span>
           </div>
+          <div class="preview-mode">
+            <div class="preview-toggle" role="group" aria-label="Modo do preview">
+              <button id="previewModeLive" type="button" class="active">Live</button>
+              <button id="previewModeLoading" type="button">Vídeos</button>
+            </div>
+            <span class="hint" tabindex="0" data-tip="Use Live para conferir a transmissão local. Use Vídeos para dar play no vídeo de loading selecionado na lista antes de ativar. O preview não altera a live sozinho."></span>
+          </div>
           <video id="previewVideo" muted playsinline preload="none"></video>
-          <div class="muted" style="margin-top:8px">Preview local da live recebida. Ele não inclui o vídeo de loading nem a saída final com delay da Twitch.</div>
+          <div id="previewHelp" class="muted" style="margin-top:8px">Preview local da live recebida. Ele não inclui o vídeo de loading nem a saída final com delay da Twitch.</div>
           <div class="preview-controls">
             <button id="previewPlay">Play</button>
             <button id="previewPause">Pause</button>
@@ -504,27 +629,14 @@
     </section>
   </div>
 
+  <div id="toastStack" class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+
   <section class="panel tools-panel">
     <h2>Ferramentas</h2>
     <div class="tool-tabs">
-      <button class="tool-tab" data-panel="guidePanel">Dados para OBS</button>
       <button class="tool-tab" data-panel="settingsPanel">Configurações</button>
       <button class="tool-tab" data-panel="twitchPanel">Modo Twitch polido</button>
       <button class="tool-tab" data-panel="converterPanel">Conversor de vídeos</button>
-    </div>
-  </section>
-
-  <section id="guidePanel" class="panel collapsible-section closed">
-    <h2>Dados para OBS / Streamlabs</h2>
-    <div class="guide">
-      <div class="muted">Copie os dois campos separadamente para as configurações de transmissão do OBS/Streamlabs. O campo Servidor recebe somente o servidor. O campo Chave recebe somente a chave local. Não junte os dois.</div>
-      <div class="copyline"><div class="field-head"><div class="label">Servidor do DelayEngine para OBS</div><span class="hint" tabindex="0" data-tip="Cole este valor no campo Servidor do OBS/Streamlabs quando usar transmissão customizada/personalizada."></span></div><input id="obsServer" readonly data-copy></div>
-      <div class="copyline"><div class="field-head"><div class="label">Chave local do OBS</div><span class="hint" tabindex="0" data-tip="Cole esta chave local no campo Chave do OBS/Streamlabs. Ela não é sua chave da Twitch."></span></div><input id="obsKey" readonly data-copy></div>
-      <div class="muted">A chave da Twitch fica salva aqui no DelayEngine, em Configurações.</div>
-      <details class="muted">
-        <summary>Somente se algum app pedir URL única</summary>
-        <div class="copyline" style="margin-top:8px"><div class="field-head"><div class="label">URL completa</div><span class="hint" tabindex="0" data-tip="Use esta linha inteira apenas em programas que não têm campos separados de Servidor e Chave. No OBS/Streamlabs normal, não use este campo."></span></div><input id="obsFull" readonly data-copy></div>
-      </details>
     </div>
   </section>
 
@@ -562,25 +674,15 @@
               <button id="clearStreamKey" class="danger">Remover chave salva</button>
             </div>
           </div>
-          <div class="setting-step">
-            <div class="step-title">
-              <span class="step-number">2</span>
-              <div class="field-head">
-                <div class="label">Destino da Twitch</div>
-                <span class="hint" tabindex="0" data-tip="Endereço público para onde o DelayEngine manda sua live. Para quase todo mundo, deixe o padrão rtmp://live.twitch.tv:1935/app."></span>
-              </div>
-            </div>
-            <input id="twitchServer">
-          </div>
         </div>
         <div class="settings-group">
           <h3 class="settings-group-title">OBS / Streamlabs</h3>
           <div class="setting-step">
             <div class="step-title">
-              <span class="step-number">3</span>
+              <span class="step-number">2</span>
               <div class="field-head">
                 <div class="label">Dados locais que o OBS usa</div>
-                <span class="hint" tabindex="0" data-tip="Esses campos são internos do seu computador. Eles servem para o OBS falar com o DelayEngine, não com a Twitch. Copie pela aba Dados para OBS."></span>
+                <span class="hint" tabindex="0" data-tip="Esses campos são internos do seu computador. Eles servem para o OBS falar com o DelayEngine, não com a Twitch. Copie daqui e cole separados no OBS/Streamlabs."></span>
               </div>
             </div>
             <input id="localSourcePath" type="hidden">
@@ -601,6 +703,19 @@
                 <input id="settingsObsKey" readonly data-copy>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h3 class="settings-group-title">Saída Twitch</h3>
+          <div class="setting-step">
+            <div class="step-title">
+              <span class="step-number">3</span>
+              <div class="field-head">
+                <div class="label">Destino da Twitch</div>
+                <span class="hint" tabindex="0" data-tip="Endereço público para onde o DelayEngine manda sua live. Para quase todo mundo, deixe o padrão rtmp://live.twitch.tv:1935/app."></span>
+              </div>
+            </div>
+            <input id="twitchServer">
           </div>
         </div>
         <div class="settings-group">
@@ -642,50 +757,48 @@
             <table><thead><tr><th>Nome</th><th>Tamanho</th><th>Ativo</th><th>Ações</th></tr></thead><tbody id="videos"></tbody></table>
           </div>
         </div>
-        <div class="muted">Se trocar a stream key ou o destino da Twitch, saia pelo ícone perto do relógio e abra o app de novo.</div>
+        <div class="muted">Depois de trocar a stream key ou o destino da Twitch, reinicie o app pelo ícone perto do relógio para aplicar tudo na próxima sessão.</div>
       </div>
     </div>
   </section>
 
   <section id="twitchPanel" class="panel collapsible-section closed">
     <h2>Saída para Twitch</h2>
-    <div class="grid">
-      <div class="stack">
-        <div class="muted">
+    <div class="grid converter-grid">
+      <div class="stack converter-info">
+        <div class="muted converter-note">
           O modo Twitch polido fica ativo por padrão. O DelayEngine publica localmente,
           e o codificador sobe sozinho para a Twitch quando você inicia a live no Streamlabs.
         </div>
-        <div>
+        <input id="outputMode" type="hidden" value="encoded">
+        <input id="encodedLocalOutputUrl" type="hidden">
+        <div class="auto-profile-card compact-mode-card">
           <div class="field-head">
-            <div class="label">Modo de envio</div>
-            <span class="hint" tabindex="0" data-tip="O DelayEngine envia para uma saída local, e o codificador manda uma live contínua para a Twitch. Isso reduz a chance de a Twitch acumular atraso depois das trocas."></span>
+            <div class="label">Modo ativo: Twitch polido</div>
+            <span class="hint" tabindex="0" data-tip="O DelayEngine envia para uma saída local, e o codificador manda uma live contínua para a Twitch. Isso ajuda a manter a transmissão alinhada depois das trocas."></span>
           </div>
-          <select id="outputMode">
-            <option value="encoded">Twitch polido</option>
-          </select>
-        </div>
-        <div>
-          <div class="field-head">
-            <div class="label">Saída local para o FFmpeg</div>
-            <span class="hint" tabindex="0" data-tip="Endereço interno que o DelayEngine publica quando o modo Twitch polido está ativo. O codificador lê daqui e manda para a Twitch."></span>
-          </div>
-          <input id="encodedLocalOutputUrl">
+          <div class="muted">Live contínua para a Twitch com codificador local. Normalmente você só deixa isso ligado.</div>
         </div>
         <div id="encodingStatus" class="notice">Codificador parado.</div>
+        <div class="two twitch-actions">
+          <button id="startEncoding">Reiniciar codificador</button>
+          <button id="refreshEncoding">Atualizar status</button>
+        </div>
+        <div class="muted">Reiniciar codificador aplica o perfil salvo na sessão atual e ajuda a validar a conexão com a Twitch.</div>
       </div>
       <div class="stack">
         <div class="auto-profile-card">
           <div class="auto-profile-head">
             <div>
               <div class="field-head">
-                <div class="label">Perfil automático do codificador</div>
-                <span class="hint" tabindex="0" data-tip="No primeiro uso, inicie a live no OBS/Streamlabs para o DelayEngine ler resolução, FPS e bitrate. O app salva esses dados no codificador; nas próximas vezes ele inicia automaticamente com o perfil salvo. Use edição manual se quiser forçar valores."></span>
+                <div class="label">Perfil manual do codificador</div>
+                <span class="hint" tabindex="0" data-tip="Preencha com a mesma resolução, FPS e bitrate usados no OBS/Streamlabs. Este perfil salvo é o que o codificador usa para enviar à Twitch; leituras observadas da live servem apenas como referência."></span>
               </div>
-              <div id="encodedProfileStatus" class="muted">Aguardando a live chegar para ajustar o codificador.</div>
+              <div id="encodedProfileStatus" class="muted">Perfil salvo pronto para o codificador.</div>
             </div>
-            <div class="three" style="grid-template-columns:1fr 1fr;min-width:220px">
+            <div class="profile-actions">
               <button id="editEncodedProfile">Editar manualmente</button>
-              <button id="saveEncodedProfile" class="primary hidden">Salvar perfil</button>
+              <button id="saveEncodedProfile" class="primary save-config-strong hidden">Salvar alterações</button>
             </div>
           </div>
           <div class="auto-profile-values">
@@ -697,10 +810,10 @@
         <div class="three">
           <div><div class="field-head"><div class="label">Largura</div><span class="hint" tabindex="0" data-tip="Use a largura da sua live. Para 1080p, 1920. Para 720p, 1280."></span></div><input id="encodedWidth" type="number" min="320" value="1920"></div>
           <div><div class="field-head"><div class="label">Altura</div><span class="hint" tabindex="0" data-tip="Use a altura da sua live. Para 1080p, 1080. Para 720p, 720."></span></div><input id="encodedHeight" type="number" min="240" value="1080"></div>
-          <div><div class="field-head"><div class="label">FPS</div><span class="hint" tabindex="0" data-tip="Use o mesmo FPS do Streamlabs/OBS. O keyframe fica automaticamente em 2 segundos, que foi o comportamento mais estavel nos testes com Twitch."></span></div><input id="encodedFps" type="number" min="10" max="120" value="30"></div>
+          <div><div class="field-head"><div class="label">FPS</div><span class="hint" tabindex="0" data-tip="Use o mesmo FPS do Streamlabs/OBS. O keyframe fica automaticamente em 2 segundos, que foi o comportamento mais estável nos testes com Twitch."></span></div><input id="encodedFps" type="number" min="10" max="120" value="30"></div>
         </div>
         <div class="three">
-          <div><div class="field-head"><div class="label">Bitrate vídeo</div><span class="hint" tabindex="0" data-tip="Para sua live 1080p30, tente 4500k. Se a Twitch reclamar, baixe para 4000k."></span></div><input id="encodedVideoBitrate" value="4500k"></div>
+          <div><div class="field-head"><div class="label">Bitrate vídeo</div><span class="hint" tabindex="0" data-tip="Use o mesmo bitrate configurado no OBS/Streamlabs. A leitura observada pode levar alguns ciclos para estabilizar, então o perfil salvo manualmente é a referência principal."></span></div><input id="encodedVideoBitrate" value="4500k"></div>
           <div><div class="field-head"><div class="label">Bitrate áudio</div><span class="hint" tabindex="0" data-tip="160k AAC 48 kHz é um valor seguro para Twitch."></span></div><input id="encodedAudioBitrate" value="160k"></div>
           <div class="metric"><div class="label">Keyframe</div><div class="value good">2s</div></div>
         </div>
@@ -717,41 +830,47 @@
             <option value="cpu">CPU / x264</option>
           </select>
         </div>
-        <div class="three">
+        <div class="two">
           <label class="checkbox-line">
-            <input id="autoLatencyCorrection" type="checkbox">
+            <input id="autoLatencyCorrection" type="checkbox" checked>
             <span>Correção automática de atraso</span>
-            <span class="hint" tabindex="0" data-tip="Quando o codificador acumular atraso estimado acima do limite, o app tenta voltar a saída local para o ao vivo sem reiniciar o FFmpeg. Só age quando o delay manual está desligado."></span>
+            <span class="hint" tabindex="0" data-tip="Fica ligada por padrão. Quando o codificador passa do atraso estimado salvo, o app realinha a saída local para o ao vivo sem reiniciar o FFmpeg. Só age quando o delay manual está desligado."></span>
           </label>
           <div>
             <div class="field-head">
               <div class="label">Limite para corrigir</div>
-              <span class="hint" tabindex="0" data-tip="Valor em segundos de atraso estimado antes de pedir correção automática. Use 3s para testes conservadores."></span>
+              <span class="hint" tabindex="0" data-tip="Valor em segundos de atraso estimado antes de pedir correção automática. O número fica salvo: se salvar 4, continua 4 nas próximas vezes; se salvar 5, continua 5."></span>
             </div>
             <input id="autoLatencySeconds" type="number" min="1" max="30" step="0.5" value="3">
           </div>
-          <div class="metric"><div class="label">Ação</div><div class="value">Voltar ao vivo</div></div>
         </div>
-        <div class="three">
-          <button id="saveEncodingSettings" class="primary">Salvar modo Twitch</button>
-          <button id="startEncoding" class="primary">Reiniciar codificador</button>
-          <button id="stopEncoding">Pausar codificador</button>
+        <div class="two">
+          <label class="checkbox-line">
+            <input id="realtimePriority" type="checkbox" checked>
+            <span>Priorizar tempo real</span>
+            <span class="hint" tabindex="0" data-tip="Modo parecido com OBS/Streamlabs: quando não há delay manual ativo, o app prioriza tempo real e mantém uma folga para não corrigir pequenas oscilações normais."></span>
+          </label>
+          <div>
+            <div class="field-head">
+              <div class="label">Folga de atraso</div>
+              <span class="hint" tabindex="0" data-tip="Atraso estimado permitido antes de priorizar tempo real. Valor maior corrige menos vezes; valor menor mantém a live mais próxima do ao vivo. Fica salvo nas próximas aberturas."></span>
+            </div>
+            <input id="realtimePrioritySeconds" type="number" min="2" max="60" step="0.5" value="8">
+          </div>
         </div>
-        <button id="refreshEncoding">Atualizar status</button>
-        <div class="muted">Normalmente você não precisa apertar nada aqui. Use os botões só para trocar configurações ou diagnosticar.</div>
       </div>
     </div>
   </section>
-
   <section id="converterPanel" class="panel collapsible-section closed">
     <h2>Preparar vídeo de loading</h2>
-    <div class="grid">
-      <div class="stack">
-        <div class="muted">
-          O vídeo de loading aparece quando você adiciona delay durante a live.
-          Por padrão, o app detecta a qualidade da live recebida e prepara o conversor para combinar resolução, FPS, áudio AAC 48 kHz e bitrate seguro.
+    <div class="grid converter-grid">
+      <div class="stack converter-info">
+        <div class="muted converter-note">
+          <p>O video de loading aparece quando voce adiciona delay durante a live. O conversor usa o mesmo perfil configurado no modo Twitch polido: resolucao, FPS, audio AAC 48 kHz e bitrate.</p>
+          <p>Se o vídeo original for curto, o conversor repete até completar o tempo. Se for longo, ele corta no tempo escolhido. O resultado vai para videos/ready e pode ser ativado como loading.</p>
+          <p>Melhor prática: use resolução e FPS iguais aos do OBS/Streamlabs. Assim o codificador trabalha com menos ajuste e o loading combina melhor com a live.</p>
         </div>
-        <div class="auto-profile-card">
+        <div class="auto-profile-card hidden">
           <div class="auto-profile-head">
             <div>
               <div class="label">Perfil automático da live</div>
@@ -768,7 +887,7 @@
             <div class="metric"><div class="label">Codec</div><div id="autoProfileCodec" class="value">...</div></div>
           </div>
         </div>
-        <div class="three">
+        <div class="three hidden">
           <div><div class="field-head"><div class="label">Resolução da sua live</div><span class="hint" tabindex="0" data-tip="Escolha a mesma resolução configurada no OBS/Streamlabs. Isso ajuda o loading a entrar sem redimensionamento estranho."></span></div>
             <select id="liveResolution">
               <option value="1920x1080">1080p - 1920x1080</option>
@@ -793,20 +912,15 @@
             </select>
           </div>
         </div>
-        <div class="three">
+        <div class="three hidden">
           <div class="metric"><div class="label">Formato recomendado</div><div id="recommendedFormat" class="value">1080p30</div></div>
           <div class="metric"><div class="label">Bitrate do loading</div><div id="recommendedBitrate" class="value">4000k</div></div>
           <button id="applyRecommendation" class="primary">Usar recomendação</button>
         </div>
-        <div class="muted">
-          Se o vídeo original for curto, o conversor repete até completar o tempo.
-          Se for longo, ele corta no tempo escolhido.
-          O resultado vai para videos/ready e pode ser ativado como loading.
-        </div>
       </div>
-      <div class="stack">
+      <div class="stack converter-form">
         <div><div class="field-head"><div class="label">Arquivo de vídeo</div><span class="hint" tabindex="0" data-tip="Escolha um MP4 ou outro vídeo comum. Se ele for curto, o app repete; se for longo, corta na duração escolhida."></span></div><input id="convertFile" type="file" accept="video/*"></div>
-        <div><div class="field-head"><div class="label">Perfil de conversão</div><span class="hint" tabindex="0" data-tip="Formato final do loading. O ideal é bater com a resolução, FPS e bitrate da sua live."></span></div>
+        <div class="hidden"><div class="field-head"><div class="label">Perfil de conversão</div><span class="hint" tabindex="0" data-tip="Formato final do loading. O ideal é bater com a resolução, FPS e bitrate da sua live."></span></div>
           <select id="convertProfile">
             <option value="1080p30">1080p / 30fps / 4000k - recomendado para sua live</option>
             <option value="1080p30hq">1080p / 30fps / 4500k - mais qualidade</option>
@@ -816,21 +930,23 @@
             <option value="custom">Customizado</option>
           </select>
         </div>
-        <div class="three">
+        <div class="two">
           <div><div class="field-head"><div class="label">Duração</div><span class="hint" tabindex="0" data-tip="Tempo final do vídeo de loading. Para armar 30s de delay, normalmente use 30s."></span></div><input id="convertDuration" type="number" min="5" max="600" value="30"></div>
-          <div><div class="field-head"><div class="label">FPS custom</div><span class="hint" tabindex="0" data-tip="Use apenas se escolheu perfil customizado. Deve ser igual ao FPS da live."></span></div><input id="convertFps" type="number" min="10" max="120" value="30"></div>
-          <div><div class="field-head"><div class="label">Bitrate custom</div><span class="hint" tabindex="0" data-tip="Use apenas se escolheu perfil customizado. Escreva como 4000k, 4500k ou 5500k."></span></div><input id="convertBitrate" value="4000k"></div>
-        </div>
-        <div class="three">
-          <div><div class="field-head"><div class="label">Largura custom</div><span class="hint" tabindex="0" data-tip="Use apenas em perfil customizado. Para 1080p, use 1920. Para 720p, use 1280."></span></div><input id="convertWidth" type="number" min="320" value="1920"></div>
-          <div><div class="field-head"><div class="label">Altura custom</div><span class="hint" tabindex="0" data-tip="Use apenas em perfil customizado. Para 1080p, use 1080. Para 720p, use 720."></span></div><input id="convertHeight" type="number" min="240" value="1080"></div>
           <label class="metric" style="display:flex;align-items:center;gap:10px;min-height:42px">
             <input id="convertActivate" type="checkbox" checked style="width:auto;min-height:auto">
             <span>usar como loading ativo</span>
           </label>
         </div>
-        <button id="convertVideo" class="primary big">Converter dentro do app</button>
-        <button id="openVideos">Abrir pasta de vídeos</button>
+        <div class="hidden">
+          <div><div class="field-head"><div class="label">FPS custom</div><span class="hint" tabindex="0" data-tip="Use apenas se escolheu perfil customizado. Deve ser igual ao FPS da live."></span></div><input id="convertFps" type="number" min="10" max="120" value="30"></div>
+          <div><div class="field-head"><div class="label">Bitrate custom</div><span class="hint" tabindex="0" data-tip="Use apenas se escolheu perfil customizado. Escreva como 4000k, 4500k ou 5500k."></span></div><input id="convertBitrate" value="4000k"></div>
+          <div><div class="field-head"><div class="label">Largura custom</div><span class="hint" tabindex="0" data-tip="Use apenas em perfil customizado. Para 1080p, use 1920. Para 720p, use 1280."></span></div><input id="convertWidth" type="number" min="320" value="1920"></div>
+          <div><div class="field-head"><div class="label">Altura custom</div><span class="hint" tabindex="0" data-tip="Use apenas em perfil customizado. Para 1080p, use 1080. Para 720p, use 720."></span></div><input id="convertHeight" type="number" min="240" value="1080"></div>
+        </div>
+        <div class="converter-actions">
+          <button id="convertVideo" class="primary big">Converter dentro do app</button>
+          <button id="openVideos">Abrir pasta de vídeos</button>
+        </div>
         <div id="convertStatus" class="notice">Nenhuma conversão em andamento.</div>
       </div>
     </div>
@@ -844,11 +960,11 @@
       <div class="tutorial-steps">
         <div class="tutorial-step">
           <strong class="with-hint">Key da Twitch <span class="hint" tabindex="0" data-tip="Essa key vem do site da Twitch: Painel do Criador > Configurações > Transmissão > Chave de transmissão primária. Copie essa chave para o DelayEngine, não para o OBS."></span></strong>
-          <span>No passo 1 de Configurações, salve a key da Twitch. No passo 2, deixe o Destino da Twitch padrão, a menos que você use outro servidor da Twitch.</span>
+          <span>No passo 1 de Configurações, salve a key da Twitch. No passo 3, deixe o Destino da Twitch padrão, a menos que você use outro servidor da Twitch.</span>
         </div>
         <div class="tutorial-step">
           <strong>Copie os dados do OBS</strong>
-          <span>Em Dados para OBS, copie o Servidor do DelayEngine para o campo Servidor do OBS/Streamlabs. Depois copie a Chave local do OBS para o campo Chave. Não cole servidor/chave juntos.</span>
+          <span>No passo 2 de Configurações, copie o Servidor do DelayEngine para o campo Servidor do OBS/Streamlabs. Depois copie a Chave local do OBS para o campo Chave. Não cole servidor/chave juntos.</span>
         </div>
         <div class="tutorial-step">
           <strong>Inicie a live no OBS</strong>
@@ -864,12 +980,12 @@
         </div>
         <div class="tutorial-step">
           <strong>Voltar ao vivo</strong>
-          <span>Clique em Voltar ao vivo para sair do delay. O modo Twitch polido fica ligado por padrão para tentar voltar perto da latência normal.</span>
+          <span>Clique em Voltar ao vivo para sair do delay. O modo Twitch polido fica ligado por padrão para voltar ao fluxo ao vivo com a transição organizada.</span>
         </div>
       </div>
     </div>
     <h2>FAQ do host</h2>
-    <div class="faq-grid">
+    <div id="faqGrid" class="faq-grid">
       <div class="faq-card">
         <div class="faq-title">O que o DelayEngine faz</div>
         <p>Ele fica entre o OBS/Streamlabs e a Twitch. Recebe sua live local, segura os pacotes quando você pede delay e envia para a Twitch sem recodificar áudio ou vídeo.</p>
@@ -877,7 +993,7 @@
       </div>
       <div class="faq-card">
         <div class="faq-title">Para onde o OBS envia</div>
-        <p>O OBS envia para o servidor local do DelayEngine, não direto para a Twitch. Use os campos da aba "Dados para OBS": Servidor do DelayEngine para OBS no campo Servidor, e Chave local do OBS no campo Chave.</p>
+        <p>O OBS envia para o servidor local do DelayEngine, não direto para a Twitch. Em Configurações, use os campos do passo 2: Servidor para colar no OBS no campo Servidor, e Chave para colar no OBS no campo Chave.</p>
         <span class="faq-tag">Não cole a chave da Twitch no OBS.</span>
       </div>
       <div class="faq-card">
@@ -944,6 +1060,9 @@
     'Adicione ou remova delay durante a live com vídeo de loading, mantendo o fluxo organizado para Twitch, OBS e Streamlabs.': 'Add or remove delay during the live stream with a loading video while keeping the Twitch, OBS and Streamlabs flow organized.',
     'Atualizar': 'Refresh',
     'Tutorial': 'Tutorial',
+    'Confirmar ação': 'Confirm action',
+    'Cancelar': 'Cancel',
+    'Continuar sem loading': 'Continue without loading',
     'Status geral': 'Overall status',
     'Transmissão': 'Stream',
     'Modo delay': 'Delay mode',
@@ -951,13 +1070,15 @@
     'Saída': 'Output',
     'Controle da live': 'Live control',
     'Adicionar delay com loading': 'Add delay with loading',
+    'O delay ja esta ativo. Use Voltar ao vivo antes de adicionar outro delay.': 'Delay is already active. Use Go live before adding another delay.',
     'Voltar ao vivo': 'Go live now',
     'Delay manual da live': 'Manual stream delay',
-    'Delay padrão: 2-5s': 'Default delay: 2-5s',
+    'Ao vivo: sem delay manual': 'Live: no manual delay',
     'Vídeo de loading': 'Loading video',
     'Loading completo': 'Full loading',
     'Ativar vídeo escolhido': 'Use selected video',
     'Aplicar delay sem loading': 'Apply delay without loading',
+    'Modo direto: o delay entra sem tela de loading. Para uma transição visual mais limpa para o público, use "Adicionar delay com loading". Deseja continuar no modo direto?': 'Direct mode: delay is applied without a loading screen. For a cleaner visual transition for viewers, use "Add delay with loading". Continue in direct mode?',
     'Logs': 'Logs',
     'Live': 'Live',
     'Saúde da transmissão': 'Stream health',
@@ -966,10 +1087,17 @@
     'Keyframe OBS': 'OBS keyframe',
     'Bytes enviados': 'Bytes sent',
     'Preview local': 'Local preview',
+    'Vídeos': 'Videos',
+    'Use Live para conferir a transmissão local. Use Vídeos para dar play no vídeo de loading selecionado na lista antes de ativar. O preview não altera a live sozinho.': 'Use Live to check the local stream. Use Videos to play the selected loading video before activating it. The preview does not change the stream by itself.',
     'Preview local da live recebida. Ele não inclui o vídeo de loading nem a saída final com delay da Twitch.': 'Local preview of the received stream. It does not include the loading video or the final delayed Twitch output.',
+    'Preview do vídeo de loading selecionado. Escolha um vídeo na lista, aperte Play e, se for o certo, use Ativar vídeo escolhido.': 'Preview of the selected loading video. Pick a video in the list, press Play, and if it is the right one, use Use selected video.',
+    'Escolha um vídeo pronto na lista para pré-visualizar.': 'Choose a ready video from the list to preview.',
+    'Preview do loading pronto. Aperte Play para conferir.': 'Loading preview ready. Press Play to check it.',
+    'Gerando preview MP4 do loading. Tente Play de novo em alguns segundos.': 'Generating the loading MP4 preview. Try Play again in a few seconds.',
     'Preview aguardando a live local.': 'Preview waiting for the local stream.',
     'Preview pausado.': 'Preview paused.',
     'Preview local rodando.': 'Local preview playing.',
+    'Preview do loading rodando.': 'Loading preview playing.',
     'Preview local rodando automaticamente.': 'Local preview playing automatically.',
     'Live local recebida pelo DelayEngine.': 'Local stream received by DelayEngine.',
     'Abrir preview HLS': 'Open HLS preview',
@@ -977,8 +1105,6 @@
     'Pause': 'Pause',
     'Mute': 'Mute',
     'Unmute': 'Unmute',
-    'Dados para OBS': 'OBS data',
-    'Dados para OBS / Streamlabs': 'OBS / Streamlabs data',
     'Configurações': 'Settings',
     'Modo Twitch polido': 'Polished Twitch mode',
     'Conversor de vídeos': 'Video converter',
@@ -1016,6 +1142,9 @@
     'Perfil automático do codificador': 'Automatic encoder profile',
     'No primeiro uso, inicie a live no OBS/Streamlabs para o DelayEngine ler resolução, FPS e bitrate. O app salva esses dados no codificador; nas próximas vezes ele inicia automaticamente com o perfil salvo. Use edição manual se quiser forçar valores.': 'On first use, start the stream in OBS/Streamlabs so DelayEngine can read resolution, FPS and bitrate. The app saves those encoder settings; next time it starts automatically with the saved profile. Use manual editing if you want to force values.',
     'Aguardando a live chegar para ajustar o codificador.': 'Waiting for the stream to arrive before adjusting the encoder.',
+    'Preencha com a mesma resolução, FPS e bitrate usados no OBS/Streamlabs. Este perfil salvo é o que o codificador usa para enviar à Twitch; leituras observadas da live servem apenas como referência.': 'Fill in the same resolution, FPS and bitrate used in OBS/Streamlabs. This saved profile is what the encoder uses to send to Twitch; observed stream readings are only a reference.',
+    'Perfil salvo pronto para o codificador.': 'Saved profile ready for the encoder.',
+    'Use o mesmo bitrate configurado no OBS/Streamlabs. A leitura observada pode levar alguns ciclos para estabilizar, então o perfil salvo manualmente é a referência principal.': 'Use the same bitrate configured in OBS/Streamlabs. The observed reading can take a few cycles to stabilize, so the manually saved profile is the main reference.',
     'Codificador': 'Encoder',
     'Origem': 'Source',
     'auto': 'auto',
@@ -1031,9 +1160,10 @@
     'Pausar codificador': 'Pause encoder',
     'Atualizar status': 'Refresh status',
     'Perfil salvo. O codificador inicia automaticamente quando a live chegar.': 'Profile saved. The encoder starts automatically when the stream arrives.',
-    'Automático ativo. O codificador está usando o formato detectado da live.': 'Automatic mode active. The encoder is using the detected stream format.',
     'Perfil detectado. Salvando para as próximas lives...': 'Profile detected. Saving it for future streams...',
     'Perfil salvo. Nas próximas vezes o codificador inicia com esses dados.': 'Profile saved. Next time the encoder starts with these settings.',
+    'Perfil detectado. Salvando para as próximas lives sem reiniciar a live atual...': 'Profile detected. Saving for future streams without restarting the current stream...',
+    'Perfil salvo. A live atual continua sem reiniciar; próximas lives usam esses dados.': 'Profile saved. The current stream keeps running; future streams use these settings.',
     'Live saiu. Aguardando voltar para detectar o novo perfil.': 'Stream stopped. Waiting for it to return before detecting the new profile.',
     'Live voltou. Detectando resolução e FPS novamente...': 'Stream returned. Detecting resolution and FPS again...',
     'Live voltou. Medindo resolução e FPS antes de salvar o codificador...': 'Stream returned. Measuring resolution and FPS before saving the encoder...',
@@ -1068,22 +1198,22 @@
     'O DelayEngine fica entre o OBS/Streamlabs e a Twitch. O OBS envia para o servidor local do app, e o app cuida de mandar para a Twitch com ou sem delay.': 'DelayEngine sits between OBS/Streamlabs and Twitch. OBS sends to the app local server, and the app sends to Twitch with or without delay.',
     'Key da Twitch': 'Twitch key',
     'Essa key vem do site da Twitch: Painel do Criador > Configurações > Transmissão > Chave de transmissão primária. Copie essa chave para o DelayEngine, não para o OBS.': 'This key comes from Twitch: Creator Dashboard > Settings > Stream > Primary stream key. Copy that key to DelayEngine, not to OBS.',
-    'No passo 1 de Configurações, salve a key da Twitch. No passo 2, deixe o Destino da Twitch padrão, a menos que você use outro servidor da Twitch.': 'In step 1 of Settings, save the Twitch key. In step 2, keep the default Twitch destination unless you use another Twitch server.',
+    'No passo 1 de Configurações, salve a key da Twitch. No passo 3, deixe o Destino da Twitch padrão, a menos que você use outro servidor da Twitch.': 'In step 1 of Settings, save the Twitch key. In step 3, keep the default Twitch destination unless you use another Twitch server.',
     'Copie os dados do OBS': 'Copy OBS data',
-    'Em Dados para OBS, copie o Servidor do DelayEngine para o campo Servidor do OBS/Streamlabs. Depois copie a Chave local do OBS para o campo Chave. Não cole servidor/chave juntos.': 'Under OBS Data, copy the DelayEngine Server to the OBS/Streamlabs Server field. Then copy the Local OBS Key to the Key field. Do not paste server/key together.',
+    'No passo 2 de Configurações, copie o Servidor do DelayEngine para o campo Servidor do OBS/Streamlabs. Depois copie a Chave local do OBS para o campo Chave. Não cole servidor/chave juntos.': 'In step 2 of Settings, copy the DelayEngine server to the OBS/Streamlabs Server field. Then copy the local OBS key to the Key field. Do not paste server/key together.',
     'Inicie a live no OBS': 'Start the stream in OBS',
     'Quando o OBS conectar, o painel deve mostrar Live online e Twitch recebendo. A partir daí você pode usar Adicionar delay ou Voltar ao vivo.': 'When OBS connects, the panel should show the stream online and Twitch receiving. From there you can use Add delay or Go live.',
     'Prepare o loading': 'Prepare the loading video',
     'Use o Conversor de vídeos para deixar seu vídeo no mesmo formato da live. Depois volte em Configurações e confirme o Loading ativo.': 'Use the Video Converter to make your video match the stream format. Then go back to Settings and confirm the Active loading video.',
     'Adicionar delay': 'Add delay',
     'Escolha o tempo na barrinha e clique em Adicionar delay com loading. O público vê o loading e depois volta para a live atrasada.': 'Choose the time on the slider and click Add delay with loading. Viewers see the loading video and then return to the delayed stream.',
-    'Clique em Voltar ao vivo para sair do delay. O modo Twitch polido fica ligado por padrão para tentar voltar perto da latência normal.': 'Click Go live to leave delay. Polished Twitch mode stays enabled by default to return close to normal latency.',
+    'Clique em Voltar ao vivo para sair do delay. O modo Twitch polido fica ligado por padrão para voltar ao fluxo ao vivo com a transição organizada.': 'Click Go live to leave delay. Polished Twitch mode stays enabled by default to return to the live flow with an organized transition.',
     'FAQ do host': 'Host FAQ',
     'O que o DelayEngine faz': 'What DelayEngine does',
     'Ele fica entre o OBS/Streamlabs e a Twitch. Recebe sua live local, segura os pacotes quando você pede delay e envia para a Twitch sem recodificar áudio ou vídeo.': 'It sits between OBS/Streamlabs and Twitch. It receives your local stream, holds packets when you request delay, and sends to Twitch without re-encoding audio or video.',
     'Uso normal: deixe aberto durante a live.': 'Normal use: keep it open during the live stream.',
     'Para onde o OBS envia': 'Where OBS sends',
-    'O OBS envia para o servidor local do DelayEngine, não direto para a Twitch. Use os campos da aba "Dados para OBS": Servidor do DelayEngine para OBS no campo Servidor, e Chave local do OBS no campo Chave.': 'OBS sends to the local DelayEngine server, not directly to Twitch. Use the fields in "OBS Data": DelayEngine server for OBS in the Server field, and Local OBS key in the Key field.',
+    'O OBS envia para o servidor local do DelayEngine, não direto para a Twitch. Em Configurações, use os campos do passo 2: Servidor para colar no OBS no campo Servidor, e Chave para colar no OBS no campo Chave.': 'OBS sends to the local DelayEngine server, not directly to Twitch. In Settings, use the step 2 fields: Server to paste into OBS in the Server field, and Key to paste into OBS in the Key field.',
     'Não cole a chave da Twitch no OBS.': 'Do not paste the Twitch key into OBS.',
     'Como configuro o OBS/Streamlabs': 'How do I configure OBS/Streamlabs',
     'O que é o servidor do DelayEngine para OBS': 'What is the DelayEngine server for OBS',
@@ -1117,7 +1247,7 @@
     'Comando enviado. A live deve voltar ao vivo pelo modo Twitch polido.': 'Command sent. The stream should return live through polished Twitch mode.',
     'Desligado: volta quando o delay estiver pronto. Ligado: toca o vídeo inteiro antes de voltar. Com delay em 0s, funciona como vinheta ou aviso e depois volta ao vivo no final.': 'Off: returns when the delay is ready. On: plays the whole video before returning. With delay at 0s, it works as an announcement and then returns live at the end.',
     'Escolha quanto atraso você quer adicionar para o público. O DelayEngine aplica exatamente o tempo escolhido.': 'Choose how much delay you want to add for viewers. DelayEngine applies the exact selected time.',
-    'Esse é o atraso normal do caminho OBS, DelayEngine, Twitch e player. Ele não é o delay manual; é a latência natural que qualquer live costuma ter.': 'This is the normal latency of the OBS, DelayEngine, Twitch and player path. It is not the manual delay; it is the natural latency every stream has.',
+    '(!) O delay padrão da stream ao vivo acontece por parte da Twitch, do player e da rede. O DelayEngine NÃO adiciona delay nenhum no modo ao vivo.': '(!) The default live stream delay comes from Twitch, the player, and the network. DelayEngine adds NO delay in live mode.',
     'Vídeo exibido ao adicionar delay. Se ele terminar antes do buffer estar pronto, o DelayEngine repete o loading automaticamente.': 'Video shown when adding delay. If it ends before the buffer is ready, DelayEngine repeats the loading automatically.',
     'Copie os dois campos separadamente para as configurações de transmissão do OBS/Streamlabs. O campo Servidor recebe somente o servidor. O campo Chave recebe somente a chave local. Não junte os dois.': 'Copy both fields separately into the OBS/Streamlabs stream settings. The Server field gets only the server. The Key field gets only the local key. Do not join them together.',
     'A chave da Twitch fica salva aqui no DelayEngine, em Configurações.': 'The Twitch key is saved here in DelayEngine, under Settings.',
@@ -1125,7 +1255,7 @@
     'Edite somente quando quiser trocar chave, destino ou caminhos internos.': 'Edit only when you want to change the key, destination or internal paths.',
     'Chave salva': 'Saved key',
     'Dados locais que o OBS usa': 'Local data used by OBS',
-    'Esses campos são internos do seu computador. Eles servem para o OBS falar com o DelayEngine, não com a Twitch. Copie pela aba Dados para OBS.': 'These fields are internal to your computer. They let OBS talk to DelayEngine, not Twitch. Copy them from the OBS Data tab.',
+    'Esses campos são internos do seu computador. Eles servem para o OBS falar com o DelayEngine, não com a Twitch. Copie daqui e cole separados no OBS/Streamlabs.': 'These fields are internal to your computer. They let OBS talk to DelayEngine, not Twitch. Copy them here and paste them separately into OBS/Streamlabs.',
     'Servidor para colar no OBS': 'Server to paste into OBS',
     'Cole somente este servidor no campo Servidor do OBS/Streamlabs. Não coloque a chave junto.': 'Paste only this server into the OBS/Streamlabs Server field. Do not put the key together with it.',
     'Chave para colar no OBS': 'Key to paste into OBS',
@@ -1139,24 +1269,29 @@
     'O modo Twitch polido fica ativo por padrão. O DelayEngine publica localmente,': 'Polished Twitch mode is enabled by default. DelayEngine publishes locally,',
     'e o codificador sobe sozinho para a Twitch quando você inicia a live no Streamlabs.': 'and the encoder sends to Twitch automatically when you start the stream in Streamlabs.',
     'Modo de envio': 'Output mode',
-    'O DelayEngine envia para uma saída local, e o codificador manda uma live contínua para a Twitch. Isso reduz a chance de a Twitch acumular atraso depois das trocas.': 'DelayEngine sends to a local output, and the encoder sends one continuous stream to Twitch. This reduces the chance of Twitch accumulating latency after switches.',
+    'O DelayEngine envia para uma saída local, e o codificador manda uma live contínua para a Twitch. Isso ajuda a manter a transmissão alinhada depois das trocas.': 'DelayEngine sends to a local output, and the encoder sends one continuous stream to Twitch. This helps keep the stream aligned after switches.',
     'Twitch polido': 'Polished Twitch',
     'Saída local do DelayEngine': 'DelayEngine local output',
     'Endereço interno que o DelayEngine publica quando o modo Twitch polido está ativo. O codificador lê daqui e manda para a Twitch.': 'Internal address DelayEngine publishes to when polished Twitch mode is active. The encoder reads from here and sends to Twitch.',
     'Formato detectado': 'Detected format',
     'Use o mesmo FPS do Streamlabs/OBS. O keyframe fica automaticamente em 2 segundos, que foi o comportamento mais estavel nos testes com Twitch.': 'Use the same FPS as Streamlabs/OBS. The keyframe is automatically set to 2 seconds, which was the most stable behavior in Twitch tests.',
-    'Para sua live 1080p30, tente 4500k. Se a Twitch reclamar, baixe para 4000k.': 'For a 1080p30 stream, try 4500k. If Twitch complains, lower it to 4000k.',
+    'Para sua live 1080p30, use o bitrate que você configurou no OBS/Streamlabs, por exemplo 4500k.': 'For a 1080p30 stream, use the bitrate configured in OBS/Streamlabs, for example 4500k.',
     '160k AAC 48 kHz é um valor seguro para Twitch.': '160k AAC 48 kHz is a safe value for Twitch.',
     'Keyframe': 'Keyframe',
     'Aceleração em hardware': 'Hardware acceleration',
     'Usa a placa de vídeo para codificar a saída Twitch polida. Isso reduz carga da CPU e ajuda o codificador a ficar em tempo real. Auto tenta AMD, NVIDIA, Intel e cai para CPU se não houver suporte.': 'Uses the GPU to encode the polished Twitch output. This reduces CPU load and helps the encoder stay realtime. Auto tries AMD, NVIDIA, Intel, then falls back to CPU if unsupported.',
     'CPU / x264': 'CPU / x264',
     'Correção automática de atraso': 'Automatic latency correction',
-    'Quando o codificador acumular atraso estimado acima do limite, o app tenta voltar a saída local para o ao vivo sem reiniciar o FFmpeg. Só age quando o delay manual está desligado.': 'When the encoder accumulates estimated latency above the limit, the app tries to bring the local output back to live without restarting FFmpeg. It only acts when manual delay is off.',
+    'Fica ligada por padrão. Quando o codificador passa do atraso estimado salvo, o app realinha a saída local para o ao vivo sem reiniciar o FFmpeg. Só age quando o delay manual está desligado.': 'Enabled by default. When the encoder goes above the saved estimated delay, the app realigns the local output to live without restarting FFmpeg. It only acts when manual delay is off.',
     'Limite para corrigir': 'Correction threshold',
-    'Valor em segundos de atraso estimado antes de pedir correção automática. Use 3s para testes conservadores.': 'Estimated latency in seconds before requesting automatic correction. Use 3s for conservative tests.',
+    'Valor em segundos de atraso estimado antes de pedir correção automática. O número fica salvo: se salvar 4, continua 4 nas próximas vezes; se salvar 5, continua 5.': 'Estimated latency in seconds before requesting automatic correction. The number is saved: if you save 4, it stays 4 next time; if you save 5, it stays 5.',
+    'Priorizar tempo real': 'Prioritize realtime',
+    'Modo parecido com OBS/Streamlabs: quando não há delay manual ativo, o app prioriza tempo real e mantém uma folga para não corrigir pequenas oscilações normais.': 'OBS/Streamlabs-like mode: when manual delay is not active, the app prioritizes realtime and keeps a tolerance so it does not correct small normal fluctuations.',
+    'Folga de atraso': 'Latency tolerance',
+    'Atraso estimado permitido antes de priorizar tempo real. Valor maior corrige menos vezes; valor menor mantém a live mais próxima do ao vivo. Fica salvo nas próximas aberturas.': 'Estimated delay allowed before prioritizing realtime. A higher value corrects less often; a lower value keeps the stream closer to live. It is saved for next launches.',
     'Ação': 'Action',
     'Voltar ao vivo': 'Go live',
+    'Salvar configurações do modo Twitch': 'Save Twitch mode settings',
     'Normalmente você não precisa apertar nada aqui. Use os botões só para trocar configurações ou diagnosticar.': 'Normally you do not need to press anything here. Use these buttons only to change settings or diagnose issues.',
     'O vídeo de loading aparece quando você adiciona delay durante a live.': 'The loading video appears when you add delay during the live stream.',
     'Por padrão, o app detecta a qualidade da live recebida e prepara o conversor para combinar resolução, FPS, áudio AAC 48 kHz e bitrate seguro.': 'By default, the app detects the received stream quality and prepares the converter to match resolution, FPS, AAC 48 kHz audio and a safe bitrate.',
@@ -1181,7 +1316,7 @@
     'Pasta de vídeos aberta.': 'Videos folder opened.',
     'Configurações salvas. Se mudou o modo de envio, reinicie o app pelo ícone perto do relógio.': 'Settings saved. If you changed the output mode, restart the app from the icon near the clock.',
     'Stream key salva removida. Para transmitir para a Twitch, salve uma chave nova.': 'Saved stream key removed. To stream to Twitch, save a new key.',
-    'Modo Twitch salvo. A saída, o codificador e a correção automática usam estes valores.': 'Twitch mode saved. Output, encoder and automatic correction use these values.',
+    'Modo Twitch salvo. A live atual não foi reiniciada; os valores entram no próximo início do app ou se você reiniciar o codificador manualmente.': 'Twitch mode saved. The current stream was not restarted; the values apply on the next app start or if you manually restart the encoder.',
     'Codificador iniciado/reiniciado. A Twitch recebe a saída polida.': 'Encoder started/restarted. Twitch receives the polished output.',
     'Codificador pausado. Ele volta quando você clicar em Reiniciar codificador.': 'Encoder paused. It returns when you click Restart encoder.',
     'Video ativado para o proximo loading.': 'Video activated for the next loading.',
@@ -1217,8 +1352,29 @@
     'Final': 'Final',
     'Nenhum vídeo de loading ativo foi encontrado. Prepare ou ative um vídeo antes de usar delay com loading.': 'No active loading video was found. Prepare or activate a video before using delay with loading.',
     'Vá em Conversor de vídeos logo abaixo e gere um vídeo compatível com a live para usar este recurso.': 'Go to Video Converter below and generate a video compatible with the stream to use this feature.',
+    'Transição da live em andamento. Aguarde terminar antes de adicionar outro delay.': 'Live transition in progress. Wait for it to finish before adding another delay.',
+    'O delay já está ativo. Use Voltar ao vivo antes de adicionar outro delay.': 'Delay is already active. Use Go live before adding another delay.',
+    'Aguarde a live chegar do OBS/Streamlabs antes de adicionar delay.': 'Wait for the stream to arrive from OBS/Streamlabs before adding delay.',
+    'Aguarde a saída ficar pronta antes de adicionar delay.': 'Wait for the output to be ready before adding delay.',
     'Vídeo de loading pronto.': 'Loading video ready.',
-    'nenhum loading ativo': 'no active loading'
+    'nenhum loading ativo': 'no active loading',
+    'Alertas:': 'Alerts:',
+    'Ver alertas': 'Show alerts',
+    'Ocultar alertas': 'Hide alerts',
+    'Chave da Twitch ausente': 'Missing Twitch key',
+    'Salve a stream key da Twitch em Configuracoes para o envio final funcionar.': 'Save the Twitch stream key in Settings so final output can work.',
+    'Video de loading nao encontrado': 'Loading video not found',
+    'Prepare ou ative um video de loading antes de usar Adicionar delay com loading.': 'Prepare or activate a loading video before using Add delay with loading.',
+    'Aguardando OBS/Streamlabs': 'Waiting for OBS/Streamlabs',
+    'Inicie a transmissao no OBS/Streamlabs usando o servidor e a chave local do DelayEngine.': 'Start streaming in OBS/Streamlabs using the DelayEngine local server and key.',
+    'Saida ainda preparando': 'Output still preparing',
+    'A live local chegou, mas a saida final ainda nao confirmou envio. Aguarde alguns segundos ou revise o modo Twitch polido.': 'The local stream arrived, but final output has not confirmed sending yet. Wait a few seconds or review polished Twitch mode.',
+    'Delay manual ativo': 'Manual delay active',
+    'Keyframe fora do recomendado': 'Keyframe outside recommendation',
+    'Delay perto do limite': 'Delay near the limit',
+    'O delay manual esta perto de 60 segundos. O app bloqueia acima disso para proteger o fluxo.': 'Manual delay is near 60 seconds. The app blocks higher values to protect the stream flow.',
+    'Leitura observada da live': 'Observed stream reading',
+    'Fechar alerta': 'Close alert'
   };
   function activeLanguage() {
     return localStorage.getItem(LANGUAGE_KEY) === 'en' ? 'en' : 'pt';
@@ -1285,42 +1441,94 @@
   let delaySince = null;
   let lastQualitySample = null;
   let lastLogText = '';
+  let latestStatus = null;
   let previewReloadLastTry = 0;
   let previewInputConnected = false;
   let previewUserPaused = true;
   let previewUserMuted = true;
+  let previewMode = localStorage.getItem('delayengine.previewMode') === 'loading' ? 'loading' : 'live';
   let previewGestureRetryTimer = null;
   let liveProfileEditing = false;
   let encodedProfileEditing = false;
   let encodedProfileSaving = false;
+  let encodedProfileMode = 'auto';
   let lastAutoProfileKey = '';
   let lastEncodedAutoProfileKey = localStorage.getItem('delayengine.encodedProfileKey') || '';
+  let loadingModeMigrated = false;
   let previousInputConnected = false;
   let encodedProfileReconnectPending = false;
   let loadingVideoAvailable = false;
+  let delayActiveForArm = false;
+  let delayTransitionMode = '';
+  let inputLiveReadyForArm = false;
+  let outputLiveReadyForArm = false;
+  let defaultDelaySyncTimer = null;
+  let alertDrawerOpen = false;
+  let activeAlerts = [];
+  let alertHistory = [];
+  let lastToastAt = {};
+  let profileStableKey = '';
+  let profileStableCount = 0;
+  let profileMismatchNotifiedKey = '';
   const DELAY_COMPENSATION_SECONDS = 1;
   const MAX_DELAY_SECONDS = 60;
   const SOFT_DELAY_SECONDS = 50;
-  const toolPanels = ['guidePanel', 'settingsPanel', 'twitchPanel', 'converterPanel'];
+  const ALERT_TOAST_COOLDOWN_MS = 5 * 60 * 1000;
+  const PROFILE_STABLE_READS = 5;
+  const toolPanels = ['settingsPanel', 'twitchPanel', 'converterPanel'];
   const SUPPORT_CACHE_KEY = 'delayengine.supportProfile';
   const SUPPORT_CACHE_DAY_KEY = 'delayengine.supportProfileDay';
+  const TUTORIAL_CACHE_KEY = 'delayengine.tutorialGuide';
+  const FAQ_CACHE_KEY = 'delayengine.faqGuide';
   const SUPPORT_SLIDE_MS = 20000;
   let supportSlideIndex = 0;
   let supportSlideCount = 1;
   let supportTimer = null;
 
   function activePath() { return $('videoSelect').value || settings.activeLoadingPath || 'videos/live/loading.flv'; }
-  function setLoadingAvailability(available) {
-    loadingVideoAvailable = Boolean(available);
-    $('arm').disabled = !loadingVideoAvailable;
-    if (loadingVideoAvailable) {
-      $('armTipWrap').removeAttribute('data-tip');
-      $('arm').removeAttribute('title');
-    } else {
-      const tip = tr('Vá em Conversor de vídeos logo abaixo e gere um vídeo compatível com a live para usar este recurso.');
+  function refreshArmButtonState() {
+    if (delayTransitionMode) {
+      const tip = tr('Transição da live em andamento. Aguarde terminar antes de adicionar outro delay.');
+      $('arm').disabled = true;
       $('armTipWrap').setAttribute('data-tip', tip);
       $('arm').setAttribute('title', tip);
+      return;
     }
+    if (delayActiveForArm) {
+      const tip = tr('O delay já está ativo. Use Voltar ao vivo antes de adicionar outro delay.');
+      $('arm').disabled = true;
+      $('armTipWrap').setAttribute('data-tip', tip);
+      $('arm').setAttribute('title', tip);
+      return;
+    }
+    if (!loadingVideoAvailable) {
+      const tip = tr('Vá em Conversor de vídeos logo abaixo e gere um vídeo compatível com a live para usar este recurso.');
+      $('arm').disabled = true;
+      $('armTipWrap').setAttribute('data-tip', tip);
+      $('arm').setAttribute('title', tip);
+      return;
+    }
+    if (!inputLiveReadyForArm) {
+      const tip = tr('Aguarde a live chegar do OBS/Streamlabs antes de adicionar delay.');
+      $('arm').disabled = true;
+      $('armTipWrap').setAttribute('data-tip', tip);
+      $('arm').setAttribute('title', tip);
+      return;
+    }
+    if (!outputLiveReadyForArm) {
+      const tip = tr('Aguarde a saída ficar pronta antes de adicionar delay.');
+      $('arm').disabled = true;
+      $('armTipWrap').setAttribute('data-tip', tip);
+      $('arm').setAttribute('title', tip);
+      return;
+    }
+    $('arm').disabled = false;
+    $('armTipWrap').removeAttribute('data-tip');
+    $('arm').removeAttribute('title');
+  }
+  function setLoadingAvailability(available) {
+    loadingVideoAvailable = Boolean(available);
+    refreshArmButtonState();
     $('loadingAvailability').textContent = loadingVideoAvailable
       ? tr('Vídeo de loading pronto.')
       : tr('Nenhum vídeo de loading ativo foi encontrado. Prepare ou ative um vídeo antes de usar delay com loading.');
@@ -1367,10 +1575,11 @@
         url: cleanText(item.url || item.link || item.paymentUrl)
       }))
       .filter((item) => item.title);
-    if (!payments.length && (profile.qrUrl || profile.pixKey)) {
+    const legacyPixTitle = cleanText(profile.pixTitle);
+    if (!payments.length && legacyPixTitle && (profile.qrUrl || profile.pixKey)) {
       payments.push({
         label: cleanText(profile.qrLabel || profile.pixLabel),
-        title: cleanText(profile.pixTitle),
+        title: legacyPixTitle,
         info: cleanText(profile.pixInfo),
         key: cleanText(profile.pixKey),
         qrUrl: cleanText(profile.qrUrl),
@@ -1415,7 +1624,6 @@
         }
         side.appendChild(title);
       }
-      qrBox.appendChild(side);
       if (payment.qrUrl) {
         const qr = document.createElement('img');
         qr.className = 'support-qr';
@@ -1457,6 +1665,7 @@
         const input = document.createElement('input');
         input.readOnly = true;
         input.value = payment.key;
+        input.title = payment.key;
         const button = document.createElement('button');
         button.type = 'button';
         button.textContent = tr('Copiar');
@@ -1468,7 +1677,8 @@
       }
 
       slide.appendChild(qrBox);
-      if (hasCopyContent) slide.appendChild(copyBox);
+      if (hasCopyContent) side.appendChild(copyBox);
+      slide.appendChild(side);
       track.appendChild(slide);
 
       const dot = document.createElement('button');
@@ -1573,6 +1783,160 @@
 
     hideSupportProfile();
   }
+  function renderTutorialGuide(guide) {
+    if (!guide || !Array.isArray(guide.steps) || guide.steps.length === 0) return;
+    const box = $('tutorialBox');
+    box.textContent = '';
+
+    const title = document.createElement('h3');
+    title.textContent = guide.title || 'Tutorial completo';
+    box.appendChild(title);
+
+    if (guide.intro) {
+      const intro = document.createElement('p');
+      intro.textContent = guide.intro;
+      box.appendChild(intro);
+    }
+
+    const steps = document.createElement('div');
+    steps.className = 'tutorial-steps';
+    for (const item of guide.steps) {
+      if (!item || !item.title || !item.text) continue;
+      const step = document.createElement('div');
+      step.className = 'tutorial-step';
+
+      const strong = document.createElement('strong');
+      strong.textContent = item.title;
+      step.appendChild(strong);
+
+      const text = document.createElement('span');
+      text.textContent = item.text;
+      step.appendChild(text);
+
+      if (item.imageUrl) {
+        const image = document.createElement('img');
+        image.src = item.imageUrl;
+        image.alt = item.imageAlt || item.title;
+        image.loading = 'lazy';
+        step.appendChild(image);
+      }
+
+      if (item.linkUrl) {
+        const link = document.createElement('a');
+        link.className = 'tutorial-link';
+        link.href = item.linkUrl;
+        link.target = '_blank';
+        link.rel = 'noreferrer';
+        link.textContent = item.linkLabel || 'Abrir referencia';
+        step.appendChild(link);
+      }
+
+      steps.appendChild(step);
+    }
+    if (steps.children.length > 0) box.appendChild(steps);
+  }
+  async function loadTutorialGuide() {
+    let local = null;
+    try {
+      const response = await fetch('/tutorial.json', { cache: 'no-store' });
+      if (response.ok) local = await response.json();
+    } catch (_) {}
+
+    if (local && local.remoteTutorialUrl) {
+      try {
+        const response = await fetch(local.remoteTutorialUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('remote tutorial unavailable');
+        const remote = await response.json();
+        localStorage.setItem(TUTORIAL_CACHE_KEY, JSON.stringify(remote));
+        renderTutorialGuide(remote);
+        return;
+      } catch (_) {}
+    }
+
+    try {
+      const cached = JSON.parse(localStorage.getItem(TUTORIAL_CACHE_KEY) || 'null');
+      if (cached) {
+        renderTutorialGuide(cached);
+        return;
+      }
+    } catch (_) {}
+
+    if (local) renderTutorialGuide(local);
+  }
+  function renderFAQGuide(guide) {
+    const grid = $('faqGrid');
+    if (!grid || !guide || !Array.isArray(guide.items) || guide.items.length === 0) return;
+    grid.textContent = '';
+    for (const item of guide.items) {
+      if (!item || !item.title || !item.text) continue;
+      const card = document.createElement('div');
+      card.className = 'faq-card';
+
+      const title = document.createElement('div');
+      title.className = 'faq-title';
+      title.textContent = item.title;
+      card.appendChild(title);
+
+      const text = document.createElement('p');
+      text.textContent = item.text;
+      card.appendChild(text);
+
+      if (item.imageUrl) {
+        const image = document.createElement('img');
+        image.src = item.imageUrl;
+        image.alt = item.imageAlt || item.title;
+        image.loading = 'lazy';
+        card.appendChild(image);
+      }
+
+      if (item.linkUrl) {
+        const link = document.createElement('a');
+        link.className = 'faq-link';
+        link.href = item.linkUrl;
+        link.target = '_blank';
+        link.rel = 'noreferrer';
+        link.textContent = item.linkLabel || 'Abrir referencia';
+        card.appendChild(link);
+      }
+
+      if (item.tag) {
+        const tag = document.createElement('span');
+        tag.className = 'faq-tag';
+        tag.textContent = item.tag;
+        card.appendChild(tag);
+      }
+
+      grid.appendChild(card);
+    }
+  }
+  async function loadFAQGuide() {
+    let local = null;
+    try {
+      const response = await fetch('/faq.json', { cache: 'no-store' });
+      if (response.ok) local = await response.json();
+    } catch (_) {}
+
+    if (local && local.remoteFaqUrl) {
+      try {
+        const response = await fetch(local.remoteFaqUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('remote faq unavailable');
+        const remote = await response.json();
+        localStorage.setItem(FAQ_CACHE_KEY, JSON.stringify(remote));
+        renderFAQGuide(remote);
+        return;
+      } catch (_) {}
+    }
+
+    try {
+      const cached = JSON.parse(localStorage.getItem(FAQ_CACHE_KEY) || 'null');
+      if (cached) {
+        renderFAQGuide(cached);
+        return;
+      }
+    } catch (_) {}
+
+    if (local) renderFAQGuide(local);
+  }
   function panelGroup(panelId) {
     return [panelId];
   }
@@ -1605,8 +1969,228 @@
         delete button.dataset.busyDisabled;
       }
     }
+    if (!busy) refreshArmButtonState();
   }
   function note(text, kind = '') { $('message').textContent = text; $('message').className = `notice ${kind}`; }
+  function formatAlertTime(date = new Date()) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+  function dismissToast(toast) {
+    if (!toast) return;
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(8px)';
+    window.setTimeout(() => toast.remove(), 180);
+  }
+  function showToast(alert) {
+    const now = Date.now();
+    const last = lastToastAt[alert.id] || 0;
+    if (!alert.toast || now - last < ALERT_TOAST_COOLDOWN_MS) return;
+    lastToastAt[alert.id] = now;
+    const stack = $('toastStack');
+    if (!stack) return;
+    const toast = document.createElement('div');
+    toast.className = `toast ${alert.level || 'warn'}`;
+    const body = document.createElement('div');
+    const title = document.createElement('div');
+    title.className = 'toast-title';
+    title.textContent = alert.title;
+    const message = document.createElement('div');
+    message.className = 'toast-body';
+    message.textContent = alert.body;
+    body.appendChild(title);
+    body.appendChild(message);
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.textContent = 'x';
+    close.setAttribute('aria-label', 'Fechar alerta');
+    close.addEventListener('click', () => dismissToast(toast));
+    toast.appendChild(body);
+    toast.appendChild(close);
+    stack.prepend(toast);
+    window.setTimeout(() => dismissToast(toast), 11000);
+  }
+  function renderAlertCenter(alerts) {
+    activeAlerts = alerts;
+    const summary = $('alertSummary');
+    const drawer = $('alertDrawer');
+    if (!summary || !drawer) return;
+    const critical = alerts.filter((alert) => alert.level === 'bad').length;
+    const warning = alerts.filter((alert) => alert.level === 'warn').length;
+    const text = alerts.length
+      ? `${alerts.length} alerta${alerts.length === 1 ? '' : 's'} ativo${alerts.length === 1 ? '' : 's'}${critical ? `, ${critical} critico${critical === 1 ? '' : 's'}` : warning ? `, ${warning} atencao` : ''}.`
+      : 'Tudo parece pronto.';
+    summary.innerHTML = `<strong>Alertas:</strong> ${text}`;
+    drawer.classList.toggle('open', alertDrawerOpen);
+    const visible = alertDrawerOpen ? [...alerts, ...alertHistory.filter((old) => !alerts.some((alert) => alert.id === old.id)).slice(0, 12)] : [];
+    drawer.innerHTML = '';
+    for (const alert of visible) {
+      const item = document.createElement('div');
+      item.className = `alert-item ${alert.level || 'warn'}`;
+      const head = document.createElement('div');
+      head.className = 'alert-item-title';
+      const title = document.createElement('span');
+      title.textContent = alert.title;
+      const time = document.createElement('span');
+      time.className = 'muted';
+      time.textContent = alert.time || '';
+      head.appendChild(title);
+      head.appendChild(time);
+      const body = document.createElement('div');
+      body.className = 'alert-item-body';
+      body.textContent = alert.body;
+      item.appendChild(head);
+      item.appendChild(body);
+      drawer.appendChild(item);
+    }
+  }
+  function updateAlertCenter(alerts) {
+    const stamped = alerts.map((alert) => ({ time: alert.time || formatAlertTime(), ...alert }));
+    for (const alert of stamped) {
+      if (!alertHistory.some((item) => item.id === alert.id && item.body === alert.body)) {
+        alertHistory.unshift(alert);
+        alertHistory = alertHistory.slice(0, 30);
+        showToast(alert);
+      }
+    }
+    renderAlertCenter(stamped);
+  }
+  function manualEncodedProfile() {
+    return {
+      width: Number($('encodedWidth').value || 0),
+      height: Number($('encodedHeight').value || 0),
+      fps: Number($('encodedFps').value || 0),
+      bitrate: normalizeBitrateText($('encodedVideoBitrate').value || '')
+    };
+  }
+  function profileMismatchAlert(status) {
+    if (!statusHasMeasuredVideoProfile(status)) {
+      profileStableKey = '';
+      profileStableCount = 0;
+      return null;
+    }
+    const detected = autoProfileFromStatus(status);
+    const detectedKey = encodedProfileKey(detected);
+    if (detectedKey === profileStableKey) profileStableCount += 1;
+    else {
+      profileStableKey = detectedKey;
+      profileStableCount = 1;
+    }
+    if (profileStableCount < PROFILE_STABLE_READS) return null;
+    const manual = manualEncodedProfile();
+    const manualKey = encodedProfileKey(manual);
+    if (detectedKey === manualKey) {
+      if (profileMismatchNotifiedKey === detectedKey) profileMismatchNotifiedKey = '';
+      return null;
+    }
+    const id = `profile-mismatch-${detectedKey}-${manualKey}`;
+    const shouldToast = profileMismatchNotifiedKey !== id;
+    profileMismatchNotifiedKey = id;
+    return null;
+  }
+  function buildStatusAlerts(status, keyframeSec, keyframeOk, targetDelaySeconds) {
+    const alerts = [];
+    if (settings.ok && !settings.streamKeySaved) {
+      alerts.push({
+        id: 'missing-twitch-key',
+        level: 'bad',
+        toast: true,
+        title: 'Chave da Twitch ausente',
+        body: 'Salve a stream key da Twitch em Configuracoes para o envio final funcionar.'
+      });
+    }
+    if (!loadingVideoAvailable) {
+      alerts.push({
+        id: 'missing-loading-video',
+        level: 'warn',
+        toast: false,
+        title: 'Video de loading nao encontrado',
+        body: 'Prepare ou ative um video de loading antes de usar Adicionar delay com loading.'
+      });
+    }
+    if (!status.input.connected) {
+      alerts.push({
+        id: 'input-waiting',
+        level: 'warn',
+        toast: false,
+        title: 'Aguardando OBS/Streamlabs',
+        body: 'Inicie a transmissao no OBS/Streamlabs usando o servidor e a chave local do DelayEngine.'
+      });
+    }
+    if (status.input.connected && !status.output.connected) {
+      alerts.push({
+        id: 'output-waiting',
+        level: 'warn',
+        toast: true,
+        title: 'Saida ainda preparando',
+        body: 'A live local chegou, mas a saida final ainda nao confirmou envio. Aguarde alguns segundos ou revise o modo Twitch polido.'
+      });
+    }
+    if (status.delayEnabled) {
+      alerts.push({
+        id: 'manual-delay-active',
+        level: 'good',
+        toast: false,
+        title: 'Delay manual ativo',
+        body: `A live esta rodando com delay manual: ${status.delay}.`
+      });
+    }
+    if (keyframeSec > 0 && !keyframeOk) {
+      alerts.push({
+        id: 'keyframe-warning',
+        level: 'warn',
+        toast: true,
+        title: 'Keyframe fora do recomendado',
+        body: `O OBS/Streamlabs parece em ${keyframeSec.toFixed(1)}s. Para Twitch, use keyframe de 2s.`
+      });
+    }
+    if (targetDelaySeconds >= SOFT_DELAY_SECONDS) {
+      alerts.push({
+        id: 'delay-near-limit',
+        level: 'warn',
+        toast: true,
+        title: 'Delay perto do limite',
+        body: 'O delay manual esta perto de 60 segundos. O app bloqueia acima disso para proteger o fluxo.'
+      });
+    }
+    const profileAlert = profileMismatchAlert(status);
+    if (profileAlert) alerts.push(profileAlert);
+    return alerts;
+  }
+  function confirmLarge(message, options = {}) {
+    return new Promise((resolve) => {
+      const modal = $('confirmModal');
+      const title = $('confirmTitle');
+      const text = $('confirmText');
+      const ok = $('confirmOk');
+      const cancel = $('confirmCancel');
+      title.textContent = tr(options.title || 'Confirmar ação');
+      text.textContent = tr(message);
+      ok.textContent = tr(options.okText || 'Continuar sem loading');
+      cancel.textContent = tr(options.cancelText || 'Cancelar');
+      modal.classList.remove('hidden');
+      const cleanup = (answer) => {
+        modal.classList.add('hidden');
+        ok.removeEventListener('click', onOk);
+        cancel.removeEventListener('click', onCancel);
+        modal.removeEventListener('click', onBackdrop);
+        document.removeEventListener('keydown', onKey);
+        resolve(answer);
+      };
+      const onOk = () => cleanup(true);
+      const onCancel = () => cleanup(false);
+      const onBackdrop = (event) => {
+        if (event.target === modal) cleanup(false);
+      };
+      const onKey = (event) => {
+        if (event.key === 'Escape') cleanup(false);
+      };
+      ok.addEventListener('click', onOk);
+      cancel.addEventListener('click', onCancel);
+      modal.addEventListener('click', onBackdrop);
+      document.addEventListener('keydown', onKey);
+      ok.focus();
+    });
+  }
   function mb(bytes) { return `${(Number(bytes || 0) / 1024 / 1024).toFixed(1)} MB`; }
   function numberValue(id, fallback = 0) {
     const value = Number($(id).value);
@@ -1627,7 +2211,82 @@
     if (!clean) return '';
     return `/preview-hls/${clean.split('/').map(encodeURIComponent).join('/')}/index.m3u8`;
   }
+  function selectedReadyVideoOption() {
+    const select = $('videoSelect');
+    if (!select) return null;
+    const option = select.selectedOptions && select.selectedOptions[0];
+    return option && option.dataset && option.dataset.name ? option : null;
+  }
+  function stopPreviewSource() {
+    if (previewGestureRetryTimer) {
+      window.clearTimeout(previewGestureRetryTimer);
+      previewGestureRetryTimer = null;
+    }
+    if (previewHls) {
+      previewHls.destroy();
+      previewHls = null;
+    }
+    const video = $('previewVideo');
+    if (video) {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    }
+    previewURL = '';
+  }
+  function updatePreviewModeButtons() {
+    $('previewModeLive').classList.toggle('active', previewMode === 'live');
+    $('previewModeLoading').classList.toggle('active', previewMode === 'loading');
+    $('previewHelp').textContent = previewMode === 'loading'
+      ? tr('Preview do vídeo de loading selecionado. Escolha um vídeo na lista, aperte Play e, se for o certo, use Ativar vídeo escolhido.')
+      : tr('Preview local da live recebida. Ele não inclui o vídeo de loading nem a saída final com delay da Twitch.');
+    $('previewLink').style.display = previewMode === 'loading' ? 'none' : '';
+  }
+  function setupLoadingPreview() {
+    updatePreviewModeButtons();
+    const option = selectedReadyVideoOption();
+    if (!option) {
+      stopPreviewSource();
+      $('previewState').textContent = tr('Escolha um vídeo pronto na lista para pré-visualizar.');
+      $('previewUptime').textContent = '';
+      $('previewQuality').textContent = '';
+      return;
+    }
+    const url = `/videos/preview?name=${encodeURIComponent(option.dataset.name)}`;
+    if (previewURL === url) return;
+    stopPreviewSource();
+    previewURL = url;
+    const video = $('previewVideo');
+    video.muted = previewUserMuted;
+    video.defaultMuted = previewUserMuted;
+    video.autoplay = false;
+    video.playsInline = true;
+    video.preload = 'metadata';
+    if (previewUserMuted) video.setAttribute('muted', '');
+    else video.removeAttribute('muted');
+    video.removeAttribute('autoplay');
+    video.setAttribute('playsinline', '');
+    video.src = url;
+    video.load();
+    video.addEventListener('error', () => {
+      $('previewState').textContent = tr('Gerando preview MP4 do loading. Tente Play de novo em alguns segundos.');
+    }, { once: true });
+    $('previewState').textContent = tr('Preview do loading pronto. Aperte Play para conferir.');
+    $('previewUptime').textContent = option.dataset.name;
+    $('previewQuality').textContent = option.textContent || '';
+    updatePreviewMuteButton();
+  }
+  function setPreviewMode(nextMode) {
+    previewMode = nextMode === 'loading' ? 'loading' : 'live';
+    localStorage.setItem('delayengine.previewMode', previewMode);
+    previewUserPaused = true;
+    stopPreviewSource();
+    updatePreviewModeButtons();
+    if (previewMode === 'loading') setupLoadingPreview();
+    else setupPreview(true);
+  }
   function setupPreview(force = false) {
+    if (previewMode !== 'live') return;
     const url = hlsURLForLocalPath(settings.localSourcePath);
     if (!url || (!force && url === previewURL)) return;
     previewURL = url;
@@ -1705,7 +2364,8 @@
   }
   function playPreviewFromGesture() {
     previewUserPaused = false;
-    setupPreview(true);
+    if (previewMode === 'loading') setupLoadingPreview();
+    else setupPreview(true);
     const video = $('previewVideo');
     if (video) {
       video.muted = previewUserMuted;
@@ -1730,6 +2390,7 @@
     }, 350);
   }
   function maintainPreviewAutoplay() {
+    if (previewMode !== 'live') return;
     if (!previewInputConnected || previewUserPaused) return;
     const video = $('previewVideo');
     if (!video) return;
@@ -1757,6 +2418,7 @@
     } else {
       delaySince = null;
     }
+    if (previewMode === 'loading') return;
 
     const previewVideo = $('previewVideo');
     if (!status.input.connected) {
@@ -1804,12 +2466,20 @@
     const delay = clampDelaySeconds(value);
     localStorage.setItem('delayengine.defaultDelaySeconds', String(delay));
     if ($('defaultDelaySeconds')) $('defaultDelaySeconds').value = delay;
+    if (defaultDelaySyncTimer) window.clearTimeout(defaultDelaySyncTimer);
+    defaultDelaySyncTimer = window.setTimeout(() => {
+      api('/settings/default-delay', { method: 'POST', body: JSON.stringify({ seconds: delay }) }).catch(() => {});
+    }, 450);
   }
   function loadLoadingModeChoice() {
-    $('playFullLoading').checked = localStorage.getItem('delayengine.playFullLoading') === 'true';
+    $('playFullLoading').checked = Boolean(settings.playFullLoading) || localStorage.getItem('delayengine.playFullLoading') === 'true';
   }
   function saveLoadingModeChoice() {
-    localStorage.setItem('delayengine.playFullLoading', $('playFullLoading').checked ? 'true' : 'false');
+    const checked = $('playFullLoading').checked;
+    localStorage.setItem('delayengine.playFullLoading', checked ? 'true' : 'false');
+    api('/settings', { method: 'POST', body: JSON.stringify(settingsPayload({ playFullLoading: checked })) })
+      .then((saved) => { settings = saved; })
+      .catch((error) => note(`Não consegui salvar Loading completo: ${error.message}`, 'warn'));
   }
   function desiredDelaySeconds() { return clampDelaySeconds(numberValue('delayNumber', 0)); }
   function viewerDelaySeconds() {
@@ -1866,16 +2536,21 @@
   }
   function setEncodedProfileEditing(editing) {
     encodedProfileEditing = editing;
-    for (const id of ['encodedWidth', 'encodedHeight', 'encodedFps', 'encodedVideoBitrate', 'encodedAudioBitrate', 'encodedEncoder']) {
+    for (const id of ['encodedWidth', 'encodedHeight', 'encodedFps', 'encodedVideoBitrate', 'encodedAudioBitrate', 'encodedEncoder', 'autoLatencyCorrection', 'autoLatencySeconds', 'realtimePriority', 'realtimePrioritySeconds']) {
       const element = $(id);
       if (element) element.disabled = !editing;
     }
     $('editEncodedProfile').classList.toggle('hidden', editing);
     $('saveEncodedProfile').classList.toggle('hidden', !editing);
-    $('encodedProfileSource').textContent = editing ? 'manual' : 'auto';
+    $('encodedProfileSource').textContent = 'manual';
   }
   function currentEncodedBitrate() {
     return normalizeBitrateText(($('encodedVideoBitrate') && $('encodedVideoBitrate').value) || '4500k');
+  }
+  function measuredInputBitrate(status) {
+    const kbps = Number(status.input.bitrateKbps || 0);
+    if (!Number.isFinite(kbps) || kbps < 500) return '';
+    return `${Math.max(500, Math.round(kbps / 500) * 500)}k`;
   }
   function normalizeBitrateText(value) {
     const text = String(value || '').trim().toLowerCase();
@@ -1923,14 +2598,27 @@
       lastAutoProfileKey = `${width}x${height}/${fps}/${bitrate}`;
     }
   }
+  function encodedProfileFromFields() {
+    return {
+      profile: 'custom',
+      width: Number($('encodedWidth').value || 1920),
+      height: Number($('encodedHeight').value || 1080),
+      fps: Number($('encodedFps').value || 30),
+      bitrate: normalizeBitrateText($('encodedVideoBitrate').value || '4500k')
+    };
+  }
   function encodedProfileKey(profile) {
-    return `${Number(profile.width || 1920)}x${Number(profile.height || 1080)}/${Number(profile.fps || 30)}/${normalizeBitrateText(profile.bitrate || currentEncodedBitrate())}`;
+    return `${Number(profile.width || 0)}x${Number(profile.height || 0)}/${Number(profile.fps || 0)}/${normalizeBitrateText(profile.bitrate || currentEncodedBitrate())}`;
+  }
+  function encodedAutoProfileKey(profile) {
+    return `${Number(profile.width || 0)}x${Number(profile.height || 0)}/${Number(profile.fps || 0)}`;
   }
   function applyEncodedProfileToFields(profile, source = 'manual') {
-    const width = Number(profile.width || 1920);
-    const height = Number(profile.height || 1080);
-    const fps = Number(profile.fps || 30);
+    const width = Number(profile.width || 0);
+    const height = Number(profile.height || 0);
+    const fps = Number(profile.fps || 0);
     const bitrate = normalizeBitrateText(profile.bitrate || currentEncodedBitrate());
+    if (!width || !height || !fps || !bitrate) return;
     $('encodedWidth').value = width;
     $('encodedHeight').value = height;
     $('encodedFps').value = fps;
@@ -1941,15 +2629,16 @@
     $('encodedProfileSource').textContent = source === 'auto' ? 'auto' : 'manual';
   }
   function autoProfileFromStatus(status) {
-    const width = Number(status.input.width || $('convertWidth').value || $('encodedWidth').value || 1920);
-    const height = Number(status.input.height || $('convertHeight').value || $('encodedHeight').value || 1080);
+    const width = Number(status.input.width || 0);
+    const height = Number(status.input.height || 0);
     const measuredFps = Number(status.input.fps || 0);
-    const fps = measuredFps >= 50 ? 60 : measuredFps >= 20 ? 30 : Number($('encodedFps').value || 30);
+    const fps = measuredFps >= 50 ? 60 : measuredFps >= 20 ? 30 : 0;
+    const bitrate = measuredInputBitrate(status);
     return {
       width,
       height,
       fps,
-      bitrate: currentEncodedBitrate(),
+      bitrate,
       videoCodec: status.input.videoCodec || 'vídeo',
       audioCodec: status.input.audioCodec || 'áudio'
     };
@@ -1958,7 +2647,8 @@
     return Boolean(status.input.connected)
       && Number(status.input.width || 0) > 0
       && Number(status.input.height || 0) > 0
-      && Number(status.input.fps || 0) > 0;
+      && Number(status.input.fps || 0) > 0
+      && measuredInputBitrate(status) !== '';
   }
   function trackInputReconnect(status) {
     const connected = Boolean(status.input.connected);
@@ -1966,84 +2656,26 @@
       encodedProfileReconnectPending = true;
       lastAutoProfileKey = '';
       lastEncodedAutoProfileKey = '';
-      $('encodedProfileStatus').textContent = 'Live saiu. Aguardando voltar para detectar o novo perfil.';
+      $('encodedProfileStatus').textContent = 'Perfil manual salvo. O codificador usa estes dados.';
     }
     if (connected && !previousInputConnected) {
       encodedProfileReconnectPending = true;
       lastAutoProfileKey = '';
       lastEncodedAutoProfileKey = '';
-      $('encodedProfileStatus').textContent = 'Live voltou. Detectando resolução e FPS novamente...';
+      $('encodedProfileStatus').textContent = 'Live voltou. Perfil manual mantido.';
     }
     previousInputConnected = connected;
   }
   function maybeApplyAutoProfile(status) {
-    if (!status.input.connected) {
-      if (!liveProfileEditing) {
-        $('autoProfileStatus').textContent = 'Aguardando a live chegar para detectar o formato.';
-        $('autoProfileCodec').textContent = '...';
-      }
-      maybeApplyEncodedAutoProfile(status);
-      return;
-    }
-    const profile = autoProfileFromStatus(status);
-    const key = `${profile.width}x${profile.height}/${profile.fps}/${profile.bitrate}`;
-    if (!liveProfileEditing) {
-      if (key !== lastAutoProfileKey) {
-        applyProfileToFields(profile, 'auto');
-      }
-      $('autoProfileStatus').textContent = 'Automático ativo. O conversor já está usando o formato da live recebida.';
-      $('autoProfileCodec').textContent = `${profile.videoCodec} / ${profile.audioCodec}`;
-    }
-    maybeApplyEncodedAutoProfile(status, profile);
+    if (!liveProfileEditing) applyProfileToFields(encodedProfileFromFields(), 'manual');
+    maybeApplyEncodedAutoProfile(status);
   }
   function maybeApplyEncodedAutoProfile(status, profile = null) {
-    if (encodedProfileEditing) return;
-    if (!status.input.connected) {
-      $('encodedProfileStatus').textContent = lastEncodedAutoProfileKey
-        ? 'Perfil salvo. O codificador inicia automaticamente quando a live chegar.'
-        : 'Aguardando a live chegar para ajustar o codificador.';
-      $('encodedProfileSource').textContent = lastEncodedAutoProfileKey ? 'salvo' : 'auto';
-      return;
-    }
-    if (!statusHasMeasuredVideoProfile(status)) {
-      $('encodedProfileStatus').textContent = 'Live voltou. Medindo resolução e FPS antes de salvar o codificador...';
-      $('encodedProfileSource').textContent = 'auto';
-      return;
-    }
-    const detected = profile || autoProfileFromStatus(status);
-    const key = encodedProfileKey(detected);
-    applyEncodedProfileToFields(detected, 'auto');
-    if (key === lastEncodedAutoProfileKey || encodedProfileSaving) {
-      $('encodedProfileStatus').textContent = 'Automático ativo. O codificador está usando o formato detectado da live.';
-      return;
-    }
-    encodedProfileSaving = true;
-    $('encodedProfileStatus').textContent = 'Perfil detectado. Salvando para as próximas lives...';
-    saveSettingsPayload({})
-      .then(() => api('/encoding/start', { method: 'POST' }).catch(() => {}))
-      .then(() => {
-        lastEncodedAutoProfileKey = key;
-        encodedProfileReconnectPending = false;
-        localStorage.setItem('delayengine.encodedProfileKey', key);
-        $('encodedProfileStatus').textContent = 'Perfil salvo. Nas próximas vezes o codificador inicia com esses dados.';
-      })
-      .catch((error) => {
-        $('encodedProfileStatus').textContent = `Não foi possível salvar o perfil automaticamente: ${error.message}`;
-      })
-      .finally(() => {
-        encodedProfileSaving = false;
-      });
+    $('encodedProfileSource').textContent = 'manual';
+    if (!encodedProfileEditing) applyProfileToFields(encodedProfileFromFields(), 'manual');
   }
   function recommendedProfile() {
-    const resolution = $('liveResolution').value;
-    const fps = $('liveFps').value;
-    const bitrate = $('liveBitrate').value;
-    if (resolution === '1280x720' && fps === '60') return { profile: '720p60', width: 1280, height: 720, fps: 60, bitrate: bitrate === 'custom' ? '4000k' : bitrate };
-    if (resolution === '1280x720') return { profile: '720p30', width: 1280, height: 720, fps: 30, bitrate: bitrate === 'custom' ? '3000k' : bitrate };
-    if (resolution === '1920x1080' && fps === '60') return { profile: '1080p60', width: 1920, height: 1080, fps: 60, bitrate: bitrate === 'custom' ? '5500k' : bitrate };
-    if (resolution === '1920x1080' && bitrate === '4500k') return { profile: '1080p30hq', width: 1920, height: 1080, fps: 30, bitrate };
-    if (resolution === 'custom' || fps === 'custom' || bitrate === 'custom') return { profile: 'custom', width: 1920, height: 1080, fps: 30, bitrate: bitrate === 'custom' ? '4000k' : bitrate };
-    return { profile: '1080p30', width: 1920, height: 1080, fps: 30, bitrate: bitrate || '4000k' };
+    return encodedProfileFromFields();
   }
   function updateRecommendation() {
     const rec = recommendedProfile();
@@ -2087,7 +2719,7 @@
     if (!editing) {
       $('streamKey').type = 'text';
       $('streamKey').readOnly = true;
-      $('streamKey').value = settings.streamKeySaved ? '⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢⬢' : '';
+      $('streamKey').value = settings.streamKeySaved ? '••••••••••••••••' : '';
       $('streamKey').placeholder = settings.streamKeySaved ? 'chave salva protegida' : 'nenhuma chave salva';
     } else {
       $('streamKey').type = 'password';
@@ -2113,6 +2745,7 @@
 
   function fillSettingsForm(data) {
     settings = data;
+    encodedProfileMode = data.encodedProfileMode === 'manual' ? 'manual' : 'auto';
     $('localSourcePath').value = data.localSourcePath || '';
     $('inputUrl').value = data.inputUrl || '';
     $('twitchServer').value = data.twitchServer || '';
@@ -2120,7 +2753,7 @@
     $('activeLoadingPath').value = data.activeLoadingPath || '';
     const defaultDelay = savedDefaultDelaySeconds(data.defaultDelaySeconds || 30);
     $('defaultDelaySeconds').value = defaultDelay;
-    $('outputMode').value = data.outputMode || 'direct';
+    $('outputMode').value = 'encoded';
     $('encodedLocalOutputUrl').value = data.encodedLocalOutputUrl || 'rtmp://127.0.0.1:1935/live/delayengine-out';
     $('encodedWidth').value = data.encodedWidth || 1920;
     $('encodedHeight').value = data.encodedHeight || 1080;
@@ -2130,19 +2763,25 @@
     $('encodedAudioBitrate').value = data.encodedAudioBitrate || '160k';
     $('autoLatencyCorrection').checked = Boolean(data.autoLatencyCorrection);
     $('autoLatencySeconds').value = data.autoLatencySeconds || 3;
+    $('realtimePriority').checked = data.realtimePriority !== false;
+    $('realtimePrioritySeconds').value = data.realtimePrioritySeconds || 8;
     applyEncodedProfileToFields({
       width: data.encodedWidth || 1920,
       height: data.encodedHeight || 1080,
       fps: data.encodedFps || 30,
       bitrate: data.encodedVideoBitrate || '4500k'
-    }, lastEncodedAutoProfileKey ? 'auto' : 'manual');
+    }, encodedProfileMode === 'manual' ? 'manual' : 'auto');
+    applyProfileToFields(encodedProfileFromFields(), 'manual');
     setEncodedProfileEditing(encodedProfileEditing);
     $('viewerLatencySeconds').value = DELAY_COMPENSATION_SECONDS;
+    const localFullLoading = localStorage.getItem('delayengine.playFullLoading') === 'true';
+    $('playFullLoading').checked = Boolean(data.playFullLoading) || localFullLoading;
+    if (localFullLoading && !data.playFullLoading && !loadingModeMigrated) {
+      loadingModeMigrated = true;
+      window.setTimeout(() => saveLoadingModeChoice(), 0);
+    }
     $('delayNumber').value = defaultDelay;
     $('delaySlider').value = defaultDelay;
-    $('obsServer').value = data.obs.server || '';
-    $('obsKey').value = data.obs.streamKey || '';
-    $('obsFull').value = data.obs.fullUrl || '';
     $('settingsObsServer').value = data.obs.server || '';
     $('settingsObsKey').value = data.obs.streamKey || '';
     $('streamKeySaved').textContent = data.streamKeySaved ? 'Sim' : 'Não';
@@ -2162,19 +2801,23 @@
       localSourcePath: $('localSourcePath').value,
       inputUrl: $('inputUrl').value,
       twitchServer: $('twitchServer').value,
-      outputMode: $('outputMode').value,
+      outputMode: 'encoded',
       encodedLocalOutputUrl: $('encodedLocalOutputUrl').value,
       encodedWidth: Number($('encodedWidth').value || 1920),
       encodedHeight: Number($('encodedHeight').value || 1080),
       encodedFps: Number($('encodedFps').value || 30),
       encodedEncoder: $('encodedEncoder').value || 'auto',
+      encodedProfileMode,
       encodedVideoBitrate: $('encodedVideoBitrate').value || '4500k',
       encodedAudioBitrate: $('encodedAudioBitrate').value || '160k',
       autoLatencyCorrection: $('autoLatencyCorrection').checked,
       autoLatencySeconds: Number($('autoLatencySeconds').value || 3),
+      realtimePriority: $('realtimePriority').checked,
+      realtimePrioritySeconds: Number($('realtimePrioritySeconds').value || 8),
       mediaMtxPath: $('mediaMtxPath').value,
       activeLoadingPath: $('activeLoadingPath').value,
       defaultDelaySeconds: clampDelaySeconds(Number($('defaultDelaySeconds').value)),
+      playFullLoading: $('playFullLoading').checked,
       viewerLatencySeconds: DELAY_COMPENSATION_SECONDS,
       ...extra
     };
@@ -2194,12 +2837,21 @@
 
   async function loadStatus() {
     const status = await api('/status');
+    latestStatus = status;
     trackInputReconnect(status);
     const inputLive = Boolean(status.input.connected);
     const outputLive = Boolean(status.output.connected);
+    inputLiveReadyForArm = inputLive;
+    outputLiveReadyForArm = outputLive;
     $('connection').textContent = inputLive ? 'Live recebida' : 'Sem live';
     $('connection').className = `value ${inputLive ? 'good' : 'warn'}`;
     const targetDelaySeconds = Number(status.delaySeconds || 0);
+    const runtimeDelayActive = Boolean(status.delayEnabled || targetDelaySeconds > 0);
+    const backendLiveActionActive = Boolean(status.liveActionActive);
+    if (delayTransitionMode === 'arming' && runtimeDelayActive) delayTransitionMode = '';
+    if (delayTransitionMode === 'returning' && !runtimeDelayActive && !backendLiveActionActive) delayTransitionMode = '';
+    delayActiveForArm = Boolean(delayTransitionMode || backendLiveActionActive || runtimeDelayActive);
+    refreshArmButtonState();
     $('delay').textContent = inputLive ? (status.delayEnabled ? (targetDelaySeconds <= 0 ? 'Reduzindo' : `Ativo ${status.delay}`) : 'Desligado') : 'Aguardando';
     $('delay').className = `value ${inputLive ? (status.delayEnabled ? 'good' : 'warn') : 'warn'}`;
     $('buffer').textContent = status.buffer.duration;
@@ -2213,14 +2865,13 @@
     const keyframeOk = keyframeSec >= 1.7 && keyframeSec <= 2.4;
     $('keyframeInterval').className = `value ${keyframeOk ? 'good' : keyframeSec > 0 ? 'warn' : ''}`;
     $('sentBytes').textContent = mb(status.output.bytes);
-    const alerts = [];
-    if (!status.input.connected) alerts.push('Aguardando você iniciar a transmissão no OBS/Streamlabs.');
-    if (!status.output.connected) alerts.push('A Twitch ainda não confirmou recebimento.');
-    if (status.delayEnabled) alerts.push(`Delay ativo: ${status.delay}.`);
-    if (keyframeSec > 0 && !keyframeOk) alerts.push(`Keyframe do OBS em ${keyframeSec.toFixed(1)}s. Para a Twitch, deixe em 2s no Streamlabs/OBS.`);
-    if (targetDelaySeconds >= SOFT_DELAY_SECONDS) alerts.push('Delay manual perto do limite de 60 segundos.');
-    if (alerts.length === 0) alerts.push('Tudo parece pronto.');
-    $('alerts').textContent = alerts.join('\n');
+    if (statusHasMeasuredVideoProfile(status) && !encodedProfileEditing) {
+      const detectedProfile = autoProfileFromStatus(status);
+      lastEncodedAutoProfileKey = encodedAutoProfileKey(detectedProfile);
+      $('encodedProfileSource').textContent = 'manual';
+    }
+    const alerts = buildStatusAlerts(status, keyframeSec, keyframeOk, targetDelaySeconds);
+    updateAlertCenter(alerts);
     maybeApplyAutoProfile(status);
     updatePreviewStatus(status);
   }
@@ -2240,6 +2891,8 @@
       const option = document.createElement('option');
       option.value = video.path;
       option.dataset.name = video.name;
+      option.dataset.preview = video.preview || '';
+      option.dataset.previewExists = video.previewExists ? 'true' : 'false';
       option.textContent = video.name;
       select.appendChild(option);
       const row = document.createElement('tr');
@@ -2280,6 +2933,7 @@
     if (current) select.value = current;
     if (activeLanguage() === 'en') applyLanguage(select);
     if (activeLanguage() === 'en') applyLanguage($('videos'));
+    if (previewMode === 'loading') setupLoadingPreview();
   }
 
   async function loadLogs() {
@@ -2353,6 +3007,11 @@ ${data.message || data.error || 'erro desconhecido'}`
     updateDelayPreview();
   });
   $('refresh').addEventListener('click', () => run(async () => { await refresh(); note('Painel atualizado.', 'good'); }));
+  $('toggleAlerts').addEventListener('click', () => {
+    alertDrawerOpen = !alertDrawerOpen;
+    $('toggleAlerts').textContent = tr(alertDrawerOpen ? 'Ocultar alertas' : 'Ver alertas');
+    renderAlertCenter(activeAlerts);
+  });
   $('openGuide').addEventListener('click', () => {
     const tutorial = $('tutorialBox');
     tutorial.classList.toggle('closed');
@@ -2362,13 +3021,26 @@ ${data.message || data.error || 'erro desconhecido'}`
     tab.addEventListener('click', () => openToolPanel(tab.dataset.panel));
   }
   $('refreshLogs').addEventListener('click', () => run(async () => { await loadLogs(); note('Logs atualizados.', 'good'); }));
+  $('previewModeLive').addEventListener('click', () => setPreviewMode('live'));
+  $('previewModeLoading').addEventListener('click', () => setPreviewMode('loading'));
+  $('videoSelect').addEventListener('change', () => {
+    if (previewMode === 'loading') setupLoadingPreview();
+  });
   $('previewPlay').addEventListener('click', () => {
     previewUserPaused = false;
-    previewURL = '';
-    setupPreview(true);
+    if (previewMode === 'loading') setupLoadingPreview();
+    else {
+      previewURL = '';
+      setupPreview(true);
+    }
     $('previewVideo').play().then(() => {
-      $('previewState').textContent = 'Preview local rodando.';
-    }).catch(() => note('Preview ainda não conseguiu tocar. Confira se o OBS já iniciou a live e tente de novo em alguns segundos.', 'warn'));
+      $('previewState').textContent = previewMode === 'loading' ? tr('Preview do loading rodando.') : tr('Preview local rodando.');
+    }).catch(() => {
+      const message = previewMode === 'loading'
+        ? 'Preview ainda não conseguiu tocar. Se for a primeira vez neste vídeo, aguarde o MP4 ser preparado e tente de novo.'
+        : 'Preview ainda não conseguiu tocar. Confira se o OBS já iniciou a live e tente de novo em alguns segundos.';
+      note(message, 'warn');
+    });
   });
   $('previewPause').addEventListener('click', () => {
     previewUserPaused = true;
@@ -2378,13 +3050,15 @@ ${data.message || data.error || 'erro desconhecido'}`
     }
     const video = $('previewVideo');
     video.pause();
-    if (previewHls) {
-      previewHls.destroy();
-      previewHls = null;
+    if (previewMode === 'live') {
+      if (previewHls) {
+        previewHls.destroy();
+        previewHls = null;
+      }
+      video.removeAttribute('src');
+      video.load();
+      previewURL = '';
     }
-    video.removeAttribute('src');
-    video.load();
-    previewURL = '';
     $('previewState').textContent = 'Preview pausado.';
     applyLanguage($('previewState'));
   });
@@ -2416,6 +3090,7 @@ ${data.message || data.error || 'erro desconhecido'}`
   });
   $('saveEncodedProfile').addEventListener('click', () => run(async () => {
     setEncodedProfileEditing(false);
+    encodedProfileMode = 'manual';
     const key = encodedProfileKey({
       width: $('encodedWidth').value,
       height: $('encodedHeight').value,
@@ -2424,9 +3099,9 @@ ${data.message || data.error || 'erro desconhecido'}`
     });
     lastEncodedAutoProfileKey = key;
     localStorage.setItem('delayengine.encodedProfileKey', key);
-    await saveSettingsPayload({});
-    await api('/encoding/start', { method: 'POST' }).catch(() => {});
-    $('encodedProfileStatus').textContent = 'Perfil manual salvo. O codificador usa esses dados nas próximas lives.';
+    await saveSettingsPayload({ encodedProfileMode: 'manual' });
+    applyProfileToFields(encodedProfileFromFields(), 'manual');
+    $('encodedProfileStatus').textContent = 'Modo Twitch salvo. A live atual não foi reiniciada; os valores entram no próximo início do app ou se você reiniciar o codificador manualmente.';
   }));
   $('liveResolution').addEventListener('change', updateRecommendation);
   $('liveFps').addEventListener('change', updateRecommendation);
@@ -2492,22 +3167,26 @@ ${data.message || data.error || 'erro desconhecido'}`
 
   $('off').addEventListener('click', () => quickRun(async () => {
     note('Voltando ao vivo agora...', 'good');
-    await api('/delay/off', { method: 'POST' });
+    delayTransitionMode = 'returning';
+    refreshArmButtonState();
+    try {
+      await api('/delay/off', { method: 'POST' });
+    } catch (error) {
+      delayTransitionMode = '';
+      refreshArmButtonState();
+      throw error;
+    }
     $('delay').textContent = 'Desligado';
     $('delay').className = 'value warn';
     $('queue').textContent = 'Atualizando';
     $('queue').className = 'value warn';
     note('Comando enviado. A live deve voltar ao vivo pelo modo Twitch polido.', 'good');
   }));
-  $('saveEncodingSettings').addEventListener('click', () => run(async () => {
-    $('outputMode').value = 'encoded';
-    await saveSettingsPayload({});
-    note('Modo Twitch salvo. A saída, o codificador e a correção automática usam estes valores.', 'good');
-  }));
-  $('startEncoding').addEventListener('click', () => run(async () => { await api('/encoding/start', { method: 'POST' }); note('Codificador iniciado/reiniciado. A Twitch recebe a saída polida.', 'good'); }));
-  $('stopEncoding').addEventListener('click', () => run(async () => { await api('/encoding/stop', { method: 'POST' }); note('Codificador pausado. Ele volta quando você clicar em Reiniciar codificador.', 'good'); }));
+  $('startEncoding').addEventListener('click', () => run(async () => { await api('/encoding/restart', { method: 'POST' }); note('Codificador reiniciado. A Twitch recebe a saída polida com o perfil salvo.', 'good'); }));
   $('refreshEncoding').addEventListener('click', () => run(async () => { await loadEncodingStatus(); note('Status do codificador atualizado.', 'good'); }));
   $('set').addEventListener('click', () => run(async () => {
+      const confirmed = await confirmLarge('Modo direto: o delay entra sem tela de loading. Para uma transição visual mais limpa para o público, use "Adicionar delay com loading". Deseja continuar no modo direto?');
+    if (!confirmed) return;
     const desired = desiredDelaySeconds();
     const seconds = engineDelaySeconds();
     await api('/delay/set', { method: 'POST', body: JSON.stringify({ seconds }) });
@@ -2521,7 +3200,17 @@ ${data.message || data.error || 'erro desconhecido'}`
     const desired = desiredDelaySeconds();
     const seconds = engineDelaySeconds();
     const playFullSlate = $('playFullLoading').checked;
-    await api('/delay/arm', { method: 'POST', body: JSON.stringify({ seconds, slate: activePath(), playFullSlate }) });
+    delayActiveForArm = true;
+    delayTransitionMode = 'arming';
+    refreshArmButtonState();
+    try {
+      await api('/delay/arm', { method: 'POST', body: JSON.stringify({ seconds, slate: activePath(), playFullSlate }) });
+    } catch (error) {
+      delayActiveForArm = false;
+      delayTransitionMode = '';
+      refreshArmButtonState();
+      throw error;
+    }
     if (playFullSlate && desired <= 0) {
       note('Loading completo iniciado. A live volta ao vivo no final.', 'good');
     } else if (playFullSlate) {
@@ -2565,7 +3254,10 @@ ${data.message || data.error || 'erro desconhecido'}`
         note('Chave copiada.', 'good');
       });
   });
+  loadTutorialGuide().catch(() => {});
+  loadFAQGuide().catch(() => {});
   loadSupportProfile().catch(() => {});
+  updatePreviewModeButtons();
   refresh().catch((error) => note(error.message, 'bad'));
   applyLanguage();
   setInterval(() => loadStatus().catch(() => {}), 2000);

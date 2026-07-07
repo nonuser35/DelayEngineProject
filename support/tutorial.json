@@ -1,47 +1,72 @@
 {
-  "remoteTutorialUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/tutorial.json",
+  "_comment": "Arquivo do tutorial remoto. JSON nao aceita comentarios com //, entao use campos iniciados por _ para anotacoes. O app ignora esses campos.",
+  "_imageHelp": {
+    "imageUrl": "Para inserir imagem em um passo, coloque uma URL publica em imageUrl. Pode ser uma URL raw do GitHub, por exemplo https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/imagens/passo1.png, ou qualquer URL https publica.",
+    "imageAlt": "Use imageAlt para descrever a imagem. Se imageUrl ficar vazio, nenhuma imagem aparece naquele passo.",
+    "linkUrl": "Opcional: coloque linkUrl e linkLabel em um passo para mostrar um botao/link abaixo do texto."
+  },
   "title": "Tutorial completo do DelayEngine",
   "intro": "Siga estes passos na ordem. O objetivo e fazer o OBS ou Streamlabs enviar a live para o DelayEngine, e o DelayEngine enviar para a Twitch com controle de delay e video de loading.",
   "steps": [
     {
       "title": "1. Salve a key da Twitch",
-      "text": "Abra o painel da Twitch, copie a chave de transmissao primaria e salve no DelayEngine. Essa chave fica no app, nao no OBS."
+      "text": "Abra o painel da Twitch, copie a chave de transmissao primaria e salve no DelayEngine. Essa chave fica no app, nao no OBS.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "2. Copie os dados para o OBS",
-      "text": "Em Configuracoes, use o Servidor do DelayEngine para OBS no campo Servidor do OBS ou Streamlabs. Use a Chave local do OBS no campo Chave. Nao cole servidor e chave juntos."
+      "text": "Em Configuracoes, use o Servidor do DelayEngine para OBS no campo Servidor do OBS ou Streamlabs. Use a Chave local do OBS no campo Chave. Nao cole servidor e chave juntos.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "3. Configure o modo Twitch polido",
-      "text": "Antes de iniciar a transmissao, preencha manualmente largura, altura, FPS, bitrate de video, bitrate de audio e aceleracao em hardware. Use os mesmos valores configurados no OBS ou Streamlabs."
+      "text": "Antes de iniciar a transmissao, preencha manualmente largura, altura, FPS, bitrate de video, bitrate de audio e aceleracao em hardware. Use os mesmos valores configurados no OBS ou Streamlabs.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "4. Entenda o conversor",
-      "text": "O conversor de video usa automaticamente os dados do modo Twitch polido. Assim o loading sai com a mesma resolucao, FPS e bitrate da live, sem precisar preencher duas vezes."
+      "text": "O conversor de video usa automaticamente os dados do modo Twitch polido. Assim o loading sai com a mesma resolucao, FPS e bitrate da live, sem precisar preencher duas vezes.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "5. Inicie a live no OBS",
-      "text": "No OBS ou Streamlabs, clique para iniciar a transmissao. O DelayEngine deve mostrar que a live local chegou e que a Twitch esta recebendo pelo codificador."
+      "text": "No OBS ou Streamlabs, clique para iniciar a transmissao. O DelayEngine deve mostrar que a live local chegou e que a Twitch esta recebendo pelo codificador.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "6. Prepare o video de loading",
-      "text": "Abra o conversor, escolha um MP4 ou outro video, escolha a duracao e converta. Se o video for curto, o app repete. Se for longo, corta no tempo escolhido."
+      "text": "Abra o conversor, escolha um MP4 ou outro video, escolha a duracao e converta. Se o video for curto, o app repete. Se for longo, corta no tempo escolhido.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "7. Escolha o loading ativo",
-      "text": "Depois da conversao, ative o video que voce quer usar como loading. Esse video aparece quando voce adiciona delay durante a live."
+      "text": "Depois da conversao, ative o video que voce quer usar como loading. Esse video aparece quando voce adiciona delay durante a live.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "8. Adicione delay",
-      "text": "Escolha o tempo na barra de delay e clique em Adicionar delay com loading. O publico ve o loading e depois volta para a live com o atraso escolhido."
+      "text": "Escolha o tempo na barra de delay e clique em Adicionar delay com loading. O publico ve o loading e depois volta para a live com o atraso escolhido.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
       "title": "9. Volte ao vivo",
-      "text": "Quando quiser remover o delay manual, clique em Voltar ao vivo. O app tenta voltar para a menor latencia possivel sem reiniciar a live na Twitch."
+      "text": "Quando quiser remover o delay manual, clique em Voltar ao vivo. O modo Twitch polido mantem a saida organizada e volta para a latencia ao vivo da forma mais direta.",
+      "imageUrl": "",
+      "imageAlt": ""
     },
     {
-      "title": "10. Se algo nao carregar",
-      "text": "Confira se o OBS esta enviando para o servidor local do DelayEngine, se a key da Twitch foi salva e se o modo Twitch polido tem os mesmos dados tecnicos da sua live."
+      "title": "10. Checklist rapido",
+      "text": "Para uma live redonda, confirme tres pontos: OBS enviando para o servidor local do DelayEngine, key da Twitch salva no app e modo Twitch polido com os mesmos dados tecnicos da sua live.",
+      "imageUrl": "",
+      "imageAlt": ""
     }
   ]
 }
