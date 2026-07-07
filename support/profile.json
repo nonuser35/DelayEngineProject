@@ -9,6 +9,8 @@
   "socialLabel": "Discord: user34#1337",
   "socialUrl": "https://discord.com",
   "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
+  "_commentAlertMessage": "Opcional: texto curto que aparece no centro de alertas do app. Use alertMessage para uma frase, ou alertMessages para uma lista. Se ficar vazio, o app nao mostra mensagem remota.",
+  "alertMessage": "Dica: revise a chave da Twitch, o video de loading e o perfil Twitch polido antes de iniciar uma live importante.",
   "payments": [
     {
       "label": "PIX",
