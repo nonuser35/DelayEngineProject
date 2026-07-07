@@ -9,8 +9,8 @@
   "socialLabel": "Discord: user34#1337",
   "socialUrl": "https://discord.com",
   "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
-  "_commentAlertMessage": "Apoie o projeto a continuar sempre funcionando.",
-  "alertMessage": "Dica: Garanta que as configuracoes: chave da Twich, Modo twitch polido, estão configurados com os dados pedidos.",
+  "_commentAlertMessage": "Insira abaixo a frase que vai aparecer no centro de notificacoes.",
+  "alertMessage": "Dica: Apoie o projeto a continuar sempre funcionando.",
   "payments": [
     {
       "label": "PIX",
