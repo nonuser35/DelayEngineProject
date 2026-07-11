@@ -1,19 +1,23 @@
-# DelayEngine — projeto para GitHub
+# DelayEngine
 
-Esta pasta contém somente o material preparado para publicação.
+[Português (Brasil)](README.pt-BR.md) | [English](README.en.md)
 
-- [Código-fonte](Codigo/README.md)
-- [Pacote portátil](Portatil/README.md)
+DelayEngine é um aplicativo Windows para aplicar e remover delay manual em transmissões ao vivo, mantendo o OBS/Streamlabs conectado. Ele recebe a live em um relay RTMP local, mantém um buffer seguro e envia a saída para a Twitch.
 
-## Idiomas
+## Comece aqui
 
-No código-fonte, o README inicial permite abrir diretamente:
+- [Guia em Português](README.pt-BR.md)
+- [English guide](README.en.md)
+- [Documentação técnica e de uso](DOCUMENTACAO_COMPLETA.md)
+- [Como contribuir](CONTRIBUTING.md)
+- [Avisos de segurança](SECURITY.md)
 
-- [Português (Brasil)](Codigo/README.pt-BR.md)
-- [English](Codigo/README.en.md)
+## Destaques
 
-O mesmo seletor está disponível no [pacote portátil](Portatil/README.md).
+- Modo **Copy** recomendado: preserva o H.264/AAC do OBS/Streamlabs sem recodificar.
+- Delay manual de até 60 segundos com transição por vídeo de loading.
+- Retorno ao vivo por keyframe, sem reiniciar a transmissão.
+- Painel local, atalhos na bandeja, logs e conversor de vídeos compatíveis.
+- Modo **Encoded** opcional, com AMD, NVIDIA, Intel ou CPU quando for necessário controlar a saída final.
 
-## Publicação
-
-Envie o conteúdo desta pasta para o repositório GitHub. Logs, runtime, chaves da Twitch, configurações locais e vídeos pessoais foram excluídos da cópia e também são ignorados pelo Git.
+Licença: [MIT](LICENSE). Consulte também [avisos de terceiros](THIRD_PARTY_NOTICES.md).
