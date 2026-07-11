@@ -8,7 +8,7 @@
   "githubUrl": "https://github.com/nonuser35",
   "socialLabel": "Discord: user34#1337",
   "socialUrl": "https://discord.com",
-  "message": "Deixe um recado, apoie o projeto ou acompanhe novidades pelo GitHub.",
+  "message": "Talvez eu seja o rei dos imbecis, o último representante de uma dinastia completamente extinta que ainda acreditava na generosidade e no heroísmo. Corto Maltese",
   "_commentAlertMessage": "Insira abaixo a frase que vai aparecer no centro de notificacoes.",
   "alertMessage": "Dica: Considere Apoie o projeto a continuar sempre funcionando.",
   "payments": [
@@ -16,7 +16,7 @@
       "label": "PIX",
       "title": "Apoiar via Pix",
       "info": "Escaneie o QR Code ou copie a chave.",
-      "key": "cole-sua-chave-pix-aqui",
+      "key": "521d8b1f-733e-4250-b353-dee726dc66b1",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/pix-qrcode.png",
       "url": "https://github.com/nonuser35/DelayEngineProject"
     },
