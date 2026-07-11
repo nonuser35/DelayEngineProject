@@ -1,4 +1,0 @@
-Este pacote portátil está atualizado com a versão atual do DelayEngine.
-
-Nesta cópia de uso pessoal, configurações, vídeos, logs e dados de runtime foram preservados.
-Para publicar ou compartilhar uma cópia limpa, execute limpeza-de-dados.cmd na cópia que será distribuída.
