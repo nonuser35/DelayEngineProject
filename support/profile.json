@@ -24,9 +24,9 @@
       "label": "PayPal",
       "title": "Apoiar via PayPal",
       "info": "Escaneie o QR Code ou copie o link.",
-      "key": "https://paypal.me/seuusuario",
+      "key": "",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
-      "url": "https://paypal.me/seuusuario"
+      "url": ""
     }
   ]
 }
