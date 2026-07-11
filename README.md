@@ -2,7 +2,7 @@
 
 [Português (Brasil)](README.pt-BR.md) | [English](README.en.md)
 
-DelayEngine é um aplicativo Windows para aplicar e remover delay manual em transmissões ao vivo, mantendo o OBS/Streamlabs conectado. Ele recebe a live em um relay RTMP local, mantém um buffer seguro e envia a saída para a Twitch.
+DelayEngine é um aplicativo Windows para aplicar e remover delay manual em transmissões ao vivo, mantendo o OBS/Streamlabs conectado. Ele recebe a live em um relay RTMP local, mantém um buffer seguro e envia a saída para a Twitch. A ideia é ser um projeto open-source, onde prevê ajuda da comunidade pra crescer.
 
 ## Comece aqui
 
