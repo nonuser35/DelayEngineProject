@@ -1,0 +1,541 @@
+time=2026-07-11T12:31:49.088-03:00 level=INFO msg="delayengine starting" input_url=rtmp://127.0.0.1:1935/live/delayengine output_url=rtmp://127.0.0.1:1935/live/redacted http_addr=:8080 max_buffer_duration=1h0m0s fixed_delay=0s delay_enabled=false
+time=2026-07-11T12:31:49.105-03:00 level=INFO msg="MediaMTX started hidden" path=C:\Users\nonus\Documents\Codex\2026-06-30\projeto-nome-delayengine-objetivo-receber-um\Projeto-GitHub\Portatil\tools\mediamtx\mediamtx_v1.19.2_windows_amd64\mediamtx.exe log=C:\Users\nonus\Documents\Codex\2026-06-30\projeto-nome-delayengine-objetivo-receber-um\Projeto-GitHub\Portatil\logs\mediamtx.log status=ok
+time=2026-07-11T12:31:49.121-03:00 level=INFO msg="connecting to RTMP output" module=rtmp_output url=rtmp://127.0.0.1:1935/live/redacted
+time=2026-07-11T12:31:49.124-03:00 level=WARN msg="RTMP output unavailable; will retry while running" error="connect to RTMP output: dial tcp 127.0.0.1:1935: connectex: Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente." status=waiting
+time=2026-07-11T12:31:49.130-03:00 level=INFO msg="HTTP API starting" module=api addr=:8080 status=ok
+time=2026-07-11T12:31:49.132-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:49.134-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="connect to RTMP input: dial tcp 127.0.0.1:1935: connectex: Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente." retry_in=1s status=waiting
+time=2026-07-11T12:31:49.154-03:00 level=INFO msg="global hotkey registered" hotkey=Ctrl+Alt+D status=ok
+time=2026-07-11T12:31:49.154-03:00 level=INFO msg="global hotkey registered" hotkey=Ctrl+Alt+A status=ok
+time=2026-07-11T12:31:50.134-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:50.136-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:51.137-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:51.138-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:52.138-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:52.139-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:53.139-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:53.140-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:54.141-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:54.142-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:55.142-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:55.143-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:56.144-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:56.145-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:57.145-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:57.146-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:58.147-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:58.148-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:31:59.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:31:59.148-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:31:59.149-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:00.150-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:00.151-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:01.151-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:01.152-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:02.153-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:02.154-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:03.154-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:03.155-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:04.155-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:04.156-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:05.157-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:05.158-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:06.158-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:06.159-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:07.160-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:07.161-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:08.161-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:08.162-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:09.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:09.162-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:09.163-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:10.163-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:10.164-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:11.165-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:11.166-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:12.166-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:12.167-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:13.168-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:13.169-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:14.169-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:14.170-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:15.170-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:15.171-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:16.172-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:16.173-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:17.174-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:17.175-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:18.175-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:18.176-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:19.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:19.176-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:19.177-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:20.178-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:20.179-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:21.180-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:21.181-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:22.181-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:22.182-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:23.182-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:23.184-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:24.184-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:24.185-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:25.185-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:25.186-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:26.186-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:26.187-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:27.188-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:27.189-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:28.189-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:28.190-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:29.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:29.191-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:29.192-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:30.192-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:30.193-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:31.193-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:31.194-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:32.195-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:32.196-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:33.196-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:33.197-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:34.197-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:34.198-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:35.199-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:35.200-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:36.200-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:36.201-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:37.201-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:37.202-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:38.203-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:38.204-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:39.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:39.204-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:39.205-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:40.206-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:40.207-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:41.207-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:41.209-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:42.209-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:42.211-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:43.211-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:43.212-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:44.212-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:44.213-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:45.214-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:45.215-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:46.215-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:46.216-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:47.217-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:47.218-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:48.218-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:48.219-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:49.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:49.219-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:49.220-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:50.221-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:50.222-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:51.222-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:51.223-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:52.224-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:52.225-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:53.225-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:53.227-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:54.227-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:54.228-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:55.228-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:55.230-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:56.230-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:56.231-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:57.231-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:57.232-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:58.233-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:58.234-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:32:59.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:32:59.234-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:32:59.235-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:00.236-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:00.237-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:01.237-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:01.238-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:02.238-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:02.239-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:03.239-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:03.241-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:04.241-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:04.242-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:05.242-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:05.243-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:06.244-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:06.245-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:07.245-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:07.246-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:08.246-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:08.247-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:09.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:09.247-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:09.248-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:10.248-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:10.249-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:11.250-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:11.251-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:12.251-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:12.252-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:13.252-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:13.253-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:14.254-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:14.255-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:15.255-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:15.256-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:16.256-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:16.257-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:17.257-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:17.258-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:18.258-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:18.259-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:19.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:19.260-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:19.261-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:20.261-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:20.262-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:21.263-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:21.264-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:22.264-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:22.265-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:23.266-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:23.267-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:24.267-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:24.268-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:25.268-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:25.269-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:26.270-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:26.271-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:27.271-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:27.272-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:28.272-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:28.273-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:29.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:29.273-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:29.274-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:30.274-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:30.275-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:31.276-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:31.277-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:32.277-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:32.278-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:33.278-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:33.279-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:34.279-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:34.280-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:35.281-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:35.282-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:36.283-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:36.284-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:37.284-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:37.285-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:38.285-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:38.286-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:39.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:39.286-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:39.287-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:40.287-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:40.288-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:41.288-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:41.290-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:42.290-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:42.290-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:43.291-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:43.292-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:44.293-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:44.294-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:45.295-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:45.296-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:46.296-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:46.297-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:47.297-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:47.298-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:48.298-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:48.303-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:49.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:49.304-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:49.305-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:50.306-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:50.307-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:51.307-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:51.308-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:52.308-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:52.309-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:53.309-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:53.310-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:54.311-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:54.312-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:55.312-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:55.313-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:56.313-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:56.314-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:57.314-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:57.316-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:58.316-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:58.317-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:33:59.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:33:59.317-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:33:59.318-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:00.319-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:00.320-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:01.320-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:01.321-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:02.321-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:02.322-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:03.322-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:03.323-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:04.324-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:04.325-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:05.325-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:05.326-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:06.326-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:06.442-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:07.443-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:07.444-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:08.444-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:08.445-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:09.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:09.446-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:09.447-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:10.447-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:10.560-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:11.560-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:11.562-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:12.562-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:12.563-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:13.563-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:13.564-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:14.564-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:14.602-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:15.602-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:15.604-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:16.604-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:16.605-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:17.605-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:17.606-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:18.607-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:18.669-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:19.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:19.669-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:19.670-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:20.670-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:20.671-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:21.671-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:21.672-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:22.673-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:22.674-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:23.674-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:23.675-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:24.675-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:24.677-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:25.677-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:25.678-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:26.678-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:26.679-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:27.680-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:27.681-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:28.681-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:28.682-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:29.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:29.682-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:29.683-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:30.684-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:30.685-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:31.685-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:31.686-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:32.686-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:32.687-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:33.687-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:33.688-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:34.689-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:34.690-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:35.690-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:35.691-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:36.691-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:36.692-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:37.693-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:37.694-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:38.694-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:38.695-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:39.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:39.696-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:39.697-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:40.697-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:40.698-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:41.698-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:41.699-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:42.700-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:42.701-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:43.701-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:43.702-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:44.702-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:44.704-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:45.705-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:45.706-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:46.706-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:46.707-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:47.707-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:47.708-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:48.708-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:48.709-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:49.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:49.710-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:49.711-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:50.711-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:50.805-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:51.806-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:51.807-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:52.807-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:52.808-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:53.809-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:53.810-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:54.810-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:54.811-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:55.812-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:55.813-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:56.813-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:56.816-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:57.817-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:57.818-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:58.818-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:58.819-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:34:59.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:34:59.819-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:34:59.820-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:00.820-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:00.822-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:01.822-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:01.823-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:02.824-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:02.826-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:03.826-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:03.827-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:04.828-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:04.829-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:05.829-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:05.830-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:06.830-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:06.832-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:07.832-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:07.833-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:08.833-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:08.834-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:09.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:09.835-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:09.835-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:10.836-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:10.837-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:11.837-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:11.875-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:12.875-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:12.876-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:13.877-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:13.878-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:14.878-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:14.879-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:15.879-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:15.916-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:16.917-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:16.918-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:17.918-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:17.919-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:18.919-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:18.920-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:19.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:19.921-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:19.922-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:20.922-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:20.923-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:21.924-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:21.925-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:22.925-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:22.926-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:23.926-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:23.927-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:24.928-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:24.929-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:25.929-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:25.931-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:26.931-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:26.932-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:27.932-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:27.933-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:28.934-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:28.936-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:29.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:29.936-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:29.937-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:30.938-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:30.939-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:31.939-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:31.940-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:32.940-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:32.941-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:33.942-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:33.943-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:34.943-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:35.125-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:36.126-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:36.127-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:37.127-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:37.128-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:38.128-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:38.130-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:39.130-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:39.131-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:39.132-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:40.131-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:40.132-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:41.133-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:41.134-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:42.135-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:42.136-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:43.136-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:43.137-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:44.138-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:44.139-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:45.139-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:45.140-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:46.140-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:46.141-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:47.142-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:47.143-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:48.143-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:48.143-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:49.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:49.144-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:49.145-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:50.146-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:50.147-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:51.147-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:51.148-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:52.148-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:52.149-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:53.150-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:53.151-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:54.151-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:54.152-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:55.152-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:55.153-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:56.154-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:56.155-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:57.155-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:57.156-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:58.157-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:58.158-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:35:59.133-03:00 level=INFO msg="RTMP pipeline status" module=rtmp_input status=waiting input=waiting buffer=waiting output=waiting delay_enabled=false target_delay=0s effective_delay=0s sync=stable sync_note="" output_queue=0 audio_packets=0 video_packets=0 bytes_read=0 buffer_packets=0 buffer_duration=0s buffer_bytes=0 published_audio=0 published_video=0 published_bytes=0
+time=2026-07-11T12:35:59.158-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:35:59.159-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:36:00.160-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:36:00.161-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:36:01.161-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:36:01.162-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:36:02.162-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:36:02.163-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:36:03.164-03:00 level=INFO msg="connecting to RTMP input" module=rtmp_input url=rtmp://127.0.0.1:1935/live/delayengine
+time=2026-07-11T12:36:03.165-03:00 level=WARN msg="RTMP input unavailable; retrying" module=rtmp_input error="initialize RTMP reader: EOF" retry_in=1s status=waiting
+time=2026-07-11T12:36:03.368-03:00 level=INFO msg="delayengine stopped" status=ok

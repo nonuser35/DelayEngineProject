@@ -1,0 +1,26 @@
+DelayEngine
+
+Abra DelayEngine.exe com dois cliques.
+
+Ele fica perto do relogio do Windows.
+Se fechar o navegador, a live continua rodando.
+
+Pelo icone perto do relogio:
+- Abrir painel
+- Voltar ao vivo agora
+- Abrir pasta de logs
+- Sair
+
+Arquivos editaveis:
+- web\index.html
+- videos\live\loading.flv
+- videos\ready
+- settings.json
+- logs
+- limpeza-de-dados.cmd
+
+Observacao:
+- A chave da Twitch nao vai no pacote. Cada pessoa coloca a propria chave no primeiro uso.
+- O MediaMTX vai junto em tools.
+- O FFmpeg vai junto em tools\ffmpeg\bin para converter videos e usar o modo Twitch polido.
+- Antes de mandar esta pasta para outra pessoa, rode limpeza-de-dados.cmd para zerar dados pessoais.

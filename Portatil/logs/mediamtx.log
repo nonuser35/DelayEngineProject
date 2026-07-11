@@ -1,0 +1,514 @@
+2026/07/11 12:31:49 INF MediaMTX v1.19.2, windows, amd64
+2026/07/11 12:31:49 INF configuration loaded from C:\Users\nonus\Documents\Codex\2026-06-30\projeto-nome-delayengine-objetivo-receber-um\Projeto-GitHub\Portatil\tools\mediamtx\mediamtx_v1.19.2_windows_amd64\mediamtx.yml
+2026/07/11 12:31:49 INF [RTSP] started with listeners on :8554 (TCP/RTSP), :8000 (UDP/RTP), :8001 (UDP/RTCP)
+2026/07/11 12:31:49 INF [RTMP] started with listener on :1935 (TCP/RTMP)
+2026/07/11 12:31:49 INF [HLS] started with listener on :8888 (TCP/HTTP)
+2026/07/11 12:31:49 INF [WebRTC] started with listeners on :8889 (TCP/HTTP), :8189 (UDP/ICE)
+2026/07/11 12:31:49 INF [SRT] started with listener on :8890 (UDP/SRT)
+2026/07/11 12:31:49 INF [MoQ] started with listeners on :8892 (TCP/HTTP2), :8892 (UDP/HTTP3)
+2026/07/11 12:31:50 INF [RTMP] [conn 127.0.0.1:64534] opened
+2026/07/11 12:31:50 INF [RTMP] [conn 127.0.0.1:64534] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:51 INF [RTMP] [conn 127.0.0.1:64535] opened
+2026/07/11 12:31:51 INF [RTMP] [conn 127.0.0.1:64535] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:52 INF [RTMP] [conn 127.0.0.1:64536] opened
+2026/07/11 12:31:52 INF [RTMP] [conn 127.0.0.1:64536] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:53 INF [RTMP] [conn 127.0.0.1:64545] opened
+2026/07/11 12:31:53 INF [RTMP] [conn 127.0.0.1:64545] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:54 INF [RTMP] [conn 127.0.0.1:64547] opened
+2026/07/11 12:31:54 INF [RTMP] [conn 127.0.0.1:64547] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:55 INF [RTMP] [conn 127.0.0.1:64548] opened
+2026/07/11 12:31:55 INF [RTMP] [conn 127.0.0.1:64548] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:56 INF [RTMP] [conn 127.0.0.1:64549] opened
+2026/07/11 12:31:56 INF [RTMP] [conn 127.0.0.1:64549] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:57 INF [RTMP] [conn 127.0.0.1:64550] opened
+2026/07/11 12:31:57 INF [RTMP] [conn 127.0.0.1:64550] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:58 INF [RTMP] [conn 127.0.0.1:64551] opened
+2026/07/11 12:31:58 INF [RTMP] [conn 127.0.0.1:64551] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:31:59 INF [RTMP] [conn 127.0.0.1:64552] opened
+2026/07/11 12:31:59 INF [RTMP] [conn 127.0.0.1:64552] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:00 INF [RTMP] [conn 127.0.0.1:64553] opened
+2026/07/11 12:32:00 INF [RTMP] [conn 127.0.0.1:64553] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:01 INF [RTMP] [conn 127.0.0.1:64554] opened
+2026/07/11 12:32:01 INF [RTMP] [conn 127.0.0.1:64554] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:02 INF [RTMP] [conn 127.0.0.1:64555] opened
+2026/07/11 12:32:02 INF [RTMP] [conn 127.0.0.1:64555] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:03 INF [RTMP] [conn 127.0.0.1:64556] opened
+2026/07/11 12:32:03 INF [RTMP] [conn 127.0.0.1:64556] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:04 INF [RTMP] [conn 127.0.0.1:64557] opened
+2026/07/11 12:32:04 INF [RTMP] [conn 127.0.0.1:64557] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:05 INF [RTMP] [conn 127.0.0.1:64558] opened
+2026/07/11 12:32:05 INF [RTMP] [conn 127.0.0.1:64558] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:06 INF [RTMP] [conn 127.0.0.1:64559] opened
+2026/07/11 12:32:06 INF [RTMP] [conn 127.0.0.1:64559] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:07 INF [RTMP] [conn 127.0.0.1:64560] opened
+2026/07/11 12:32:07 INF [RTMP] [conn 127.0.0.1:64560] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:08 INF [RTMP] [conn 127.0.0.1:64561] opened
+2026/07/11 12:32:08 INF [RTMP] [conn 127.0.0.1:64561] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:09 INF [RTMP] [conn 127.0.0.1:64562] opened
+2026/07/11 12:32:09 INF [RTMP] [conn 127.0.0.1:64562] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:10 INF [RTMP] [conn 127.0.0.1:64564] opened
+2026/07/11 12:32:10 INF [RTMP] [conn 127.0.0.1:64564] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:11 INF [RTMP] [conn 127.0.0.1:64565] opened
+2026/07/11 12:32:11 INF [RTMP] [conn 127.0.0.1:64565] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:12 INF [RTMP] [conn 127.0.0.1:64566] opened
+2026/07/11 12:32:12 INF [RTMP] [conn 127.0.0.1:64566] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:13 INF [RTMP] [conn 127.0.0.1:64567] opened
+2026/07/11 12:32:13 INF [RTMP] [conn 127.0.0.1:64567] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:14 INF [RTMP] [conn 127.0.0.1:64568] opened
+2026/07/11 12:32:14 INF [RTMP] [conn 127.0.0.1:64568] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:15 INF [RTMP] [conn 127.0.0.1:64574] opened
+2026/07/11 12:32:15 INF [RTMP] [conn 127.0.0.1:64574] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:16 INF [RTMP] [conn 127.0.0.1:64575] opened
+2026/07/11 12:32:16 INF [RTMP] [conn 127.0.0.1:64575] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:17 INF [RTMP] [conn 127.0.0.1:64576] opened
+2026/07/11 12:32:17 INF [RTMP] [conn 127.0.0.1:64576] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:18 INF [RTMP] [conn 127.0.0.1:64580] opened
+2026/07/11 12:32:18 INF [RTMP] [conn 127.0.0.1:64580] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:19 INF [RTMP] [conn 127.0.0.1:64581] opened
+2026/07/11 12:32:19 INF [RTMP] [conn 127.0.0.1:64581] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:20 INF [RTMP] [conn 127.0.0.1:64582] opened
+2026/07/11 12:32:20 INF [RTMP] [conn 127.0.0.1:64582] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:21 INF [RTMP] [conn 127.0.0.1:64583] opened
+2026/07/11 12:32:21 INF [RTMP] [conn 127.0.0.1:64583] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:22 INF [RTMP] [conn 127.0.0.1:64584] opened
+2026/07/11 12:32:22 INF [RTMP] [conn 127.0.0.1:64584] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:23 INF [RTMP] [conn 127.0.0.1:64585] opened
+2026/07/11 12:32:23 INF [RTMP] [conn 127.0.0.1:64585] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:24 INF [RTMP] [conn 127.0.0.1:64586] opened
+2026/07/11 12:32:24 INF [RTMP] [conn 127.0.0.1:64586] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:25 INF [RTMP] [conn 127.0.0.1:64587] opened
+2026/07/11 12:32:25 INF [RTMP] [conn 127.0.0.1:64587] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:26 INF [RTMP] [conn 127.0.0.1:64588] opened
+2026/07/11 12:32:26 INF [RTMP] [conn 127.0.0.1:64588] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:27 INF [RTMP] [conn 127.0.0.1:64589] opened
+2026/07/11 12:32:27 INF [RTMP] [conn 127.0.0.1:64589] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:28 INF [RTMP] [conn 127.0.0.1:64590] opened
+2026/07/11 12:32:28 INF [RTMP] [conn 127.0.0.1:64590] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:29 INF [RTMP] [conn 127.0.0.1:64591] opened
+2026/07/11 12:32:29 INF [RTMP] [conn 127.0.0.1:64591] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:30 INF [RTMP] [conn 127.0.0.1:64592] opened
+2026/07/11 12:32:30 INF [RTMP] [conn 127.0.0.1:64592] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:31 INF [RTMP] [conn 127.0.0.1:64593] opened
+2026/07/11 12:32:31 INF [RTMP] [conn 127.0.0.1:64593] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:32 INF [RTMP] [conn 127.0.0.1:64594] opened
+2026/07/11 12:32:32 INF [RTMP] [conn 127.0.0.1:64594] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:33 INF [RTMP] [conn 127.0.0.1:64595] opened
+2026/07/11 12:32:33 INF [RTMP] [conn 127.0.0.1:64595] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:34 INF [RTMP] [conn 127.0.0.1:64596] opened
+2026/07/11 12:32:34 INF [RTMP] [conn 127.0.0.1:64596] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:35 INF [RTMP] [conn 127.0.0.1:64597] opened
+2026/07/11 12:32:35 INF [RTMP] [conn 127.0.0.1:64597] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:36 INF [RTMP] [conn 127.0.0.1:64598] opened
+2026/07/11 12:32:36 INF [RTMP] [conn 127.0.0.1:64598] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:37 INF [RTMP] [conn 127.0.0.1:64599] opened
+2026/07/11 12:32:37 INF [RTMP] [conn 127.0.0.1:64599] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:38 INF [RTMP] [conn 127.0.0.1:64600] opened
+2026/07/11 12:32:38 INF [RTMP] [conn 127.0.0.1:64600] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:39 INF [RTMP] [conn 127.0.0.1:64601] opened
+2026/07/11 12:32:39 INF [RTMP] [conn 127.0.0.1:64601] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:40 INF [RTMP] [conn 127.0.0.1:64602] opened
+2026/07/11 12:32:40 INF [RTMP] [conn 127.0.0.1:64602] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:41 INF [RTMP] [conn 127.0.0.1:64603] opened
+2026/07/11 12:32:41 INF [RTMP] [conn 127.0.0.1:64603] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:42 INF [RTMP] [conn 127.0.0.1:64604] opened
+2026/07/11 12:32:42 INF [RTMP] [conn 127.0.0.1:64604] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:43 INF [RTMP] [conn 127.0.0.1:64605] opened
+2026/07/11 12:32:43 INF [RTMP] [conn 127.0.0.1:64605] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:44 INF [RTMP] [conn 127.0.0.1:64606] opened
+2026/07/11 12:32:44 INF [RTMP] [conn 127.0.0.1:64606] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:45 INF [RTMP] [conn 127.0.0.1:64607] opened
+2026/07/11 12:32:45 INF [RTMP] [conn 127.0.0.1:64607] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:46 INF [RTMP] [conn 127.0.0.1:64608] opened
+2026/07/11 12:32:46 INF [RTMP] [conn 127.0.0.1:64608] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:47 INF [RTMP] [conn 127.0.0.1:64609] opened
+2026/07/11 12:32:47 INF [RTMP] [conn 127.0.0.1:64609] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:48 INF [RTMP] [conn 127.0.0.1:64610] opened
+2026/07/11 12:32:48 INF [RTMP] [conn 127.0.0.1:64610] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:49 INF [RTMP] [conn 127.0.0.1:64611] opened
+2026/07/11 12:32:49 INF [RTMP] [conn 127.0.0.1:64611] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:50 INF [RTMP] [conn 127.0.0.1:64612] opened
+2026/07/11 12:32:50 INF [RTMP] [conn 127.0.0.1:64612] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:51 INF [RTMP] [conn 127.0.0.1:64614] opened
+2026/07/11 12:32:51 INF [RTMP] [conn 127.0.0.1:64614] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:52 INF [RTMP] [conn 127.0.0.1:64617] opened
+2026/07/11 12:32:52 INF [RTMP] [conn 127.0.0.1:64617] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:53 INF [RTMP] [conn 127.0.0.1:64618] opened
+2026/07/11 12:32:53 INF [RTMP] [conn 127.0.0.1:64618] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:54 INF [RTMP] [conn 127.0.0.1:64619] opened
+2026/07/11 12:32:54 INF [RTMP] [conn 127.0.0.1:64619] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:55 INF [RTMP] [conn 127.0.0.1:64620] opened
+2026/07/11 12:32:55 INF [RTMP] [conn 127.0.0.1:64620] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:56 INF [RTMP] [conn 127.0.0.1:64621] opened
+2026/07/11 12:32:56 INF [RTMP] [conn 127.0.0.1:64621] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:57 INF [RTMP] [conn 127.0.0.1:64622] opened
+2026/07/11 12:32:57 INF [RTMP] [conn 127.0.0.1:64622] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:58 INF [RTMP] [conn 127.0.0.1:64623] opened
+2026/07/11 12:32:58 INF [RTMP] [conn 127.0.0.1:64623] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:32:59 INF [RTMP] [conn 127.0.0.1:64624] opened
+2026/07/11 12:32:59 INF [RTMP] [conn 127.0.0.1:64624] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:00 INF [RTMP] [conn 127.0.0.1:64625] opened
+2026/07/11 12:33:00 INF [RTMP] [conn 127.0.0.1:64625] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:01 INF [RTMP] [conn 127.0.0.1:64627] opened
+2026/07/11 12:33:01 INF [RTMP] [conn 127.0.0.1:64627] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:02 INF [RTMP] [conn 127.0.0.1:64628] opened
+2026/07/11 12:33:02 INF [RTMP] [conn 127.0.0.1:64628] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:03 INF [RTMP] [conn 127.0.0.1:64629] opened
+2026/07/11 12:33:03 INF [RTMP] [conn 127.0.0.1:64629] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:04 INF [RTMP] [conn 127.0.0.1:64630] opened
+2026/07/11 12:33:04 INF [RTMP] [conn 127.0.0.1:64630] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:05 INF [RTMP] [conn 127.0.0.1:64631] opened
+2026/07/11 12:33:05 INF [RTMP] [conn 127.0.0.1:64631] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:06 INF [RTMP] [conn 127.0.0.1:64632] opened
+2026/07/11 12:33:06 INF [RTMP] [conn 127.0.0.1:64632] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:07 INF [RTMP] [conn 127.0.0.1:64633] opened
+2026/07/11 12:33:07 INF [RTMP] [conn 127.0.0.1:64633] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:08 INF [RTMP] [conn 127.0.0.1:64634] opened
+2026/07/11 12:33:08 INF [RTMP] [conn 127.0.0.1:64634] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:09 INF [RTMP] [conn 127.0.0.1:64635] opened
+2026/07/11 12:33:09 INF [RTMP] [conn 127.0.0.1:64635] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:10 INF [RTMP] [conn 127.0.0.1:64636] opened
+2026/07/11 12:33:10 INF [RTMP] [conn 127.0.0.1:64636] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:11 INF [RTMP] [conn 127.0.0.1:64637] opened
+2026/07/11 12:33:11 INF [RTMP] [conn 127.0.0.1:64637] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:12 INF [RTMP] [conn 127.0.0.1:64639] opened
+2026/07/11 12:33:12 INF [RTMP] [conn 127.0.0.1:64639] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:13 INF [RTMP] [conn 127.0.0.1:64640] opened
+2026/07/11 12:33:13 INF [RTMP] [conn 127.0.0.1:64640] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:14 INF [RTMP] [conn 127.0.0.1:64641] opened
+2026/07/11 12:33:14 INF [RTMP] [conn 127.0.0.1:64641] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:15 INF [RTMP] [conn 127.0.0.1:64642] opened
+2026/07/11 12:33:15 INF [RTMP] [conn 127.0.0.1:64642] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:16 INF [RTMP] [conn 127.0.0.1:64643] opened
+2026/07/11 12:33:16 INF [RTMP] [conn 127.0.0.1:64643] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:17 INF [RTMP] [conn 127.0.0.1:64645] opened
+2026/07/11 12:33:17 INF [RTMP] [conn 127.0.0.1:64645] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:18 INF [RTMP] [conn 127.0.0.1:61964] opened
+2026/07/11 12:33:18 INF [RTMP] [conn 127.0.0.1:61964] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:19 INF [RTMP] [conn 127.0.0.1:61967] opened
+2026/07/11 12:33:19 INF [RTMP] [conn 127.0.0.1:61967] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:20 INF [RTMP] [conn 127.0.0.1:61973] opened
+2026/07/11 12:33:20 INF [RTMP] [conn 127.0.0.1:61973] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:21 INF [RTMP] [conn 127.0.0.1:61979] opened
+2026/07/11 12:33:21 INF [RTMP] [conn 127.0.0.1:61979] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:22 INF [RTMP] [conn 127.0.0.1:61983] opened
+2026/07/11 12:33:22 INF [RTMP] [conn 127.0.0.1:61983] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:23 INF [RTMP] [conn 127.0.0.1:61987] opened
+2026/07/11 12:33:23 INF [RTMP] [conn 127.0.0.1:61987] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:24 INF [RTMP] [conn 127.0.0.1:61993] opened
+2026/07/11 12:33:24 INF [RTMP] [conn 127.0.0.1:61993] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:25 INF [RTMP] [conn 127.0.0.1:61994] opened
+2026/07/11 12:33:25 INF [RTMP] [conn 127.0.0.1:61994] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:26 INF [RTMP] [conn 127.0.0.1:61998] opened
+2026/07/11 12:33:26 INF [RTMP] [conn 127.0.0.1:61998] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:27 INF [RTMP] [conn 127.0.0.1:62001] opened
+2026/07/11 12:33:27 INF [RTMP] [conn 127.0.0.1:62001] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:28 INF [RTMP] [conn 127.0.0.1:62002] opened
+2026/07/11 12:33:28 INF [RTMP] [conn 127.0.0.1:62002] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:29 INF [RTMP] [conn 127.0.0.1:62003] opened
+2026/07/11 12:33:29 INF [RTMP] [conn 127.0.0.1:62003] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:30 INF [RTMP] [conn 127.0.0.1:62004] opened
+2026/07/11 12:33:30 INF [RTMP] [conn 127.0.0.1:62004] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:31 INF [RTMP] [conn 127.0.0.1:62005] opened
+2026/07/11 12:33:31 INF [RTMP] [conn 127.0.0.1:62005] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:32 INF [RTMP] [conn 127.0.0.1:62006] opened
+2026/07/11 12:33:32 INF [RTMP] [conn 127.0.0.1:62006] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:33 INF [RTMP] [conn 127.0.0.1:62007] opened
+2026/07/11 12:33:33 INF [RTMP] [conn 127.0.0.1:62007] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:34 INF [RTMP] [conn 127.0.0.1:62008] opened
+2026/07/11 12:33:34 INF [RTMP] [conn 127.0.0.1:62008] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:35 INF [RTMP] [conn 127.0.0.1:62009] opened
+2026/07/11 12:33:35 INF [RTMP] [conn 127.0.0.1:62009] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:36 INF [RTMP] [conn 127.0.0.1:62010] opened
+2026/07/11 12:33:36 INF [RTMP] [conn 127.0.0.1:62010] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:37 INF [RTMP] [conn 127.0.0.1:62011] opened
+2026/07/11 12:33:37 INF [RTMP] [conn 127.0.0.1:62011] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:38 INF [RTMP] [conn 127.0.0.1:62012] opened
+2026/07/11 12:33:38 INF [RTMP] [conn 127.0.0.1:62012] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:39 INF [RTMP] [conn 127.0.0.1:62013] opened
+2026/07/11 12:33:39 INF [RTMP] [conn 127.0.0.1:62013] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:40 INF [RTMP] [conn 127.0.0.1:62014] opened
+2026/07/11 12:33:40 INF [RTMP] [conn 127.0.0.1:62014] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:41 INF [RTMP] [conn 127.0.0.1:62015] opened
+2026/07/11 12:33:41 INF [RTMP] [conn 127.0.0.1:62015] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:42 INF [RTMP] [conn 127.0.0.1:62016] opened
+2026/07/11 12:33:42 INF [RTMP] [conn 127.0.0.1:62016] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:43 INF [RTMP] [conn 127.0.0.1:62017] opened
+2026/07/11 12:33:43 INF [RTMP] [conn 127.0.0.1:62017] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:44 INF [RTMP] [conn 127.0.0.1:62018] opened
+2026/07/11 12:33:44 INF [RTMP] [conn 127.0.0.1:62018] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:45 INF [RTMP] [conn 127.0.0.1:62019] opened
+2026/07/11 12:33:45 INF [RTMP] [conn 127.0.0.1:62019] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:46 INF [RTMP] [conn 127.0.0.1:62020] opened
+2026/07/11 12:33:46 INF [RTMP] [conn 127.0.0.1:62020] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:47 INF [RTMP] [conn 127.0.0.1:62021] opened
+2026/07/11 12:33:47 INF [RTMP] [conn 127.0.0.1:62021] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:48 INF [RTMP] [conn 127.0.0.1:62022] opened
+2026/07/11 12:33:48 INF [RTMP] [conn 127.0.0.1:62022] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:49 INF [RTMP] [conn 127.0.0.1:62023] opened
+2026/07/11 12:33:49 INF [RTMP] [conn 127.0.0.1:62023] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:50 INF [RTMP] [conn 127.0.0.1:62024] opened
+2026/07/11 12:33:50 INF [RTMP] [conn 127.0.0.1:62024] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:51 INF [RTMP] [conn 127.0.0.1:62025] opened
+2026/07/11 12:33:51 INF [RTMP] [conn 127.0.0.1:62025] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:52 INF [RTMP] [conn 127.0.0.1:62026] opened
+2026/07/11 12:33:52 INF [RTMP] [conn 127.0.0.1:62026] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:53 INF [RTMP] [conn 127.0.0.1:62028] opened
+2026/07/11 12:33:53 INF [RTMP] [conn 127.0.0.1:62028] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:54 INF [RTMP] [conn 127.0.0.1:62029] opened
+2026/07/11 12:33:54 INF [RTMP] [conn 127.0.0.1:62029] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:55 INF [RTMP] [conn 127.0.0.1:62030] opened
+2026/07/11 12:33:55 INF [RTMP] [conn 127.0.0.1:62030] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:56 INF [RTMP] [conn 127.0.0.1:62031] opened
+2026/07/11 12:33:56 INF [RTMP] [conn 127.0.0.1:62031] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:57 INF [RTMP] [conn 127.0.0.1:62032] opened
+2026/07/11 12:33:57 INF [RTMP] [conn 127.0.0.1:62032] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:58 INF [RTMP] [conn 127.0.0.1:62033] opened
+2026/07/11 12:33:58 INF [RTMP] [conn 127.0.0.1:62033] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:33:59 INF [RTMP] [conn 127.0.0.1:62034] opened
+2026/07/11 12:33:59 INF [RTMP] [conn 127.0.0.1:62034] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:00 INF [RTMP] [conn 127.0.0.1:62035] opened
+2026/07/11 12:34:00 INF [RTMP] [conn 127.0.0.1:62035] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:01 INF [RTMP] [conn 127.0.0.1:62038] opened
+2026/07/11 12:34:01 INF [RTMP] [conn 127.0.0.1:62038] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:02 INF [RTMP] [conn 127.0.0.1:62040] opened
+2026/07/11 12:34:02 INF [RTMP] [conn 127.0.0.1:62040] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:03 INF [RTMP] [conn 127.0.0.1:62041] opened
+2026/07/11 12:34:03 INF [RTMP] [conn 127.0.0.1:62041] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:04 INF [RTMP] [conn 127.0.0.1:62042] opened
+2026/07/11 12:34:04 INF [RTMP] [conn 127.0.0.1:62042] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:05 INF [RTMP] [conn 127.0.0.1:62043] opened
+2026/07/11 12:34:05 INF [RTMP] [conn 127.0.0.1:62043] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:06 INF [RTMP] [conn 127.0.0.1:62044] opened
+2026/07/11 12:34:06 INF [RTMP] [conn 127.0.0.1:62044] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:07 INF [RTMP] [conn 127.0.0.1:62045] opened
+2026/07/11 12:34:07 INF [RTMP] [conn 127.0.0.1:62045] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:08 INF [RTMP] [conn 127.0.0.1:62046] opened
+2026/07/11 12:34:08 INF [RTMP] [conn 127.0.0.1:62046] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:09 INF [RTMP] [conn 127.0.0.1:62047] opened
+2026/07/11 12:34:09 INF [RTMP] [conn 127.0.0.1:62047] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:10 INF [RTMP] [conn 127.0.0.1:62048] opened
+2026/07/11 12:34:10 INF [RTMP] [conn 127.0.0.1:62048] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:11 INF [RTMP] [conn 127.0.0.1:62049] opened
+2026/07/11 12:34:11 INF [RTMP] [conn 127.0.0.1:62049] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:12 INF [RTMP] [conn 127.0.0.1:62050] opened
+2026/07/11 12:34:12 INF [RTMP] [conn 127.0.0.1:62050] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:13 INF [RTMP] [conn 127.0.0.1:62051] opened
+2026/07/11 12:34:13 INF [RTMP] [conn 127.0.0.1:62051] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:14 INF [RTMP] [conn 127.0.0.1:62052] opened
+2026/07/11 12:34:14 INF [RTMP] [conn 127.0.0.1:62052] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:15 INF [RTMP] [conn 127.0.0.1:62053] opened
+2026/07/11 12:34:15 INF [RTMP] [conn 127.0.0.1:62053] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:16 INF [RTMP] [conn 127.0.0.1:62054] opened
+2026/07/11 12:34:16 INF [RTMP] [conn 127.0.0.1:62054] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:17 INF [RTMP] [conn 127.0.0.1:62055] opened
+2026/07/11 12:34:17 INF [RTMP] [conn 127.0.0.1:62055] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:18 INF [RTMP] [conn 127.0.0.1:62057] opened
+2026/07/11 12:34:18 INF [RTMP] [conn 127.0.0.1:62057] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:19 INF [RTMP] [conn 127.0.0.1:62059] opened
+2026/07/11 12:34:19 INF [RTMP] [conn 127.0.0.1:62059] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:20 INF [RTMP] [conn 127.0.0.1:62060] opened
+2026/07/11 12:34:20 INF [RTMP] [conn 127.0.0.1:62060] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:21 INF [RTMP] [conn 127.0.0.1:62061] opened
+2026/07/11 12:34:21 INF [RTMP] [conn 127.0.0.1:62061] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:22 INF [RTMP] [conn 127.0.0.1:62062] opened
+2026/07/11 12:34:22 INF [RTMP] [conn 127.0.0.1:62062] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:23 INF [RTMP] [conn 127.0.0.1:62063] opened
+2026/07/11 12:34:23 INF [RTMP] [conn 127.0.0.1:62063] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:24 INF [RTMP] [conn 127.0.0.1:62064] opened
+2026/07/11 12:34:24 INF [RTMP] [conn 127.0.0.1:62064] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:25 INF [RTMP] [conn 127.0.0.1:62065] opened
+2026/07/11 12:34:25 INF [RTMP] [conn 127.0.0.1:62065] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:26 INF [RTMP] [conn 127.0.0.1:62066] opened
+2026/07/11 12:34:26 INF [RTMP] [conn 127.0.0.1:62066] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:27 INF [RTMP] [conn 127.0.0.1:62067] opened
+2026/07/11 12:34:27 INF [RTMP] [conn 127.0.0.1:62067] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:28 INF [RTMP] [conn 127.0.0.1:62068] opened
+2026/07/11 12:34:28 INF [RTMP] [conn 127.0.0.1:62068] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:29 INF [RTMP] [conn 127.0.0.1:62069] opened
+2026/07/11 12:34:29 INF [RTMP] [conn 127.0.0.1:62069] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:30 INF [RTMP] [conn 127.0.0.1:62070] opened
+2026/07/11 12:34:30 INF [RTMP] [conn 127.0.0.1:62070] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:31 INF [RTMP] [conn 127.0.0.1:62071] opened
+2026/07/11 12:34:31 INF [RTMP] [conn 127.0.0.1:62071] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:32 INF [RTMP] [conn 127.0.0.1:62073] opened
+2026/07/11 12:34:32 INF [RTMP] [conn 127.0.0.1:62073] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:33 INF [RTMP] [conn 127.0.0.1:62075] opened
+2026/07/11 12:34:33 INF [RTMP] [conn 127.0.0.1:62075] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:34 INF [RTMP] [conn 127.0.0.1:62076] opened
+2026/07/11 12:34:34 INF [RTMP] [conn 127.0.0.1:62076] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:35 INF [RTMP] [conn 127.0.0.1:62077] opened
+2026/07/11 12:34:35 INF [RTMP] [conn 127.0.0.1:62077] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:36 INF [RTMP] [conn 127.0.0.1:62078] opened
+2026/07/11 12:34:36 INF [RTMP] [conn 127.0.0.1:62078] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:37 INF [RTMP] [conn 127.0.0.1:62079] opened
+2026/07/11 12:34:37 INF [RTMP] [conn 127.0.0.1:62079] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:38 INF [RTMP] [conn 127.0.0.1:62080] opened
+2026/07/11 12:34:38 INF [RTMP] [conn 127.0.0.1:62080] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:39 INF [RTMP] [conn 127.0.0.1:62083] opened
+2026/07/11 12:34:39 INF [RTMP] [conn 127.0.0.1:62083] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:40 INF [RTMP] [conn 127.0.0.1:62084] opened
+2026/07/11 12:34:40 INF [RTMP] [conn 127.0.0.1:62084] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:41 INF [RTMP] [conn 127.0.0.1:62085] opened
+2026/07/11 12:34:41 INF [RTMP] [conn 127.0.0.1:62085] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:42 INF [RTMP] [conn 127.0.0.1:62086] opened
+2026/07/11 12:34:42 INF [RTMP] [conn 127.0.0.1:62086] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:43 INF [RTMP] [conn 127.0.0.1:62087] opened
+2026/07/11 12:34:43 INF [RTMP] [conn 127.0.0.1:62087] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:44 INF [RTMP] [conn 127.0.0.1:62088] opened
+2026/07/11 12:34:44 INF [RTMP] [conn 127.0.0.1:62088] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:45 INF [RTMP] [conn 127.0.0.1:62089] opened
+2026/07/11 12:34:45 INF [RTMP] [conn 127.0.0.1:62089] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:46 INF [RTMP] [conn 127.0.0.1:62090] opened
+2026/07/11 12:34:46 INF [RTMP] [conn 127.0.0.1:62090] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:47 INF [RTMP] [conn 127.0.0.1:62091] opened
+2026/07/11 12:34:47 INF [RTMP] [conn 127.0.0.1:62091] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:48 INF [RTMP] [conn 127.0.0.1:62098] opened
+2026/07/11 12:34:48 INF [RTMP] [conn 127.0.0.1:62098] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:49 INF [RTMP] [conn 127.0.0.1:62100] opened
+2026/07/11 12:34:49 INF [RTMP] [conn 127.0.0.1:62100] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:50 INF [RTMP] [conn 127.0.0.1:62101] opened
+2026/07/11 12:34:50 INF [RTMP] [conn 127.0.0.1:62101] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:51 INF [RTMP] [conn 127.0.0.1:62102] opened
+2026/07/11 12:34:51 INF [RTMP] [conn 127.0.0.1:62102] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:52 INF [RTMP] [conn 127.0.0.1:62103] opened
+2026/07/11 12:34:52 INF [RTMP] [conn 127.0.0.1:62103] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:53 INF [RTMP] [conn 127.0.0.1:62104] opened
+2026/07/11 12:34:53 INF [RTMP] [conn 127.0.0.1:62104] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:54 INF [RTMP] [conn 127.0.0.1:62105] opened
+2026/07/11 12:34:54 INF [RTMP] [conn 127.0.0.1:62105] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:55 INF [RTMP] [conn 127.0.0.1:62106] opened
+2026/07/11 12:34:55 INF [RTMP] [conn 127.0.0.1:62106] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:56 INF [RTMP] [conn 127.0.0.1:62107] opened
+2026/07/11 12:34:56 INF [RTMP] [conn 127.0.0.1:62107] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:57 INF [RTMP] [conn 127.0.0.1:62108] opened
+2026/07/11 12:34:57 INF [RTMP] [conn 127.0.0.1:62108] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:58 INF [RTMP] [conn 127.0.0.1:62109] opened
+2026/07/11 12:34:58 INF [RTMP] [conn 127.0.0.1:62109] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:34:59 INF [RTMP] [conn 127.0.0.1:62110] opened
+2026/07/11 12:34:59 INF [RTMP] [conn 127.0.0.1:62110] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:00 INF [RTMP] [conn 127.0.0.1:62111] opened
+2026/07/11 12:35:00 INF [RTMP] [conn 127.0.0.1:62111] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:01 INF [RTMP] [conn 127.0.0.1:62112] opened
+2026/07/11 12:35:01 INF [RTMP] [conn 127.0.0.1:62112] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:02 INF [RTMP] [conn 127.0.0.1:62114] opened
+2026/07/11 12:35:02 INF [RTMP] [conn 127.0.0.1:62114] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:03 INF [RTMP] [conn 127.0.0.1:62115] opened
+2026/07/11 12:35:03 INF [RTMP] [conn 127.0.0.1:62115] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:04 INF [RTMP] [conn 127.0.0.1:62116] opened
+2026/07/11 12:35:04 INF [RTMP] [conn 127.0.0.1:62116] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:05 INF [RTMP] [conn 127.0.0.1:62117] opened
+2026/07/11 12:35:05 INF [RTMP] [conn 127.0.0.1:62117] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:06 INF [RTMP] [conn 127.0.0.1:62118] opened
+2026/07/11 12:35:06 INF [RTMP] [conn 127.0.0.1:62118] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:07 INF [RTMP] [conn 127.0.0.1:62119] opened
+2026/07/11 12:35:07 INF [RTMP] [conn 127.0.0.1:62119] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:08 INF [RTMP] [conn 127.0.0.1:62120] opened
+2026/07/11 12:35:08 INF [RTMP] [conn 127.0.0.1:62120] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:09 INF [RTMP] [conn 127.0.0.1:62122] opened
+2026/07/11 12:35:09 INF [RTMP] [conn 127.0.0.1:62122] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:10 INF [RTMP] [conn 127.0.0.1:62123] opened
+2026/07/11 12:35:10 INF [RTMP] [conn 127.0.0.1:62123] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:11 INF [RTMP] [conn 127.0.0.1:62124] opened
+2026/07/11 12:35:11 INF [RTMP] [conn 127.0.0.1:62124] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:12 INF [RTMP] [conn 127.0.0.1:62125] opened
+2026/07/11 12:35:12 INF [RTMP] [conn 127.0.0.1:62125] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:13 INF [RTMP] [conn 127.0.0.1:62126] opened
+2026/07/11 12:35:13 INF [RTMP] [conn 127.0.0.1:62126] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:14 INF [RTMP] [conn 127.0.0.1:62127] opened
+2026/07/11 12:35:14 INF [RTMP] [conn 127.0.0.1:62127] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:15 INF [RTMP] [conn 127.0.0.1:62128] opened
+2026/07/11 12:35:15 INF [RTMP] [conn 127.0.0.1:62128] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:16 INF [RTMP] [conn 127.0.0.1:62129] opened
+2026/07/11 12:35:16 INF [RTMP] [conn 127.0.0.1:62129] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:17 INF [RTMP] [conn 127.0.0.1:62130] opened
+2026/07/11 12:35:17 INF [RTMP] [conn 127.0.0.1:62130] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:18 INF [RTMP] [conn 127.0.0.1:62131] opened
+2026/07/11 12:35:18 INF [RTMP] [conn 127.0.0.1:62131] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:19 INF [RTMP] [conn 127.0.0.1:62132] opened
+2026/07/11 12:35:19 INF [RTMP] [conn 127.0.0.1:62132] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:20 INF [RTMP] [conn 127.0.0.1:62133] opened
+2026/07/11 12:35:20 INF [RTMP] [conn 127.0.0.1:62133] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:21 INF [RTMP] [conn 127.0.0.1:62134] opened
+2026/07/11 12:35:21 INF [RTMP] [conn 127.0.0.1:62134] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:22 INF [RTMP] [conn 127.0.0.1:62135] opened
+2026/07/11 12:35:22 INF [RTMP] [conn 127.0.0.1:62135] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:23 INF [RTMP] [conn 127.0.0.1:62136] opened
+2026/07/11 12:35:23 INF [RTMP] [conn 127.0.0.1:62136] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:24 INF [RTMP] [conn 127.0.0.1:62137] opened
+2026/07/11 12:35:24 INF [RTMP] [conn 127.0.0.1:62137] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:25 INF [RTMP] [conn 127.0.0.1:62138] opened
+2026/07/11 12:35:25 INF [RTMP] [conn 127.0.0.1:62138] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:26 INF [RTMP] [conn 127.0.0.1:62140] opened
+2026/07/11 12:35:26 INF [RTMP] [conn 127.0.0.1:62140] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:27 INF [RTMP] [conn 127.0.0.1:62141] opened
+2026/07/11 12:35:27 INF [RTMP] [conn 127.0.0.1:62141] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:28 INF [RTMP] [conn 127.0.0.1:62142] opened
+2026/07/11 12:35:28 INF [RTMP] [conn 127.0.0.1:62142] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:29 INF [RTMP] [conn 127.0.0.1:62143] opened
+2026/07/11 12:35:29 INF [RTMP] [conn 127.0.0.1:62143] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:30 INF [RTMP] [conn 127.0.0.1:62144] opened
+2026/07/11 12:35:30 INF [RTMP] [conn 127.0.0.1:62144] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:31 INF [RTMP] [conn 127.0.0.1:62145] opened
+2026/07/11 12:35:31 INF [RTMP] [conn 127.0.0.1:62145] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:32 INF [RTMP] [conn 127.0.0.1:62146] opened
+2026/07/11 12:35:32 INF [RTMP] [conn 127.0.0.1:62146] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:33 INF [RTMP] [conn 127.0.0.1:62147] opened
+2026/07/11 12:35:33 INF [RTMP] [conn 127.0.0.1:62147] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:35 INF [RTMP] [conn 127.0.0.1:62148] opened
+2026/07/11 12:35:35 INF [RTMP] [conn 127.0.0.1:62148] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:36 INF [RTMP] [conn 127.0.0.1:62149] opened
+2026/07/11 12:35:36 INF [RTMP] [conn 127.0.0.1:62149] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:37 INF [RTMP] [conn 127.0.0.1:62150] opened
+2026/07/11 12:35:37 INF [RTMP] [conn 127.0.0.1:62150] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:38 INF [RTMP] [conn 127.0.0.1:62151] opened
+2026/07/11 12:35:38 INF [RTMP] [conn 127.0.0.1:62151] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:39 INF [RTMP] [conn 127.0.0.1:62152] opened
+2026/07/11 12:35:39 INF [RTMP] [conn 127.0.0.1:62152] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:40 INF [RTMP] [conn 127.0.0.1:62153] opened
+2026/07/11 12:35:40 INF [RTMP] [conn 127.0.0.1:62153] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:41 INF [RTMP] [conn 127.0.0.1:62154] opened
+2026/07/11 12:35:41 INF [RTMP] [conn 127.0.0.1:62154] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:42 INF [RTMP] [conn 127.0.0.1:62155] opened
+2026/07/11 12:35:42 INF [RTMP] [conn 127.0.0.1:62155] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:43 INF [RTMP] [conn 127.0.0.1:62156] opened
+2026/07/11 12:35:43 INF [RTMP] [conn 127.0.0.1:62156] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:44 INF [RTMP] [conn 127.0.0.1:62157] opened
+2026/07/11 12:35:44 INF [RTMP] [conn 127.0.0.1:62157] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:45 INF [RTMP] [conn 127.0.0.1:62158] opened
+2026/07/11 12:35:45 INF [RTMP] [conn 127.0.0.1:62158] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:46 INF [RTMP] [conn 127.0.0.1:62159] opened
+2026/07/11 12:35:46 INF [RTMP] [conn 127.0.0.1:62159] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:47 INF [RTMP] [conn 127.0.0.1:62160] opened
+2026/07/11 12:35:47 INF [RTMP] [conn 127.0.0.1:62160] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:48 INF [RTMP] [conn 127.0.0.1:62161] opened
+2026/07/11 12:35:48 INF [RTMP] [conn 127.0.0.1:62161] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:49 INF [RTMP] [conn 127.0.0.1:62162] opened
+2026/07/11 12:35:49 INF [RTMP] [conn 127.0.0.1:62162] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:50 INF [RTMP] [conn 127.0.0.1:62163] opened
+2026/07/11 12:35:50 INF [RTMP] [conn 127.0.0.1:62163] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:51 INF [RTMP] [conn 127.0.0.1:62164] opened
+2026/07/11 12:35:51 INF [RTMP] [conn 127.0.0.1:62164] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:52 INF [RTMP] [conn 127.0.0.1:62165] opened
+2026/07/11 12:35:52 INF [RTMP] [conn 127.0.0.1:62165] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:53 INF [RTMP] [conn 127.0.0.1:62166] opened
+2026/07/11 12:35:53 INF [RTMP] [conn 127.0.0.1:62166] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:54 INF [RTMP] [conn 127.0.0.1:62167] opened
+2026/07/11 12:35:54 INF [RTMP] [conn 127.0.0.1:62167] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:55 INF [RTMP] [conn 127.0.0.1:62168] opened
+2026/07/11 12:35:55 INF [RTMP] [conn 127.0.0.1:62168] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:56 INF [RTMP] [conn 127.0.0.1:62169] opened
+2026/07/11 12:35:56 INF [RTMP] [conn 127.0.0.1:62169] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:57 INF [RTMP] [conn 127.0.0.1:62170] opened
+2026/07/11 12:35:57 INF [RTMP] [conn 127.0.0.1:62170] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:58 INF [RTMP] [conn 127.0.0.1:62171] opened
+2026/07/11 12:35:58 INF [RTMP] [conn 127.0.0.1:62171] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:35:59 INF [RTMP] [conn 127.0.0.1:62172] opened
+2026/07/11 12:35:59 INF [RTMP] [conn 127.0.0.1:62172] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:36:00 INF [RTMP] [conn 127.0.0.1:62173] opened
+2026/07/11 12:36:00 INF [RTMP] [conn 127.0.0.1:62173] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:36:01 INF [RTMP] [conn 127.0.0.1:62175] opened
+2026/07/11 12:36:01 INF [RTMP] [conn 127.0.0.1:62175] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:36:02 INF [RTMP] [conn 127.0.0.1:62176] opened
+2026/07/11 12:36:02 INF [RTMP] [conn 127.0.0.1:62176] closed: no stream is available on path 'live/delayengine'
+2026/07/11 12:36:03 INF [RTMP] [conn 127.0.0.1:62177] opened
+2026/07/11 12:36:03 INF [RTMP] [conn 127.0.0.1:62177] closed: no stream is available on path 'live/delayengine'
