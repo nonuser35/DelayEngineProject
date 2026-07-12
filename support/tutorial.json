@@ -70,6 +70,12 @@
       "titleEn": "11. Set up remote control",
       "text": "Com o DelayEngine aberto, use http://127.0.0.1:8080/remote. No OBS, adicione a URL como Dock de navegador personalizado. No Streamlabs, use como fonte de navegador ou janela de controle. No Stream Deck, configure uma acao Abrir URL para esse endereco.",
       "textEn": "With DelayEngine open, use http://127.0.0.1:8080/remote. In OBS, add the URL as a Custom Browser Dock. In Streamlabs, use it as a browser source or control window. In Stream Deck, configure an Open URL action for this address."
+    },
+    {
+      "title": "12. Escolha o modo de transicao ideal",
+      "titleEn": "12. Choose the ideal transition mode",
+      "text": "Teste os modos de transicao e escolha o que melhor combina com o seu computador e com o player usado pelo publico. Loading curto e loading completo usam o modo Encoded; corte pelo buffer usa o modo Copy e preserva a codificacao recebida do OBS ou Streamlabs. Se um modo nao apresentar o resultado desejado no seu equipamento, selecione outro nas Configuracoes.",
+      "textEn": "Try the transition modes and choose the one that best matches your computer and the player used by your audience. Short loading and full loading use Encoded mode; buffer cut uses Copy mode and preserves the encoding received from OBS or Streamlabs. If a mode does not deliver the desired result on your equipment, select another one in Settings."
     }
   ]
 }

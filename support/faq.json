@@ -1,77 +1,61 @@
 {
-  "_comment": "Arquivo remoto do FAQ. JSON nao aceita comentarios com //, entao use campos iniciados por _ para anotacoes. O app ignora esses campos.",
-  "_howToEdit": {
-    "items": "Cada item com title e text vira um card do FAQ. tag e opcional.",
-    "imageUrl": "Para inserir imagem, suba a imagem no GitHub, por exemplo em support/imagens/minha-imagem.png, abra o arquivo no GitHub, clique em Raw e copie a URL. O formato fica parecido com https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/imagens/minha-imagem.png",
-    "imageAlt": "Texto alternativo da imagem. Use uma frase curta descrevendo a imagem.",
-    "linkUrl": "Opcional. Mostra um link abaixo do texto do card.",
-    "linkLabel": "Texto do link. Se ficar vazio, o app usa Abrir referencia."
-  },
+  "_comment": "FAQ remoto. Para ingles, preencha titleEn, textEn e tagEn junto de cada item.",
   "items": [
     {
       "title": "O que o DelayEngine faz",
+      "titleEn": "What DelayEngine does",
       "text": "Ele fica entre o OBS/Streamlabs e a Twitch. Recebe sua live local, aplica delay quando voce pede e envia para a Twitch preservando audio, video, PTS/DTS, keyframes e sincronizacao.",
+      "textEn": "It sits between OBS/Streamlabs and Twitch. It receives your local stream, applies delay when requested, and sends it to Twitch while preserving audio, video, PTS/DTS, keyframes and synchronization.",
       "tag": "Uso normal: deixe aberto durante a live.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "Normal use: keep it open during the stream."
     },
     {
       "title": "Para onde o OBS envia",
+      "titleEn": "Where OBS sends the stream",
       "text": "O OBS envia para o servidor local do DelayEngine, nao direto para a Twitch. Copie o Servidor do DelayEngine para OBS e a Chave local do OBS nas configuracoes de transmissao customizada do OBS/Streamlabs.",
+      "textEn": "OBS sends to DelayEngine's local server, not directly to Twitch. Copy the DelayEngine Server and the local OBS Key into the custom stream settings in OBS/Streamlabs.",
       "tag": "Nao cole a chave da Twitch no OBS.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "Do not paste the Twitch key into OBS."
     },
     {
       "title": "O que e o modo Twitch polido",
-      "text": "E o modo em que o DelayEngine publica localmente e um codificador FFmpeg interno envia a saida para a Twitch. Esse modo mantem a saida continua e melhora a volta ao vivo apos remover delay manual.",
+      "titleEn": "What polished Twitch mode is",
+      "text": "E o modo em que o DelayEngine publica localmente e um codificador FFmpeg interno envia a saida para a Twitch. Esse modo mantem a saida continua e organiza a volta ao vivo apos remover delay manual.",
+      "textEn": "It is the mode in which DelayEngine publishes locally and an internal FFmpeg encoder sends the output to Twitch. This mode keeps the output continuous and organizes the return to live after removing manual delay.",
       "tag": "Melhor resultado: perfil igual ao OBS/Streamlabs.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "Best result: use the same profile as OBS/Streamlabs."
     },
     {
       "title": "Por que preencher resolucao, FPS e bitrate",
+      "titleEn": "Why set resolution, FPS and bitrate",
       "text": "Esses dados dizem ao modo Twitch polido e ao conversor qual formato a live usa. Quando o perfil do app combina com OBS/Streamlabs, o codificador trabalha com menos ajuste e a transmissao fica mais eficiente.",
+      "textEn": "These values tell polished Twitch mode and the converter which format the stream uses. When the app profile matches OBS/Streamlabs, the encoder needs fewer adjustments and the stream is more efficient.",
       "tag": "Perfil alinhado melhora estabilidade e desempenho.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "A matching profile improves stability and performance."
     },
     {
       "title": "O que e o video de loading",
-      "text": "E a tela temporaria exibida durante a transicao de delay. Se o video for menor que o tempo necessario, o app repete automaticamente. Se for maior e loading completo estiver desligado, o app volta assim que o buffer estiver pronto.",
+      "titleEn": "What the loading video is",
+      "text": "E a tela temporaria usada quando voce adiciona delay com loading. Se o video for menor que o tempo necessario, o app o repete automaticamente. Ao voltar ao vivo, o DelayEngine retoma a live diretamente, sem reproduzir o loading.",
+      "textEn": "It is the temporary screen used when you add delay with loading. If the video is shorter than needed, the app repeats it automatically. When going live, DelayEngine resumes the stream directly without playing the loading video.",
       "tag": "Converta no mesmo FPS/resolucao da live.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "Convert it with the same FPS and resolution as the stream."
     },
     {
       "title": "O que significa voltar ao vivo",
+      "titleEn": "What going live means",
       "text": "O app remove o delay manual e volta para o ponto mais recente possivel da live, mantendo a saida organizada pelo modo Twitch polido.",
+      "textEn": "The app removes manual delay and returns to the most recent point of the stream while polished Twitch mode keeps the output organized.",
       "tag": "Use quando quiser sair do delay.",
-      "imageUrl": "",
-      "imageAlt": ""
+      "tagEn": "Use it when you want to leave delay mode."
     },
     {
       "title": "Posso fechar o navegador",
+      "titleEn": "Can I close the browser",
       "text": "Sim. O painel web e apenas controle. Se o icone do DelayEngine continuar perto do relogio do Windows, o app continua rodando e transmitindo.",
+      "textEn": "Yes. The web panel is only a control surface. If the DelayEngine icon remains near the Windows clock, the app keeps running and streaming.",
       "tag": "Para parar tudo, saia pelo icone.",
-      "imageUrl": "",
-      "imageAlt": ""
-    },
-    {
-      "title": "Como usar o controle remoto",
-      "text": "Para adicionar o controle dentro do OBS ou Streamlabs, primeiro deixe o DelayEngine aberto. Depois use a URL http://127.0.0.1:8080/remote como Dock personalizado, Custom Browser Dock ou Fonte de navegador. Nome sugerido: DelayEngine Controle. Essa tela mostra se o delay esta ativo e tem botoes grandes para adicionar delay ou voltar ao vivo sem precisar voltar para o painel principal.",
-      "tag": "URL do controle: http://127.0.0.1:8080/remote",
-      "imageUrl": "",
-      "imageAlt": ""
-    },
-    {
-      "title": "Exemplo com imagem",
-      "text": "Este card e um modelo. Para mostrar imagem, preencha imageUrl com uma URL raw do GitHub. Para esconder este card, apague este item inteiro do array items.",
-      "tag": "Modelo editavel pelo GitHub.",
-      "imageUrl": "",
-      "imageAlt": "Exemplo de imagem do FAQ",
-      "linkUrl": "",
-      "linkLabel": ""
+      "tagEn": "To stop everything, exit from the tray icon."
     }
   ]
 }
