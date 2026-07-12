@@ -1,16 +1,18 @@
 {
   "visible": true,
-  "name": "user34",
-  "shortName": "user34",
+  "name": "nonuser34",
+  "shortName": "nonuser34",
   "initials": "U34",
   "photoUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/creator.png",
   "githubLabel": "github.com/nonuser35",
   "githubUrl": "https://github.com/nonuser35",
-  "socialLabel": "Discord: user34#1337",
-  "socialUrl": "https://discord.com",
+  "_commentDiscord": "discordUsername define o texto. Para abrir o perfil, preencha discordUserId com o ID numerico copiado no Discord em Modo desenvolvedor > Copiar ID do usuario.",
+  "discordUsername": "rS4kamoto",
+  "discordUserId": "rS4kamoto",
   "message": "''Não sou um herói. Apenas um cavalheiro da sorte.''  Corto Maltese",
   "_commentAlertMessage": "Insira abaixo a frase que vai aparecer no centro de notificacoes.",
   "alertMessage": "Considere apoiar o projeto, é aberto e gratis a todos, porém, deu trabalho. 🥳",
+  "_commentPayments": "Um item de apoio so aparece quando label e title estiverem preenchidos. Deixe label vazio para ocultar o card inteiro.",
   "payments": [
     {
       "label": "PIX",
@@ -21,9 +23,9 @@
       "url": "https://github.com/nonuser35/DelayEngineProject"
     },
     {
-      "label": "PayPal",
+      "label": "Paypal",
       "title": "Apoiar via PayPal",
-      "info": "Escaneie o QR Code ou copie o link.",
+      "info": "Escaneie o QR Code.",
       "key": "",
       "qrUrl": "https://raw.githubusercontent.com/nonuser35/DelayEngineProject/main/support/paypal-qrcode.png",
       "url": ""
