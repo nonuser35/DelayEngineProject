@@ -1,17 +1,21 @@
-# Texto para GitHub
+# Textos para a página do GitHub
 
 ## Descrição curta
 
-DelayEngine é um relay local para Windows entre OBS/Streamlabs e Twitch, feito para adicionar e remover delay manual durante a live sem reiniciar a transmissão.
+Aplicativo gratuito e open source para adicionar e remover delay manual em lives da Twitch, com buffer local, três modos de transição e integração com OBS/Streamlabs.
 
 ## Descrição completa
 
-DelayEngine recebe a live por RTMP local, mantém um buffer seguro e envia a saída para Twitch. O modo Copy, recomendado, preserva o sinal H.264/AAC recebido do OBS/Streamlabs sem recodificar a live. O aplicativo inclui painel local, atalhos na bandeja do Windows, vídeos de loading, conversor integrado, logs e um modo Encoded opcional para situações em que seja necessário controlar a saída.
+DelayEngine é um projeto gratuito e aberto criado para ajudar a comunidade de streaming. O aplicativo funciona localmente no Windows, entre o OBS/Streamlabs e a Twitch, permitindo adicionar e remover delay manual sem desconectar a entrada da transmissão.
 
-O fluxo é local:
+O projeto oferece Loading curto, Loading completo e Corte pelo buffer; aceita vídeos e imagens; inclui conversor integrado, painel de estado, notificações, atalhos, controle remoto, logs e suporte a AMD AMF, NVIDIA NVENC, Intel Quick Sync ou CPU no modo Encoded.
 
 ```text
 OBS / Streamlabs → MediaMTX local → DelayEngine → Twitch
 ```
 
-Leia o [guia em Português](README.pt-BR.md) ou o [English guide](README.en.md).
+Licença MIT. Leia o [guia em português](README.pt-BR.md), o [English guide](README.en.md) e a [documentação completa](DOCUMENTACAO_COMPLETA.md).
+
+## Tópicos sugeridos
+
+`streaming` `twitch` `obs` `streamlabs` `rtmp` `ffmpeg` `golang` `windows` `live-delay` `open-source`
