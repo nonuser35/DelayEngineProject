@@ -2,7 +2,7 @@
 
 [Português (Brasil)](README.pt-BR.md) | [English](README.en.md) | [Documentação completa](DOCUMENTACAO_COMPLETA.md)
 
-DelayEngine é um aplicativo gratuito e de código aberto para Windows que adiciona e remove delay manual em transmissões ao vivo sem interromper o OBS ou o Streamlabs. O projeto foi criado para ajudar streamers, moderadores e equipes da comunidade que precisam controlar o tempo da live com uma operação simples, local e transparente.
+DelayEngine é um aplicativo GRATUITO e de código aberto para Windows que adiciona e remove delay manual em transmissões ao vivo sem interromper o OBS ou o Streamlabs. O projeto foi criado para ajudar streamers, moderadores e equipes da comunidade que precisam controlar o tempo da live com uma operação simples, local e transparente.
 
 Distribuído sob a [licença MIT](LICENSE), o DelayEngine pode ser usado, estudado, adaptado e melhorado por qualquer pessoa.
 
