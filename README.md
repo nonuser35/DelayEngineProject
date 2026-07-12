@@ -1,3 +1,4 @@
+<img width="1920" height="2155" alt="Screenshot 2026-07-12 at 20-39-54 DelayEngine" src="https://github.com/user-attachments/assets/990fd637-1d4d-4547-aa4f-7c862f9ae76a" />
 # DelayEngine
 
 [Português (Brasil)](README.pt-BR.md) | [English](README.en.md) | [Documentação completa](DOCUMENTACAO_COMPLETA.md)
